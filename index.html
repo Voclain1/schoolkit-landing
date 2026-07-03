@@ -1349,62 +1349,39 @@
         const WAITLIST_ENDPOINT = "https://script.google.com/macros/s/AKfycbxxf4Z32cqWtaT2SFPcmkYgogVMPM57MpDHfD9-zrpOUmJm9eqbMrzuyzOtK3Nxp5eU/exec";
 
         async function join(n) {
-    const input = document.getElementById('e' + n);
-    const btn = document.getElementById('cta' + n).querySelector('.pill');
-    const v = (input.value || '').trim();
-    
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v)) { 
-        input.style.borderColor = '#e0a52e'; 
-        input.focus(); 
-        return; 
-    }
+            const input = document.getElementById('e' + n);
+            const btn = document.getElementById('cta' + n).querySelector('.pill');
+            const v = (input.value || '').trim();
 
-    btn.textContent = 'Joining...';
+            if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v)) {
+                input.style.borderColor = '#e0a52e';
+                input.focus();
+                return;
+            }
 
-    try {
-        await fetch(WAITLIST_ENDPOINT, {
-            method: 'POST',
-            mode: 'no-cors', // 👈 THIS is the fix
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-                email: v,
-                ts: new Date().toISOString(),
-                source: 'landing-page'
-            })
-        });
-        // With no-cors we can't read the response, so assume success
-        input.style.display = 'none';
-        btn.textContent = '🎉 You\'re on the list!';
-        document.getElementById('ok' + n).style.display = 'block';
-    } catch (err) {
-        btn.textContent = 'Try again';
-        console.error(err);
-    }
-}
+            btn.textContent = 'Joining...';
 
-            const showSuccess = () => {
-                document.getElementById('cta' + n).querySelector(n === 1 ? '.hero-cta' : '.final-cta').style.display = 'none';
-                input.closest('div').querySelector('.hero-note, .final-note')?.style.setProperty('display', 'none');
-                ok.style.display = 'block';
-            };
-
-            if (!WAITLIST_ENDPOINT) { console.log('waitlist signup:', v); showSuccess(); return; }
-
-            const original = btn.textContent; btn.textContent = 'Saving…'; btn.disabled = true;
             try {
                 await fetch(WAITLIST_ENDPOINT, {
                     method: 'POST',
-                    mode: 'no-cors',
-                    headers: { 'Content-Type': 'text/plain;charset=utf-8' },
-                    body: JSON.stringify({ email: v, source: (n === 1 ? 'hero' : 'footer'), ts: new Date().toISOString() })
+                    mode: 'no-cors', // 👈 THIS is the fix
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        email: v,
+                        ts: new Date().toISOString(),
+                        source: 'landing-page'
+                    })
                 });
-                showSuccess();
+                // With no-cors we can't read the response, so assume success
+                input.style.display = 'none';
+                btn.textContent = '🎉 You\'re on the list!';
+                document.getElementById('ok' + n).style.display = 'block';
             } catch (err) {
-                console.error('waitlist error', err);
-                btn.textContent = original; btn.disabled = false;
-                alert('Sorry — something went wrong. Please try again, or email hello@schoolkit.ng.');
+                btn.textContent = 'Try again';
+                console.error(err);
             }
-        
+        }
+
     </script>
 </body>
 
