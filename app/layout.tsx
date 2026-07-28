@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
-import { getFaviconDataUri } from "@/lib/landing";
+import { getFaviconDataUri, getSiteScript } from "@/lib/landing";
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
 import "./globals.css";
 
 const SITE_URL = "https://schoolkit.ng";
@@ -30,7 +32,12 @@ export default function RootLayout({
           rel="stylesheet"
         />
       </head>
-      <body>{children}</body>
+      <body>
+        <Header />
+        {children}
+        <Footer />
+        <script dangerouslySetInnerHTML={{ __html: getSiteScript() }} />
+      </body>
     </html>
   );
 }

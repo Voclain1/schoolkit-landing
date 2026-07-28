@@ -1,10 +1,10 @@
-import { getLandingBodyHtml, getLandingScript } from "@/lib/landing";
+import { getHomepageBodyHtml, getHomepageScript } from "@/lib/landing";
 
 export default function Home() {
   return (
     <>
-      <div dangerouslySetInnerHTML={{ __html: getLandingBodyHtml() }} />
-      <script dangerouslySetInnerHTML={{ __html: getLandingScript() }} />
+      <div dangerouslySetInnerHTML={{ __html: getHomepageBodyHtml() }} />
+      <script dangerouslySetInnerHTML={{ __html: getHomepageScript() }} />
     </>
   );
 }
