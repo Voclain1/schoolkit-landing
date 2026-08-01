@@ -24,7 +24,7 @@ export default function NavMenu() {
         </Link>
       </div>
       <Link href="/#join" className="pill" onClick={close}>
-        Only 827 spots left
+        Get early access
       </Link>
       <button
         type="button"

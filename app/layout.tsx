@@ -3,6 +3,7 @@ import { Hanken_Grotesk, Fraunces } from "next/font/google";
 import { getFaviconDataUri, getSiteScript } from "@/lib/landing";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import WhatsAppFab from "@/components/WhatsAppFab";
 import "./globals.css";
 
 const SITE_URL = "https://schoolkit.ng";
@@ -111,6 +112,7 @@ export default function RootLayout({
         <Header />
         <main id="main-content">{children}</main>
         <Footer />
+        <WhatsAppFab />
         <script dangerouslySetInnerHTML={{ __html: getSiteScript() }} />
       </body>
     </html>
