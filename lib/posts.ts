@@ -41,6 +41,11 @@ export function getPostBySlug(slug: string): Post | undefined {
   return getAllPosts().find((post) => post.slug === slug);
 }
 
+export function getReadingTime(content: string): number {
+  const words = content.trim().split(/\s+/).length;
+  return Math.max(1, Math.round(words / 200));
+}
+
 export function getRelatedPosts(current: Post, limit = 3): Post[] {
   const others = getAllPosts().filter((post) => post.slug !== current.slug);
   const scored = others
