@@ -8,7 +8,7 @@ const PIXEL_ID = "887427910747946";
 
 declare global {
   interface Window {
-    fbq: (...args: any[]) => void;
+    fbq?: (...args: unknown[]) => unknown;
   }
 }
 
