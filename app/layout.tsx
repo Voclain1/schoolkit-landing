@@ -4,6 +4,7 @@ import { getFaviconDataUri, getSiteScript } from "@/lib/landing";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import WhatsAppFab from "@/components/WhatsAppFab";
+import MetaPixel from "@/components/MetaPixel";
 import "./globals.css";
 
 const SITE_URL = "https://schoolkit.ng";
@@ -106,9 +107,11 @@ export default function RootLayout({
         />
       </head>
       <body>
-        <a href="#main-content" className="skip-link">
-          Skip to main content
-        </a>
+  <MetaPixel />
+
+  <a href="#main-content" className="skip-link">
+    Skip to main content
+  </a>
         <Header />
         <main id="main-content">{children}</main>
         <Footer />
