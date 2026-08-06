@@ -1,21 +1,13 @@
 import { ImageResponse } from "next/og";
-import { getPostBySlug } from "@/lib/posts";
 import { getHankenGroteskFont } from "@/lib/og-font";
 
-export const alt = "SchoolKit blog post";
+export const alt = "SchoolKit — Run Your School. Not Your Spreadsheets.";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
-interface Props {
-  params: Promise<{ slug: string }>;
-}
-
-export default async function OpengraphImage({ params }: Props) {
-  const { slug } = await params;
-  const post = getPostBySlug(slug);
-  const title = post?.title ?? "SchoolKit Blog";
-
-  const fontData = await getHankenGroteskFont(`${title} SchoolKit schoolkit.ng/blog`);
+export default async function OpengraphImage() {
+  const title = "Run Your School. Not Your Spreadsheets.";
+  const fontData = await getHankenGroteskFont(`${title} SchoolKit schoolkit.ng`);
 
   return new ImageResponse(
     (
@@ -35,11 +27,11 @@ export default async function OpengraphImage({ params }: Props) {
         <div style={{ display: "flex", fontSize: 32, fontWeight: 700, color: "#E0A52E" }}>
           SchoolKit
         </div>
-        <div style={{ display: "flex", fontSize: 56, fontWeight: 700, lineHeight: 1.15 }}>
+        <div style={{ display: "flex", fontSize: 64, fontWeight: 700, lineHeight: 1.15 }}>
           {title}
         </div>
         <div style={{ display: "flex", fontSize: 26, fontWeight: 700, color: "#E3EFE9" }}>
-          schoolkit.ng/blog
+          School management software for Nigerian private schools
         </div>
       </div>
     ),

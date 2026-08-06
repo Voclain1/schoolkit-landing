@@ -3,7 +3,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { notFound } from "next/navigation";
 import { MDXRemote } from "next-mdx-remote/rsc";
-import { getAllPosts, getPostBySlug, getRelatedPosts } from "@/lib/posts";
+import { getAllPosts, getPostBySlug, getRelatedPosts, getReadingTime } from "@/lib/posts";
 
 const SITE_URL = "https://schoolkit.ng";
 
@@ -54,9 +54,11 @@ export default async function BlogPostPage({ params }: PageProps) {
   const related = getRelatedPosts(post);
   const url = `${SITE_URL}/blog/${post.slug}`;
 
+  const readingTime = getReadingTime(post.content);
+
   const jsonLd = {
     "@context": "https://schema.org",
-    "@type": "Article",
+    "@type": "BlogPosting",
     headline: post.title,
     description: post.description,
     image: `${SITE_URL}${post.coverImage}`,
@@ -95,7 +97,7 @@ export default async function BlogPostPage({ params }: PageProps) {
       <article>
         <header className="blog-post-header">
           <div className="blog-eye">
-            {post.tags[0] ?? "SchoolKit"} · {formatDate(post.date)}
+            {post.tags[0] ?? "SchoolKit"} · {formatDate(post.date)} · {readingTime} min read
           </div>
           <h1>{post.title}</h1>
           <p className="blog-post-meta">{post.description}</p>
