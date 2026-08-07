@@ -47,17 +47,27 @@ async function join(n) {
     btn.textContent = 'Joining...';
 
     try {
-        await fetch(WAITLIST_ENDPOINT, {
-            method: 'POST',
-            mode: 'no-cors', // 👈 THIS is the fix
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-                email: v,
-                phone: phone,
-                ts: new Date().toISOString(),
-                source: source
-            })
-        });
+        const [sheetResult] = await Promise.allSettled([
+            fetch(WAITLIST_ENDPOINT, {
+                method: 'POST',
+                mode: 'no-cors', // 👈 THIS is the fix
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    email: v,
+                    phone: phone,
+                    ts: new Date().toISOString(),
+                    source: source
+                })
+            }),
+            // Adds the contact to Resend, which triggers the automated welcome email.
+            // Best-effort: a failure here shouldn't block the waitlist signup.
+            fetch('/api/waitlist', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ email: v })
+            }).catch(err => console.error('Resend contact sync failed:', err))
+        ]);
+        if (sheetResult.status === 'rejected') throw sheetResult.reason;
         // With no-cors we can't read the response, so assume success
         input.style.display = 'none';
         btn.textContent = '🎉 You\'re on the list!';
