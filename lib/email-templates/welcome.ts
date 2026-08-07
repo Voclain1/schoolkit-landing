@@ -1,5 +1,7 @@
 const SITE_URL = "https://schoolkit.ng";
 const LOGO_URL = `${SITE_URL}/favicon.png`;
+const SETUP_GUIDE_URL = "https://app.schoolkit.ng/help/guide#1-create-your-account";
+const WHATSAPP_CHANNEL_URL = "https://whatsapp.com/channel/0029VbD94cGGk1FoxskJ7A30";
 
 const COLORS = {
   ink: "#0c1712",
@@ -13,35 +15,16 @@ const COLORS = {
   line: "#e5e1d4",
 };
 
-const CHECKLIST_ITEMS = [
-  "Collect fees via Paystack — no more cash chaos",
-  "Track attendance digitally",
-  "Generate report cards in minutes",
-  "Keep parents updated automatically",
-  "Works 100% offline",
-];
-
 const NEXT_STEPS = [
-  "Visit schoolkit.ng and join the early access waitlist",
-  "We will reach out personally to schedule your onboarding",
-  "Your school goes live — free for pioneer schools",
+  "Go through the setup guide at your own pace",
+  "Any step gives you trouble — reply to this email or chat us on WhatsApp immediately",
+  "Once you're live, we'll check in personally to make sure everything is running smoothly",
 ];
 
-function checklistRow(text: string): string {
-  return `
-  <tr>
-    <td width="28" valign="top" style="padding:0 12px 14px 0;">
-      <table role="presentation" cellpadding="0" cellspacing="0" width="24" height="24" style="width:24px;height:24px;">
-        <tr>
-          <td align="center" valign="middle" width="24" height="24" style="width:24px;height:24px;border-radius:50%;background:${COLORS.emeraldBright};font-family:Arial,Helvetica,sans-serif;font-size:13px;line-height:24px;color:#ffffff;">&#10003;</td>
-        </tr>
-      </table>
-    </td>
-    <td valign="middle" style="padding:0 0 14px;font-family:Arial,Helvetica,sans-serif;font-size:15px;line-height:1.5;color:${COLORS.text};">
-      ${text}
-    </td>
-  </tr>`;
-}
+const STAY_IN_LOOP_ITEMS = [
+  `Follow our WhatsApp channel for updates, tips and behind-the-scenes content.<br><a href="${WHATSAPP_CHANNEL_URL}" style="color:${COLORS.emerald};font-weight:700;text-decoration:none;">Join the channel &rarr;</a>`,
+  `Reply to this email with your school name and we'll prioritise your setup personally.`,
+];
 
 function stepRow(index: number, text: string): string {
   return `
@@ -55,6 +38,22 @@ function stepRow(index: number, text: string): string {
     </td>
     <td valign="middle" style="padding:0 0 16px;font-family:Arial,Helvetica,sans-serif;font-size:15px;line-height:1.5;color:${COLORS.text};">
       ${text}
+    </td>
+  </tr>`;
+}
+
+function arrowRow(html: string): string {
+  return `
+  <tr>
+    <td width="28" valign="top" style="padding:0 12px 14px 0;">
+      <table role="presentation" cellpadding="0" cellspacing="0" width="24" height="24" style="width:24px;height:24px;">
+        <tr>
+          <td align="center" valign="middle" width="24" height="24" style="width:24px;height:24px;border-radius:50%;background:${COLORS.emeraldBright};font-family:Arial,Helvetica,sans-serif;font-size:13px;line-height:24px;color:#ffffff;">&#8594;</td>
+        </tr>
+      </table>
+    </td>
+    <td valign="middle" style="padding:0 0 14px;font-family:Arial,Helvetica,sans-serif;font-size:15px;line-height:1.5;color:${COLORS.text};">
+      ${html}
     </td>
   </tr>`;
 }
@@ -103,7 +102,7 @@ export function getWelcomeEmailHtml({ firstName }: WelcomeEmailProps): string {
 </style>
 </head>
 <body style="margin:0;padding:0;background:${COLORS.paper};">
-<div style="display:none;max-height:0;overflow:hidden;opacity:0;mso-hide:all;">Thanks for joining the SchoolKit waitlist — here's what happens next.</div>
+<div style="display:none;max-height:0;overflow:hidden;opacity:0;mso-hide:all;">You're in — here's how to get your school set up on SchoolKit.</div>
 <center style="width:100%;background:${COLORS.paper};">
 <table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="background:${COLORS.paper};">
   <tr>
@@ -132,25 +131,35 @@ export function getWelcomeEmailHtml({ firstName }: WelcomeEmailProps): string {
           <td class="px" style="padding:40px 40px 8px;">
             <p class="h1" style="font-family:Georgia,'Times New Roman',serif;font-size:24px;font-weight:700;color:${COLORS.ink};margin:0 0 20px;">Hi ${greetingName},</p>
 
-            <p style="font-family:Arial,Helvetica,sans-serif;font-size:15px;line-height:1.6;color:${COLORS.text};margin:0 0 12px;">Thank you for your interest in SchoolKit.</p>
-            <p style="font-family:Arial,Helvetica,sans-serif;font-size:15px;line-height:1.6;color:${COLORS.text};margin:0 0 28px;">You are joining a growing list of Nigerian school owners who are tired of managing their schools on notebooks and spreadsheets.</p>
+            <p style="font-family:Arial,Helvetica,sans-serif;font-size:15px;line-height:1.6;color:${COLORS.text};margin:0 0 12px;">You're in. Welcome to the SchoolKit early access list.</p>
+            <p style="font-family:Arial,Helvetica,sans-serif;font-size:15px;line-height:1.6;color:${COLORS.text};margin:0 0 28px;">We're onboarding Nigerian private schools one by one — and your school is now in the queue.</p>
 
-            <p style="font-family:Georgia,'Times New Roman',serif;font-size:17px;font-weight:700;color:${COLORS.emerald};margin:0 0 16px;">Here is what SchoolKit does for your school:</p>
-            <table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="margin:0 0 4px;">
-              ${CHECKLIST_ITEMS.map(checklistRow).join("")}
+            <p style="font-family:Georgia,'Times New Roman',serif;font-size:17px;font-weight:700;color:${COLORS.emerald};margin:0 0 16px;">Get your school set up:</p>
+            <p style="font-family:Arial,Helvetica,sans-serif;font-size:15px;line-height:1.6;color:${COLORS.text};margin:0 0 24px;">We've put together a complete setup guide to get your school live quickly. Most schools are fully set up within an hour — start with steps 1&ndash;9 and come back to the rest later.</p>
+
+            <table role="presentation" cellpadding="0" cellspacing="0" style="margin:0 0 8px;">
+              <tr>
+                <td align="center" style="border-radius:10px;background:${COLORS.emerald};">
+                  <a href="${SETUP_GUIDE_URL}" class="cta-btn" style="display:inline-block;padding:16px 32px;font-family:Arial,Helvetica,sans-serif;font-size:15px;font-weight:700;color:#ffffff;text-decoration:none;border-radius:10px;">Open setup guide &rarr;</a>
+                </td>
+              </tr>
             </table>
 
             <div style="border-top:1px solid ${COLORS.line};margin:24px 0 28px;"></div>
 
-            <p style="font-family:Georgia,'Times New Roman',serif;font-size:17px;font-weight:700;color:${COLORS.emerald};margin:0 0 16px;">Here is what happens next:</p>
+            <p style="font-family:Georgia,'Times New Roman',serif;font-size:17px;font-weight:700;color:${COLORS.emerald};margin:0 0 16px;">What happens next:</p>
             <table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="margin:0 0 4px;">
               ${NEXT_STEPS.map((text, i) => stepRow(i + 1, text)).join("")}
             </table>
 
             <div style="border-top:1px solid ${COLORS.line};margin:24px 0 28px;"></div>
 
-            <p style="font-family:Arial,Helvetica,sans-serif;font-size:15px;line-height:1.6;color:${COLORS.text};margin:0 0 20px;">Any questions? Reply to this email or chat us on WhatsApp — we respond within 24 hours.</p>
-            <p style="font-family:Arial,Helvetica,sans-serif;font-size:15px;line-height:1.6;color:${COLORS.text};margin:0 0 24px;">Looking forward to working with you,</p>
+            <p style="font-family:Georgia,'Times New Roman',serif;font-size:17px;font-weight:700;color:${COLORS.emerald};margin:0 0 16px;">Stay in the loop:</p>
+            <table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="margin:0 0 4px;">
+              ${STAY_IN_LOOP_ITEMS.map(arrowRow).join("")}
+            </table>
+
+            <p style="font-family:Arial,Helvetica,sans-serif;font-size:15px;line-height:1.6;color:${COLORS.text};margin:24px 0 24px;">We're building something Nigerian schools have been waiting for. Thank you for being part of it from the beginning.</p>
 
             <table role="presentation" cellpadding="0" cellspacing="0" style="margin:0 0 28px;">
               <tr>
@@ -166,8 +175,8 @@ export function getWelcomeEmailHtml({ firstName }: WelcomeEmailProps): string {
 
             <table role="presentation" cellpadding="0" cellspacing="0" style="margin:0 0 8px;">
               <tr>
-                <td align="center" style="border-radius:10px;background:${COLORS.emerald};">
-                  <a href="${SITE_URL}" class="cta-btn" style="display:inline-block;padding:16px 32px;font-family:Arial,Helvetica,sans-serif;font-size:15px;font-weight:700;color:#ffffff;text-decoration:none;border-radius:10px;">Visit schoolkit.ng &rarr;</a>
+                <td align="center" style="border-radius:10px;border:2px solid ${COLORS.emeraldBright};background:#ffffff;">
+                  <a href="${WHATSAPP_CHANNEL_URL}" class="cta-btn" style="display:inline-block;padding:14px 30px;font-family:Arial,Helvetica,sans-serif;font-size:15px;font-weight:700;color:${COLORS.emeraldBright};text-decoration:none;border-radius:8px;">Join our WhatsApp channel &rarr;</a>
                 </td>
               </tr>
             </table>
@@ -177,7 +186,7 @@ export function getWelcomeEmailHtml({ firstName }: WelcomeEmailProps): string {
         <!-- footer -->
         <tr>
           <td style="background:${COLORS.footerBg};padding:24px 40px;text-align:center;">
-            <p style="font-family:Arial,Helvetica,sans-serif;font-size:12px;color:${COLORS.muted};margin:0 0 6px;">&copy; 2026 SchoolKit. Built in Lagos, Nigeria &#127475;&#127462;</p>
+            <p style="font-family:Arial,Helvetica,sans-serif;font-size:12px;color:${COLORS.muted};margin:0 0 6px;">&copy; 2026 SchoolKit. Built in Lagos, Nigeria &#127475;&#127468;</p>
             <p style="font-family:Arial,Helvetica,sans-serif;font-size:12px;color:${COLORS.muted};margin:0;">You are receiving this because you expressed interest in SchoolKit.</p>
           </td>
         </tr>
@@ -194,22 +203,28 @@ export function getWelcomeEmailHtml({ firstName }: WelcomeEmailProps): string {
 export function getWelcomeEmailText({ firstName }: WelcomeEmailProps): string {
   return `Hi ${firstName},
 
-Thank you for your interest in SchoolKit.
-You are joining a growing list of Nigerian school owners who are tired of managing their schools on notebooks and spreadsheets.
+You're in. Welcome to the SchoolKit early access list.
 
-Here is what SchoolKit does for your school:
-${CHECKLIST_ITEMS.map((item) => `- ${item}`).join("\n")}
+We're onboarding Nigerian private schools one by one — and your school is now in the queue.
 
-Here is what happens next:
+Get your school set up:
+We've put together a complete setup guide to get your school live quickly. Most schools are fully set up within an hour — start with steps 1-9 and come back to the rest later.
+
+Open setup guide: ${SETUP_GUIDE_URL}
+
+What happens next:
 ${NEXT_STEPS.map((item, i) => `${i + 1}. ${item}`).join("\n")}
 
-Any questions? Reply to this email or chat us on WhatsApp — we respond within 24 hours.
+Stay in the loop:
+- Follow our WhatsApp channel for updates, tips and behind-the-scenes content. Join the channel: ${WHATSAPP_CHANNEL_URL}
+- Reply to this email with your school name and we'll prioritise your setup personally.
 
-Looking forward to working with you,
+We're building something Nigerian schools have been waiting for. Thank you for being part of it from the beginning.
+
 The SchoolKit Team
 schoolkit.ng
 
-Visit schoolkit.ng: ${SITE_URL}
+Join our WhatsApp channel: ${WHATSAPP_CHANNEL_URL}
 
 © 2026 SchoolKit. Built in Lagos, Nigeria
 You are receiving this because you expressed interest in SchoolKit.`;
