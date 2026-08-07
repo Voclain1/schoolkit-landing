@@ -72,6 +72,7 @@ async function join(n) {
         input.style.display = 'none';
         btn.textContent = '🎉 You\'re on the list!';
         document.getElementById('ok' + n).style.display = 'block';
+        document.getElementById('ok' + n + '-wa').style.display = 'inline-flex';
         window.trackEvent?.('form_submit_success', { source });
         // Meta Pixel Lead Event
         if (typeof fbq !== "undefined") {

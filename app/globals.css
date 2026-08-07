@@ -1716,6 +1716,10 @@
             color: #9fd3bf;
         }
 
+        .wa-success-link {
+            display: none;
+        }
+
         /* reveal */
         .rv {
             opacity: 0;
