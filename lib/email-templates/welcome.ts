@@ -1,6 +1,7 @@
 const SITE_URL = "https://schoolkit.ng";
 const LOGO_URL = `${SITE_URL}/favicon.png`;
 const SETUP_GUIDE_URL = "https://app.schoolkit.ng/help/guide#1-create-your-account";
+const SIGNUP_URL = "https://app.schoolkit.ng/signup";
 const WHATSAPP_CHANNEL_URL = "https://whatsapp.com/channel/0029VbD94cGGk1FoxskJ7A30";
 
 const COLORS = {
@@ -131,7 +132,17 @@ export function getWelcomeEmailHtml({ firstName }: WelcomeEmailProps): string {
           <td class="px" style="padding:40px 40px 8px;">
             <p class="h1" style="font-family:Georgia,'Times New Roman',serif;font-size:24px;font-weight:700;color:${COLORS.ink};margin:0 0 20px;">Hi ${greetingName},</p>
 
-            <p style="font-family:Arial,Helvetica,sans-serif;font-size:15px;line-height:1.6;color:${COLORS.text};margin:0 0 12px;">You're in. Welcome to the SchoolKit early access list.</p>
+            <p style="font-family:Arial,Helvetica,sans-serif;font-size:15px;line-height:1.6;color:${COLORS.text};margin:0 0 24px;">You're in. Welcome to the SchoolKit early access list.</p>
+
+            <table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="width:100%;margin:0 0 28px;border-radius:14px;background:${COLORS.emerald};">
+              <tr>
+                <td align="center" style="padding:32px 28px;border-radius:14px;background:${COLORS.emerald};text-align:center;">
+                  <p style="font-family:Georgia,'Times New Roman',serif;font-size:22px;font-weight:700;color:#ffffff;margin:0 0 14px;">Ready to get started?</p>
+                  <a href="${SIGNUP_URL}" style="display:inline-block;font-family:Arial,Helvetica,sans-serif;font-size:17px;font-weight:700;color:#ffffff;text-decoration:underline;">Create your school account now &rarr;</a>
+                </td>
+              </tr>
+            </table>
+
             <p style="font-family:Arial,Helvetica,sans-serif;font-size:15px;line-height:1.6;color:${COLORS.text};margin:0 0 28px;">We're onboarding Nigerian private schools one by one — and your school is now in the queue.</p>
 
             <p style="font-family:Georgia,'Times New Roman',serif;font-size:17px;font-weight:700;color:${COLORS.emerald};margin:0 0 16px;">Get your school set up:</p>
@@ -204,6 +215,8 @@ export function getWelcomeEmailText({ firstName }: WelcomeEmailProps): string {
   return `Hi ${firstName},
 
 You're in. Welcome to the SchoolKit early access list.
+
+Create your school account: ${SIGNUP_URL}
 
 We're onboarding Nigerian private schools one by one — and your school is now in the queue.
 
