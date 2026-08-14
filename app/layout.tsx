@@ -69,14 +69,14 @@ const jsonLd = {
       name: "Free",
       price: "0",
       priceCurrency: "NGN",
-      description: "Up to 30 students, basic dashboard, attendance and fee tracking.",
+      description: "Up to 50 students, basic dashboard, attendance and fee tracking.",
     },
     {
       "@type": "Offer",
       name: "Starter",
-      price: "30000",
+      price: "45000",
       priceCurrency: "NGN",
-      description: "Up to 100 students — Paystack fee collection, receipts, report cards, parent communication.",
+      description: "Up to 200 students — Paystack fee collection, receipts, report cards, parent communication.",
     },
   ],
   provider: {
