@@ -1430,7 +1430,7 @@
         }
 
         .pc-price {
-            /* Capped so "₦150,000/term" stays on one line inside a
+            /* Capped so "₦180,000/term" stays on one line inside a
                1/5-width card — five across is the constraint, not the type. */
             font-size: clamp(26px, 2vw, 32px);
             font-weight: 800;
