@@ -1280,6 +1280,24 @@
         }
 
         /* ---------- pricing ---------- */
+        /* Dark cards on paper — the pricing block runs its own palette. */
+        .pricing-sec {
+            --pc-ink: #13262e;
+            --pc-paper: #f7f5ef;
+            --pc-dim: rgba(247, 245, 239, .6);
+            --pc-faint: rgba(247, 245, 239, .25);
+            --pc-hair: rgba(247, 245, 239, .12);
+            background: var(--pc-paper)
+        }
+
+        /* Landing anchors sit above their section so the sticky header
+           doesn't cover the heading after a jump. */
+        .anchor {
+            display: block;
+            height: 0;
+            scroll-margin-top: 80px
+        }
+
         .price-toggle {
             display: flex;
             justify-content: center;
@@ -1336,56 +1354,81 @@
             .price-grid {
                 grid-template-columns: 1fr
             }
+
+            /* Full-width cards: scaling up would overflow the viewport. */
+            .price-card.featured {
+                transform: none
+            }
+
+            .price-card {
+                padding: 26px 22px
+            }
+
+            .pioneer-box {
+                padding: 22px
+            }
         }
 
         .price-card {
-            background: #fff;
-            border: 1px solid var(--line);
-            border-radius: 18px;
-            padding: 28px 22px;
+            background: var(--pc-ink);
+            color: var(--pc-paper);
+            border: 1px solid transparent;
+            border-radius: 16px;
+            padding: 32px;
             display: flex;
-            flex-direction: column
+            flex-direction: column;
+            box-shadow: 0 14px 32px rgba(19, 38, 46, .14)
         }
 
         .price-card.featured {
             border: 2px solid var(--emerald-br);
-            box-shadow: 0 16px 36px rgba(63, 182, 139, .18)
+            box-shadow: 0 18px 40px rgba(19, 38, 46, .22);
+            transform: scale(1.02)
         }
 
         .pc-badge {
             display: inline-block;
             align-self: flex-start;
-            font-size: .72rem;
+            font-size: 11px;
             font-weight: 700;
             text-transform: uppercase;
-            letter-spacing: .03em;
-            background: var(--emerald-lite);
-            color: var(--emerald);
-            padding: 5px 12px;
+            letter-spacing: .04em;
+            background: var(--gold);
+            color: var(--pc-ink);
+            padding: 4px 12px;
             border-radius: 100px;
             margin-bottom: 14px
         }
 
-        .pc-badge.gold {
-            background: var(--gold);
-            color: var(--ink)
+        .price-card h3 {
+            font-size: 14px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: .08em;
+            color: var(--emerald-br);
+            margin: 0 0 10px
         }
 
-        .price-card h3 {
-            font-size: 1.25rem;
-            margin: 0 0 6px
+        /* Cards without a badge start with the plan name — pad so the
+           names line up across the row. */
+        .price-card>h3:first-child {
+            margin-top: 38px
         }
 
         .pc-price {
-            font-size: 1.6rem;
-            font-weight: 700;
-            margin-bottom: 4px
+            /* Tops out at the spec'd 48px; scales down so ₦150,000 still
+               fits inside a 1/5-width card on narrower desktops. */
+            font-size: clamp(28px, 2.7vw, 48px);
+            font-weight: 800;
+            line-height: 1.05;
+            color: var(--pc-paper);
+            margin-bottom: 6px
         }
 
         .pc-price small {
-            font-size: .82rem;
+            font-size: 15px;
             font-weight: 500;
-            color: var(--muted)
+            color: var(--pc-dim)
         }
 
         .pc-price .price-year {
@@ -1401,42 +1444,20 @@
         }
 
         .pc-students {
-            font-size: .82rem;
-            color: var(--muted);
-            margin-bottom: 22px
+            font-size: 13px;
+            color: var(--pc-dim)
         }
 
-        .pc-cta {
-            display: block;
-            text-align: center;
-            padding: 12px;
-            border-radius: 100px;
-            background: var(--paper-2);
-            color: var(--ink);
-            font-weight: 600;
-            font-size: .88rem;
-            margin-bottom: 24px;
-            transition: .2s
-        }
-
-        .pc-cta:hover {
-            background: var(--ink);
-            color: #fff
-        }
-
-        .pc-cta.primary {
-            background: var(--emerald-br);
-            color: var(--ink)
-        }
-
-        .pc-cta.primary:hover {
-            background: var(--emerald)
+        .pc-divider {
+            height: 1px;
+            background: var(--pc-hair);
+            margin: 20px 0
         }
 
         .pc-features {
             list-style: none;
-            font-size: .84rem;
-            color: var(--muted);
+            font-size: 14px;
+            color: var(--pc-paper);
             display: flex;
             flex-direction: column;
             gap: 10px
@@ -1451,26 +1472,83 @@
             content: "✓";
             position: absolute;
             left: 0;
-            color: var(--emerald)
+            color: var(--emerald-br)
         }
 
         .pc-features li.no {
-            color: var(--muted-d)
+            color: var(--pc-faint)
         }
 
         .pc-features li.no::before {
             content: "✗";
             position: absolute;
             left: 0;
-            color: var(--muted-d)
+            color: var(--pc-faint)
+        }
+
+        /* Pinned to the bottom so buttons line up across the row. */
+        .pc-action {
+            margin-top: auto;
+            padding-top: 24px
+        }
+
+        .pc-cta {
+            display: block;
+            text-align: center;
+            padding: 14px;
+            border-radius: 100px;
+            background: transparent;
+            border: 1px solid rgba(247, 245, 239, .3);
+            color: var(--pc-paper);
+            font-weight: 600;
+            font-size: .88rem;
+            transition: .2s
+        }
+
+        .pc-cta:hover {
+            background: rgba(247, 245, 239, .1);
+            border-color: var(--pc-paper);
+            color: var(--pc-paper)
+        }
+
+        .pc-cta.ghost-emerald {
+            border-color: var(--emerald-br);
+            color: var(--emerald-br)
+        }
+
+        .pc-cta.ghost-emerald:hover {
+            background: rgba(63, 182, 139, .12);
+            color: var(--emerald-br)
+        }
+
+        .pc-cta.primary {
+            background: var(--emerald-br);
+            border-color: var(--emerald-br);
+            color: var(--pc-ink);
+            font-weight: 800
+        }
+
+        .pc-cta.primary:hover {
+            background: #55c79e;
+            border-color: #55c79e;
+            color: var(--pc-ink)
+        }
+
+        .pc-note {
+            font-size: 11px;
+            line-height: 1.45;
+            color: rgba(247, 245, 239, .4);
+            text-align: center;
+            margin-top: 8px
         }
 
         .pioneer-box {
             margin-top: 36px;
-            background: var(--gold);
-            color: var(--ink);
-            border-radius: 18px;
-            padding: 26px 30px;
+            background: rgba(224, 165, 46, .1);
+            border: 1px solid rgba(224, 165, 46, .3);
+            color: var(--pc-ink);
+            border-radius: 16px;
+            padding: 24px 32px;
             display: flex;
             gap: 16px;
             align-items: flex-start
