@@ -2027,3 +2027,96 @@
     font-size: 16px;
     margin-top: 8px
 }
+
+/* ---------- urgency line above the signup forms ---------- */
+.urgency {
+    font-size: 13px;
+    line-height: 1.45;
+    color: #E0A52E;
+    font-weight: 600;
+    margin-top: 34px;
+    margin-bottom: -20px;
+    max-width: 520px
+}
+
+.urgency-final {
+    margin-top: 28px;
+    margin-bottom: 14px;
+    max-width: none
+}
+
+/* ---------- sticky mobile CTA bar ---------- */
+.sticky-cta {
+    display: none
+}
+
+@media(max-width:820px) {
+    .sticky-cta {
+        position: fixed;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 600;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 12px 14px;
+        padding-bottom: calc(12px + env(safe-area-inset-bottom, 0px));
+        background: #0E5C43;
+        color: #fff;
+        box-shadow: 0 -6px 22px rgba(0, 0, 0, .22);
+        transform: translateY(110%);
+        transition: transform .32s ease
+    }
+
+    .sticky-cta.show {
+        transform: translateY(0)
+    }
+
+    .sticky-cta-text {
+        flex: 1;
+        min-width: 0;
+        font-size: 13px;
+        line-height: 1.3;
+        font-weight: 600;
+        color: #fff
+    }
+
+    .sticky-cta-btn {
+        flex: none;
+        background: #fff;
+        color: #0E5C43;
+        font-size: 14px;
+        font-weight: 700;
+        padding: 11px 18px;
+        border-radius: 999px;
+        white-space: nowrap
+    }
+
+    .sticky-cta-x {
+        flex: none;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 30px;
+        height: 30px;
+        border: 0;
+        padding: 0;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, .14);
+        color: #fff;
+        cursor: pointer
+    }
+
+    /* keep the WhatsApp bubble clear of the bar while it's up */
+    body.has-sticky-cta .wa-fab {
+        bottom: calc(78px + env(safe-area-inset-bottom, 0px));
+        transition: bottom .32s ease
+    }
+}
+
+@media(prefers-reduced-motion:reduce) {
+    .sticky-cta {
+        transition: none
+    }
+}

@@ -23,6 +23,39 @@ const viewIo = new IntersectionObserver(es => es.forEach(e => {
     if (el) viewIo.observe(el);
 });
 
+/* Sticky mobile CTA bar: appears 3s after load, stays dismissed for the session. */
+(function () {
+    const bar = document.getElementById('stickyCta');
+    if (!bar) return;
+
+    let dismissed = false;
+    try { dismissed = sessionStorage.getItem('stickyCtaDismissed') === '1'; } catch { }
+    if (dismissed) return;
+
+    const timer = setTimeout(() => {
+        bar.hidden = false;
+        // Next frame so the transition runs from the off-screen state.
+        requestAnimationFrame(() => {
+            bar.classList.add('show');
+            document.body.classList.add('has-sticky-cta');
+        });
+        window.trackEvent?.('sticky_cta_view');
+    }, 3000);
+
+    bar.querySelector('.sticky-cta-btn')?.addEventListener('click', () => {
+        window.trackEvent?.('sticky_cta_click');
+    });
+
+    bar.querySelector('.sticky-cta-x')?.addEventListener('click', () => {
+        clearTimeout(timer);
+        bar.classList.remove('show');
+        document.body.classList.remove('has-sticky-cta');
+        bar.hidden = true;
+        try { sessionStorage.setItem('stickyCtaDismissed', '1'); } catch { }
+        window.trackEvent?.('sticky_cta_dismiss');
+    });
+})();
+
 /* Paste your Google Apps Script Web App URL between the quotes below.
    Setup steps are in the deployment guide. Until you do, signups are
    logged to the browser console so the form still works in preview. */
