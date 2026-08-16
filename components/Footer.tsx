@@ -15,6 +15,8 @@ export default function Footer() {
             <Link href="/#ai">AI Tutor</Link>
             <Link href="/#roles">Who it&apos;s for</Link>
             <Link href="/blog">Blog</Link>
+            <Link href="/privacy-policy">Privacy</Link>
+            <Link href="/terms-of-service">Terms</Link>
             <a href="mailto:hello@schoolkit.ng">Contact</a>
           </nav>
           <a
@@ -34,7 +36,10 @@ export default function Footer() {
           <span>
             © <span id="yr">{new Date().getFullYear()}</span> SchoolKit · schoolkit.ng · Built in Lagos, Nigeria
           </span>
-          <span>Privacy · Terms</span>
+          <span>
+            <Link href="/privacy-policy">Privacy Policy</Link> ·{" "}
+            <Link href="/terms-of-service">Terms of Service</Link>
+          </span>
         </div>
       </div>
     </footer>

@@ -2028,6 +2028,128 @@
     margin-top: 8px
 }
 
+/* ---------- legal pages (privacy policy, terms of service) ---------- */
+.legal-date {
+    margin-top: 10px;
+    font-size: 14px;
+    color: var(--muted)
+}
+
+.legal-toc {
+    margin-top: 34px;
+    padding: 22px 26px;
+    border: 1px solid var(--line);
+    border-radius: var(--r);
+    background: rgba(63, 182, 139, .05)
+}
+
+.legal-toc h2 {
+    font-size: 13px;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 12px
+}
+
+.legal-toc ol {
+    margin: 0;
+    padding-left: 20px;
+    columns: 2;
+    column-gap: 32px
+}
+
+.legal-toc li {
+    margin-bottom: 7px;
+    font-size: 15px;
+    break-inside: avoid
+}
+
+.legal-toc a {
+    color: var(--text);
+    text-decoration: none
+}
+
+.legal-toc a:hover {
+    color: var(--emerald);
+    text-decoration: underline
+}
+
+@media(max-width:680px) {
+    .legal-toc {
+        padding: 18px 20px
+    }
+
+    .legal-toc ol {
+        columns: 1
+    }
+}
+
+.legal-body section {
+    scroll-margin-top: 90px
+}
+
+.legal-body section+section {
+    margin-top: 6px
+}
+
+.legal-body h3 {
+    font-size: 17px;
+    margin-top: 26px
+}
+
+.legal-foot {
+    margin-top: 48px;
+    padding-top: 26px;
+    border-top: 1px solid var(--line);
+    font-size: 15px;
+    color: var(--muted)
+}
+
+.legal-foot a {
+    color: var(--emerald);
+    text-decoration: underline
+}
+
+.legal-cross {
+    margin-top: 10px
+}
+
+/* consent line under the signup forms */
+.form-legal {
+    font-size: 12px;
+    line-height: 1.5;
+    color: var(--muted);
+    margin-top: 12px;
+    max-width: 520px
+}
+
+.form-legal a {
+    color: inherit;
+    text-decoration: underline
+}
+
+.form-legal a:hover {
+    color: var(--emerald)
+}
+
+/* the final CTA sits on a dark card, so it needs the light-on-dark treatment */
+.final-legal {
+    max-width: 540px;
+    color: #9fd3bf
+}
+
+.final-legal a:hover {
+    color: #fff
+}
+
+.foot-meta a {
+    text-decoration: underline
+}
+
+.foot-meta a:hover {
+    color: #fff
+}
+
 /* ---------- urgency line above the signup forms ---------- */
 .urgency {
     font-size: 13px;
