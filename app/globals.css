@@ -1755,6 +1755,7 @@
 
         .foot .fnav {
             display: flex;
+            flex-wrap: wrap;
             gap: 26px;
             font-size: .92rem
         }
@@ -2026,6 +2027,109 @@
 .blog-related-card h4 {
     font-size: 16px;
     margin-top: 8px
+}
+
+/* ---------- mobile layout fixes ----------
+   body has overflow-x:hidden, so anything wider than the viewport is silently
+   clipped rather than scrollable. These rules stop content reaching that width. */
+
+@media(max-width:680px) {
+
+    /* The footer nav was a single non-wrapping flex row. Seven links need roughly
+       540px; a 375px phone offers ~331px inside .wrap, so the tail of the list was
+       being cut off at the screen edge. Stack it instead. */
+    .foot {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 28px;
+        padding: 34px 0
+    }
+
+    .foot .fnav {
+        flex-direction: column;
+        gap: 16px;
+        width: 100%;
+        font-size: 1rem
+    }
+
+    .foot .fnav a {
+        display: block;
+        padding: 2px 0
+    }
+
+    .foot-meta {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+        line-height: 1.6
+    }
+}
+
+@media(max-width:560px) {
+
+    /* "Get started free — no card required" cannot fit on one line on a small
+       phone, and .hero-cta .pill sets white-space:nowrap. Let it wrap and give it
+       the full row. */
+    .hero-cta .pill,
+    .final-cta .pill {
+        white-space: normal;
+        flex: 1 1 100%;
+        padding: 15px 22px
+    }
+
+    .hero-cta input,
+    .final-cta input {
+        flex: 1 1 100%;
+        min-width: 0
+    }
+}
+
+@media(max-width:560px) {
+
+    /* The hero dashboard mockup needs ~429px for its three-across stat row, but
+       .hero-panel clips at overflow:hidden, so the third tile was sliced off at
+       the card edge. Two across fits, and the padding comes down to match. */
+    .hp-main {
+        padding: 18px
+    }
+
+    .hp-stats {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px
+    }
+
+    .hp-stat {
+        padding: 13px
+    }
+
+    .hp-stat .v {
+        font-size: 1.3rem
+    }
+
+    .hp-h {
+        flex-wrap: wrap;
+        gap: 4px
+    }
+
+    /* Same story for the AI chat mock and the final CTA card. */
+    .ai {
+        padding: 34px 20px
+    }
+
+    .chat {
+        padding: 16px
+    }
+
+    .final-card {
+        padding: 44px 20px 60px
+    }
+}
+
+/* Reserve room so the sticky bar never sits on top of the last of the footer. */
+@media(max-width:820px) {
+    body.has-sticky-cta {
+        padding-bottom: calc(72px + env(safe-area-inset-bottom, 0px))
+    }
 }
 
 /* ---------- legal pages (privacy policy, terms of service) ---------- */
