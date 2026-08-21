@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import Link from "next/link";
 
 const STORAGE_KEY = "sk-announce-app-dismissed";
 
@@ -37,7 +36,7 @@ export default function AnnounceBar() {
   return (
     <div className="announce" role="region" aria-label="Announcement">
       <p className="announce-txt">
-        📱 Mobile app coming soon — <Link href="/#join">join the waitlist</Link> to get early access
+        <strong>SchoolKit is live!</strong> Manage your school on web today. Mobile app coming soon.
       </p>
       <button type="button" className="announce-x" onClick={dismiss} aria-label="Dismiss announcement">
         <svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true">
