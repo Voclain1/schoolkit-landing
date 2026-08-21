@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Hanken_Grotesk, Fraunces } from "next/font/google";
 import { getFaviconDataUri, getSiteScript } from "@/lib/landing";
+import AnnounceBar from "@/components/AnnounceBar";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import WhatsAppFab from "@/components/WhatsAppFab";
@@ -112,6 +113,7 @@ export default function RootLayout({
   <a href="#main-content" className="skip-link">
     Skip to main content
   </a>
+        <AnnounceBar />
         <Header />
         <main id="main-content">{children}</main>
         <Footer />

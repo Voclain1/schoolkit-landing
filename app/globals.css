@@ -13,6 +13,11 @@
             --line: rgba(18, 36, 28, .12);
             --line-d: rgba(255, 255, 255, .12);
             --r: 14px;
+            --ann-h: 38px;
+        }
+
+        html[data-ann="off"] {
+            --ann-h: 0px;
         }
 
         * {
@@ -27,6 +32,7 @@
         }
 
         body {
+            padding-top: var(--ann-h);
             font-family: var(--font-hanken), 'Hanken Grotesk', sans-serif;
             background: var(--paper);
             color: var(--text);
@@ -154,10 +160,74 @@
             background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.04'/%3E%3C/svg%3E")
         }
 
+        /* ---------- announcement bar ---------- */
+        .announce {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 101;
+            height: var(--ann-h);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 0 44px;
+            background: #E0A52E;
+            color: #13262E
+        }
+
+        .announce-txt {
+            font-size: 13px;
+            font-weight: 600;
+            line-height: 1.2;
+            text-align: center
+        }
+
+        .announce-txt a {
+            color: inherit;
+            text-decoration: underline;
+            text-underline-offset: 2px
+        }
+
+        .announce-x {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 26px;
+            height: 26px;
+            border: 0;
+            border-radius: 100px;
+            background: transparent;
+            color: #13262E;
+            cursor: pointer;
+            opacity: .7;
+            transition: .2s
+        }
+
+        .announce-x:hover {
+            opacity: 1;
+            background: rgba(19, 38, 46, .1)
+        }
+
+        @media(max-width:560px) {
+            .announce {
+                padding: 0 38px
+            }
+
+            .announce-txt {
+                font-size: 11.5px
+            }
+        }
+
         /* ---------- top bar ---------- */
         .bar {
             position: fixed;
-            top: 0;
+            top: var(--ann-h);
             left: 0;
             right: 0;
             z-index: 100;
@@ -1197,6 +1267,21 @@
         .feat-card .badge.live {
             background: var(--emerald-lite);
             color: var(--emerald)
+        }
+
+        .feat-card .badge.soon {
+            background: #fdf6e8;
+            color: #a5760f
+        }
+
+        .feat-card.soon {
+            background: linear-gradient(180deg, #fffdf8, #fff);
+            border-style: dashed;
+            border-color: rgba(224, 165, 46, .55)
+        }
+
+        .feat-card.soon h3 {
+            color: #a5760f
         }
 
         .feat-card h3 {
