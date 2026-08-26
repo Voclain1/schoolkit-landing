@@ -23,3 +23,6 @@ export function firstNameFromEmail(email: string): string {
   if (!first) return "there";
   return first.charAt(0).toUpperCase() + first.slice(1).toLowerCase();
 }
+
+/** The "early access" audience — every waitlist signup must land here so broadcasts can reach them. */
+export const WAITLIST_AUDIENCE_ID = "93428f81-01f9-42c2-b031-0aed20b410a7";

@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { getResendClient } from "@/lib/resend";
+import { getResendClient, WAITLIST_AUDIENCE_ID } from "@/lib/resend";
 
 export const runtime = "nodejs";
 
@@ -24,6 +24,7 @@ export async function POST(request: NextRequest) {
   try {
     const resend = getResendClient();
     const { error } = await resend.contacts.create({
+      audienceId: WAITLIST_AUDIENCE_ID,
       email: email.trim().toLowerCase(),
       unsubscribed: false,
     });
