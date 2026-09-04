@@ -80,6 +80,20 @@ const jsonLd = {
       priceCurrency: "NGN",
       description: "Up to 200 students — Paystack fee collection, receipts, report cards, parent communication.",
     },
+    {
+      "@type": "Offer",
+      name: "Growth",
+      price: "90000",
+      priceCurrency: "NGN",
+      description: "Up to 600 students — everything in Starter, plus priority support, advanced finance dashboard, bulk operations and multi-class management.",
+    },
+    {
+      "@type": "Offer",
+      name: "Professional",
+      price: "180000",
+      priceCurrency: "NGN",
+      description: "Up to 1,200 students — everything in Growth, plus a dedicated account manager, custom report card templates, advanced analytics and API access.",
+    },
   ],
   provider: {
     "@type": "Organization",
