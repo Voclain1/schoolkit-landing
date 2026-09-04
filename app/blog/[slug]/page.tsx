@@ -5,6 +5,7 @@ import { notFound } from "next/navigation";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import { getAllPosts, getPostBySlug, getRelatedPosts, getReadingTime } from "@/lib/posts";
 import BlogTableOfContents, { type TableOfContentsItem } from "@/components/BlogTableOfContents";
+import { serializeJsonLd } from "@/lib/json-ld";
 
 const SITE_URL = "https://schoolkit.ng";
 
@@ -181,16 +182,6 @@ export default async function BlogPostPage({ params }: PageProps) {
       </article>
     </div>
   );
-}
-
-/**
- * Serializes structured data for an inline <script> tag. Escapes "</" so a post's
- * own content — an FAQ answer mentioning "</script>", say — cannot close the tag
- * early and break page parsing. The escaped form is still valid JSON, so parsers
- * are unaffected.
- */
-function serializeJsonLd(data: unknown): string {
-  return JSON.stringify(data).replace(/<\//g, "<\\/");
 }
 
 function getTableOfContents(content: string): TableOfContentsItem[] {

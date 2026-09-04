@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Hanken_Grotesk, Fraunces } from "next/font/google";
 import { getFaviconDataUri, getSiteScript } from "@/lib/landing";
+import { serializeJsonLd } from "@/lib/json-ld";
 import AnnounceBar from "@/components/AnnounceBar";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
@@ -104,7 +105,7 @@ export default function RootLayout({
       <head>
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+          dangerouslySetInnerHTML={{ __html: serializeJsonLd(jsonLd) }}
         />
       </head>
       <body>
