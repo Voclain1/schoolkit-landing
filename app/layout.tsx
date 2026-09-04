@@ -25,9 +25,9 @@ const fraunces = Fraunces({
   display: "swap",
 });
 
-const TITLE = "SchoolKit — School Management Software for Nigerian Private Schools";
+const TITLE = "School Management Software for Nigerian Schools | SchoolKit";
 const DESCRIPTION =
-  "Collect school fees online via Paystack, track attendance, generate report cards and communicate with parents automatically. Built for Nigerian private schools. Free to start.";
+  "SchoolKit is school management software for Nigerian private schools — fees, attendance, results, parent communication and a WAEC-aligned AI tutor, all in one platform.";
 const OG_TITLE = "SchoolKit — Run Your School. Not Your Spreadsheets.";
 const OG_DESCRIPTION =
   "The school management platform built for Nigerian private schools. Fee collection, attendance, results and AI tutor. Free early access.";
