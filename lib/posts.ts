@@ -12,9 +12,16 @@ export interface PostFrontmatter {
   updatedAt?: string;
   tags: string[];
   coverImage: string;
+  coverWidth?: number;
+  coverHeight?: number;
+  imageAlt?: string;
   seoTitle: string;
   seoDescription: string;
   keywords: string[];
+  faqs?: Array<{
+    question: string;
+    answer: string;
+  }>;
 }
 
 export interface Post extends PostFrontmatter {

@@ -4,6 +4,7 @@ import Image from "next/image";
 import { notFound } from "next/navigation";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import { getAllPosts, getPostBySlug, getRelatedPosts, getReadingTime } from "@/lib/posts";
+import BlogTableOfContents, { type TableOfContentsItem } from "@/components/BlogTableOfContents";
 
 const SITE_URL = "https://schoolkit.ng";
 
@@ -37,11 +38,18 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       publishedTime: post.date,
       modifiedTime: post.updatedAt ?? post.date,
       tags: post.tags,
+      images: [
+        {
+          url: post.coverImage,
+          alt: post.imageAlt ?? post.title,
+        },
+      ],
     },
     twitter: {
       card: "summary_large_image",
       title: post.seoTitle,
       description: post.seoDescription,
+      images: [post.coverImage],
     },
   };
 }
@@ -55,6 +63,7 @@ export default async function BlogPostPage({ params }: PageProps) {
   const url = `${SITE_URL}/blog/${post.slug}`;
 
   const readingTime = getReadingTime(post.content);
+  const tableOfContents = getTableOfContents(post.content);
 
   const jsonLd = {
     "@context": "https://schema.org",
@@ -83,6 +92,21 @@ export default async function BlogPostPage({ params }: PageProps) {
     },
   };
 
+  const faqJsonLd = post.faqs?.length
+    ? {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        mainEntity: post.faqs.map((faq) => ({
+          "@type": "Question",
+          name: faq.question,
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: faq.answer,
+          },
+        })),
+      }
+    : undefined;
+
   return (
     <div className="blog-wrap">
       <Link href="/blog" className="blog-back">
@@ -91,8 +115,15 @@ export default async function BlogPostPage({ params }: PageProps) {
 
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        dangerouslySetInnerHTML={{ __html: serializeJsonLd(jsonLd) }}
       />
+
+      {faqJsonLd && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: serializeJsonLd(faqJsonLd) }}
+        />
+      )}
 
       <article>
         <header className="blog-post-header">
@@ -106,14 +137,24 @@ export default async function BlogPostPage({ params }: PageProps) {
         <Image
           className="blog-cover"
           src={post.coverImage}
-          alt={post.title}
-          width={1200}
-          height={630}
+          alt={post.imageAlt ?? post.title}
+          width={post.coverWidth ?? 1200}
+          height={post.coverHeight ?? 630}
           priority
         />
 
+        {["school-management-software-pricing-nigeria", "best-school-fees-management-software-nigeria", "best-school-result-management-software-nigeria", "how-to-automate-school-fee-collection-nigeria"].includes(post.slug) && (
+          <BlogTableOfContents items={tableOfContents} />
+        )}
+
         <div className="blog-post-body">
-          <MDXRemote source={post.content} />
+          <MDXRemote
+            source={post.content}
+            components={{
+              h2: ({ children }) => <h2 id={headingId(children)}>{children}</h2>,
+              h3: ({ children }) => <h3 id={headingId(children)}>{children}</h3>,
+            }}
+          />
         </div>
 
         <div className="blog-cta">
@@ -140,6 +181,49 @@ export default async function BlogPostPage({ params }: PageProps) {
       </article>
     </div>
   );
+}
+
+/**
+ * Serializes structured data for an inline <script> tag. Escapes "</" so a post's
+ * own content — an FAQ answer mentioning "</script>", say — cannot close the tag
+ * early and break page parsing. The escaped form is still valid JSON, so parsers
+ * are unaffected.
+ */
+function serializeJsonLd(data: unknown): string {
+  return JSON.stringify(data).replace(/<\//g, "<\\/");
+}
+
+function getTableOfContents(content: string): TableOfContentsItem[] {
+  return content
+    .split("\n")
+    .map((line) => line.match(/^(##)\s+(.+)$/))
+    .filter((match): match is RegExpMatchArray => Boolean(match))
+    .map((match) => ({
+      id: slugifyHeading(match[2]),
+      label: match[2].replace(/[*_`]/g, ""),
+      level: match[1].length as 2 | 3,
+    }));
+}
+
+function headingId(children: React.ReactNode): string {
+  return slugifyHeading(plainText(children));
+}
+
+function plainText(node: React.ReactNode): string {
+  if (typeof node === "string" || typeof node === "number") return String(node);
+  if (Array.isArray(node)) return node.map(plainText).join("");
+  if (node && typeof node === "object" && "props" in node) {
+    return plainText((node as React.ReactElement<{ children?: React.ReactNode }>).props.children);
+  }
+  return "";
+}
+
+function slugifyHeading(value: string): string {
+  return value
+    .toLowerCase()
+    .replace(/['’]/g, "")
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-|-$/g, "");
 }
 
 function formatDate(iso: string): string {

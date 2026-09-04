@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
 import { getAllPosts } from "@/lib/posts";
 
 export const metadata: Metadata = {
@@ -39,6 +40,13 @@ export default function BlogIndexPage() {
 
       {posts.map((post) => (
         <Link key={post.slug} href={`/blog/${post.slug}`} className="blog-card">
+          <Image
+            className="blog-card-cover"
+            src={post.coverImage}
+            alt={post.imageAlt ?? post.title}
+            width={post.coverWidth ?? 1200}
+            height={post.coverHeight ?? 630}
+          />
           <div className="meta">{formatDate(post.date)}</div>
           <h2>{post.title}</h2>
           <p>{post.description}</p>
