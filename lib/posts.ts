@@ -12,6 +12,7 @@ export interface PostFrontmatter {
   updatedAt?: string;
   tags: string[];
   coverImage: string;
+  pinnedRelated?: string[];
   coverWidth?: number;
   coverHeight?: number;
   imageAlt?: string;
@@ -53,13 +54,35 @@ export function getReadingTime(content: string): number {
   return Math.max(1, Math.round(words / 200));
 }
 
+/**
+ * Related posts for a given post. Any slugs in the post frontmatter's pinnedRelated
+ * are placed first, in the order given; remaining slots are filled by tag-overlap
+ * score. A pinned slug that matches no post is skipped with a build warning rather
+ * than failing the build.
+ */
 export function getRelatedPosts(current: Post, limit = 3): Post[] {
   const others = getAllPosts().filter((post) => post.slug !== current.slug);
+
+  const pinned: Post[] = [];
+  for (const slug of current.pinnedRelated ?? []) {
+    const match = others.find((post) => post.slug === slug);
+    if (!match) {
+      console.warn(
+        `[posts] ${current.slug}: pinnedRelated slug "${slug}" matches no post - skipping`
+      );
+      continue;
+    }
+    if (!pinned.some((post) => post.slug === match.slug)) pinned.push(match);
+  }
+
+  const pinnedSlugs = new Set(pinned.map((post) => post.slug));
   const scored = others
+    .filter((post) => !pinnedSlugs.has(post.slug))
     .map((post) => ({
       post,
       score: post.tags.filter((tag) => current.tags.includes(tag)).length,
     }))
     .sort((a, b) => b.score - a.score);
-  return scored.slice(0, limit).map(({ post }) => post);
+
+  return [...pinned, ...scored.map(({ post }) => post)].slice(0, limit);
 }
