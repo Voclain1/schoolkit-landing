@@ -1,6 +1,7 @@
 const SITE_URL = "https://schoolkit.ng";
 const LOGO_URL = `${SITE_URL}/favicon.png`;
 const SETUP_GUIDE_URL = "https://app.schoolkit.ng/help/guide#1-create-your-account";
+const DEMO_URL = "https://www.schoolkit.ng/demo";
 const SIGNUP_URL = "https://app.schoolkit.ng/signup";
 const WHATSAPP_CHANNEL_URL = "https://whatsapp.com/channel/0029VbD94cGGk1FoxskJ7A30";
 
@@ -99,6 +100,8 @@ export function getWelcomeEmailHtml({ firstName }: WelcomeEmailProps): string {
     .header-pad { padding: 32px 24px 26px !important; }
     .h1 { font-size: 21px !important; }
     .cta-btn { display: block !important; width: 100% !important; text-align: center !important; }
+    .btn-row td { display: block !important; width: 100% !important; }
+    .btn-gap { height: 10px !important; font-size: 0 !important; line-height: 0 !important; }
   }
 </style>
 </head>
@@ -146,12 +149,16 @@ export function getWelcomeEmailHtml({ firstName }: WelcomeEmailProps): string {
             <p style="font-family:Arial,Helvetica,sans-serif;font-size:15px;line-height:1.6;color:${COLORS.text};margin:0 0 28px;">We're onboarding Nigerian private schools one by one — and your school is now in the queue.</p>
 
             <p style="font-family:Georgia,'Times New Roman',serif;font-size:17px;font-weight:700;color:${COLORS.emerald};margin:0 0 16px;">Get your school set up:</p>
-            <p style="font-family:Arial,Helvetica,sans-serif;font-size:15px;line-height:1.6;color:${COLORS.text};margin:0 0 24px;">We've put together a complete setup guide to get your school live quickly. Most schools are fully set up within an hour — start with steps 1&ndash;9 and come back to the rest later.</p>
+            <p style="font-family:Arial,Helvetica,sans-serif;font-size:15px;line-height:1.6;color:${COLORS.text};margin:0 0 24px;">We've put together a complete setup guide to get your school live quickly. Most schools are fully set up within an hour — start with steps 1&ndash;9 and come back to the rest later. If you'd rather watch first, the 90-second demo shows the whole setup end to end.</p>
 
-            <table role="presentation" cellpadding="0" cellspacing="0" style="margin:0 0 8px;">
+            <table role="presentation" cellpadding="0" cellspacing="0" class="btn-row" style="margin:0 0 8px;">
               <tr>
                 <td align="center" style="border-radius:10px;background:${COLORS.emerald};">
                   <a href="${SETUP_GUIDE_URL}" class="cta-btn" style="display:inline-block;padding:16px 32px;font-family:Arial,Helvetica,sans-serif;font-size:15px;font-weight:700;color:#ffffff;text-decoration:none;border-radius:10px;">Open setup guide &rarr;</a>
+                </td>
+                <td class="btn-gap" width="12" style="width:12px;font-size:0;line-height:0;">&nbsp;</td>
+                <td align="center" style="border-radius:10px;background:#ffffff;border:2px solid ${COLORS.emerald};">
+                  <a href="${DEMO_URL}" class="cta-btn" style="display:inline-block;padding:14px 30px;font-family:Arial,Helvetica,sans-serif;font-size:15px;font-weight:700;color:${COLORS.emerald};text-decoration:none;border-radius:10px;">Watch the 90-second demo</a>
                 </td>
               </tr>
             </table>
@@ -221,9 +228,10 @@ Create your school account: ${SIGNUP_URL}
 We're onboarding Nigerian private schools one by one — and your school is now in the queue.
 
 Get your school set up:
-We've put together a complete setup guide to get your school live quickly. Most schools are fully set up within an hour — start with steps 1-9 and come back to the rest later.
+We've put together a complete setup guide to get your school live quickly. Most schools are fully set up within an hour — start with steps 1-9 and come back to the rest later. If you'd rather watch first, the 90-second demo shows the whole setup end to end.
 
 Open setup guide: ${SETUP_GUIDE_URL}
+Watch the 90-second demo: ${DEMO_URL}
 
 What happens next:
 ${NEXT_STEPS.map((item, i) => `${i + 1}. ${item}`).join("\n")}
