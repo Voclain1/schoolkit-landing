@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 
 const SITE_URL = "https://schoolkit.ng";
+const APP_URL = "https://app.schoolkit.ng";
 
 // Hosted on YouTube; embedded through youtube-nocookie.com so no tracking
 // cookies are set until the visitor actually plays the video.
@@ -76,9 +76,9 @@ export default function DemoPage() {
 
         <div className="demo-cta">
           <h2>Ready to set your school up?</h2>
-          <Link href="/#join" className="pill" data-location="demo-page">
+          <a href={APP_URL} className="pill" data-location="demo-page">
             Get SchoolKit for Your School
-          </Link>
+          </a>
         </div>
       </div>
     </div>
