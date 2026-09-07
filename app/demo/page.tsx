@@ -3,10 +3,10 @@ import Link from "next/link";
 
 const SITE_URL = "https://schoolkit.ng";
 
-// The hosted demo recording. Set NEXT_PUBLIC_DEMO_VIDEO_URL (and optionally a
-// poster frame) at build time; the fallback is the file served from /public.
-const VIDEO_SRC = process.env.NEXT_PUBLIC_DEMO_VIDEO_URL ?? "/videos/schoolkit-demo.mp4";
-const VIDEO_POSTER = process.env.NEXT_PUBLIC_DEMO_VIDEO_POSTER;
+// Hosted on YouTube; embedded through youtube-nocookie.com so no tracking
+// cookies are set until the visitor actually plays the video.
+const VIDEO_ID = "14Ie5eFYbzY";
+const EMBED_SRC = `https://www.youtube-nocookie.com/embed/${VIDEO_ID}?rel=0`;
 
 const BENEFITS = [
   "Manage school fees",
@@ -37,19 +37,6 @@ export const metadata: Metadata = {
   },
 };
 
-// Fires once, through the site-wide trackEvent hook installed by site-script.js.
-const playTrackingScript = `
-(function () {
-    var v = document.getElementById('demoVideo');
-    if (!v) return;
-    v.addEventListener('play', function () {
-        if (typeof window.trackEvent === 'function') {
-            window.trackEvent('demo_video_play', { location: 'demo-page' });
-        }
-    }, { once: true });
-})();
-`;
-
 export default function DemoPage() {
   return (
     <div className="demo-wrap">
@@ -62,17 +49,13 @@ export default function DemoPage() {
       </header>
 
       <div className="demo-video">
-        <video
-          id="demoVideo"
-          controls
-          playsInline
-          preload="metadata"
-          poster={VIDEO_POSTER}
-          src={VIDEO_SRC}
-        >
-          Your browser does not support embedded video.{" "}
-          <a href={VIDEO_SRC}>Download the SchoolKit demo video</a>.
-        </video>
+        <iframe
+          src={EMBED_SRC}
+          title="SchoolKit product demo"
+          loading="lazy"
+          allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowFullScreen
+        />
       </div>
 
       <ul className="demo-benefits">
@@ -86,8 +69,6 @@ export default function DemoPage() {
           Get SchoolKit for Your School
         </Link>
       </div>
-
-      <script dangerouslySetInnerHTML={{ __html: playTrackingScript }} />
     </div>
   );
 }
