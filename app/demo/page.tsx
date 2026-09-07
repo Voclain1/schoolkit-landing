@@ -8,17 +8,18 @@ const APP_URL = "https://app.schoolkit.ng";
 const VIDEO_ID = "14Ie5eFYbzY";
 const EMBED_SRC = `https://www.youtube-nocookie.com/embed/${VIDEO_ID}?rel=0`;
 
-// The four things the recording walks through, in the order they happen.
+// The five steps of the setup wizard, in the order the recording walks them.
 const STEPS = [
-  { title: "Create your school", body: "Signing up and adding your school's details." },
-  { title: "Set up the academic year", body: "Setting the terms and dates for the session." },
-  { title: "Add students", body: "Adding students to the school." },
-  { title: "Invite staff", body: "Inviting teachers and staff to join." },
+  { title: "Basics", body: "Your school's name, address and contact details." },
+  { title: "Logo", body: "Upload your school logo, or skip it for now." },
+  { title: "Invites", body: "Add admin email addresses, or skip and do it later." },
+  { title: "NDPR", body: "Read and accept the data protection terms." },
+  { title: "Complete", body: "Set the academic year, its dates and the current term." },
 ];
 
 const TITLE = "SchoolKit Demo — See How SchoolKit Works";
 const DESCRIPTION =
-  "A two-minute walkthrough of setting up a school on SchoolKit: create the school, set up the academic year, add students and invite staff.";
+  "A 2-minute walkthrough of setting up a school on SchoolKit: create the school, run the setup wizard, add students and invite staff.";
 
 export const metadata: Metadata = {
   title: TITLE,
@@ -43,7 +44,7 @@ export default function DemoPage() {
     <div className="demo-page">
       <div className="demo-intro">
         <h1>See how SchoolKit works</h1>
-        <p>A two-minute walkthrough of setting up a school, end to end.</p>
+        <p>A 2-minute walkthrough of setting up a school, end to end.</p>
       </div>
 
       {/* Full-bleed dark band: the video is the page, not a card on it. */}
