@@ -10,6 +10,9 @@ export default function NavMenu() {
   return (
     <nav className="nav">
       <div className={`nav-links${open ? " open" : ""}`}>
+        <Link href="/demo" className="l" onClick={close}>
+          Demo
+        </Link>
         <Link href="/#platform" className="l" onClick={close}>
           Platform
         </Link>
@@ -18,6 +21,9 @@ export default function NavMenu() {
         </Link>
         <Link href="/#roles" className="l" onClick={close}>
           Who it&apos;s for
+        </Link>
+        <Link href="/#pricing" className="l" onClick={close}>
+          Pricing
         </Link>
         <Link href="/blog" className="l" onClick={close}>
           Blog

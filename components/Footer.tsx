@@ -12,6 +12,7 @@ export default function Footer() {
           <img className="fl" src={logo} alt="SchoolKit" />
           <nav className="fnav">
             <Link href="/#platform">Platform</Link>
+            <Link href="/demo">Demo</Link>
             <Link href="/#ai">AI Tutor</Link>
             <Link href="/#roles">Who it&apos;s for</Link>
             <Link href="/blog">Blog</Link>
