@@ -19,7 +19,7 @@ const STEPS = [
 
 const TITLE = "SchoolKit Demo — See How SchoolKit Works";
 const DESCRIPTION =
-  "A 90-second walkthrough of setting up a school on SchoolKit: create the school, run the setup wizard, add students and invite staff.";
+  "A 2-minute walkthrough of setting up a school on SchoolKit: create the school, run the setup wizard, add students and invite staff.";
 
 export const metadata: Metadata = {
   title: TITLE,
@@ -44,7 +44,7 @@ export default function DemoPage() {
     <div className="demo-page">
       <div className="demo-intro">
         <h1>See how SchoolKit works</h1>
-        <p>A 90-second walkthrough of setting up a school, end to end.</p>
+        <p>A 2-minute walkthrough of setting up a school, end to end.</p>
       </div>
 
       {/* Full-bleed dark band: the video is the page, not a card on it. */}
