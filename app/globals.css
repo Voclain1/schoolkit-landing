@@ -2650,7 +2650,7 @@
 }
 
 .demo-body {
-    max-width: 900px;
+    max-width: 1040px;
     margin: 0 auto;
     padding: 58px 32px 100px
 }
@@ -2666,8 +2666,8 @@
     position: relative;
     list-style: none;
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 26px;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 24px;
     counter-reset: none
 }
 
@@ -2750,27 +2750,9 @@
 }
 
 /* Timeline turns vertical: the rule runs down the left, ticks sit on it. */
-@media(max-width:760px) {
-    .demo-intro {
-        padding: 120px 22px 26px
-    }
-
-    .demo-intro p {
-        font-size: 1rem
-    }
-
-    .demo-stage {
-        padding: 0
-    }
-
-    .demo-stage-in {
-        padding: 0
-    }
-
-    .demo-body {
-        padding: 44px 22px 80px
-    }
-
+/* Five columns get too narrow below this, so the rule rotates and runs down
+   the left edge with the steps beside it. */
+@media(max-width:900px) {
     .demo-steps {
         grid-template-columns: 1fr;
         gap: 0
@@ -2791,6 +2773,28 @@
 
     .demo-steps li:last-child {
         padding-bottom: 0
+    }
+}
+
+@media(max-width:760px) {
+    .demo-intro {
+        padding: 120px 22px 26px
+    }
+
+    .demo-intro p {
+        font-size: 1rem
+    }
+
+    .demo-stage {
+        padding: 0
+    }
+
+    .demo-stage-in {
+        padding: 0
+    }
+
+    .demo-body {
+        padding: 44px 22px 80px
     }
 
     .demo-cta {
