@@ -149,7 +149,7 @@ export function getWelcomeEmailHtml({ firstName }: WelcomeEmailProps): string {
             <p style="font-family:Arial,Helvetica,sans-serif;font-size:15px;line-height:1.6;color:${COLORS.text};margin:0 0 28px;">We're onboarding Nigerian private schools one by one — and your school is now in the queue.</p>
 
             <p style="font-family:Georgia,'Times New Roman',serif;font-size:17px;font-weight:700;color:${COLORS.emerald};margin:0 0 16px;">Get your school set up:</p>
-            <p style="font-family:Arial,Helvetica,sans-serif;font-size:15px;line-height:1.6;color:${COLORS.text};margin:0 0 24px;">We've put together a complete setup guide to get your school live quickly. Most schools are fully set up within an hour — start with steps 1&ndash;9 and come back to the rest later. If you'd rather watch first, the 90-second demo shows the whole setup end to end.</p>
+            <p style="font-family:Arial,Helvetica,sans-serif;font-size:15px;line-height:1.6;color:${COLORS.text};margin:0 0 24px;">We've put together a complete setup guide to get your school live quickly. Most schools are fully set up within an hour — start with steps 1&ndash;9 and come back to the rest later. If you'd rather watch first, the 2-minute demo shows the whole setup end to end.</p>
 
             <table role="presentation" cellpadding="0" cellspacing="0" class="btn-row" style="margin:0 0 8px;">
               <tr>
@@ -158,7 +158,7 @@ export function getWelcomeEmailHtml({ firstName }: WelcomeEmailProps): string {
                 </td>
                 <td class="btn-gap" width="12" style="width:12px;font-size:0;line-height:0;">&nbsp;</td>
                 <td align="center" style="border-radius:10px;background:#ffffff;border:2px solid ${COLORS.emerald};">
-                  <a href="${DEMO_URL}" class="cta-btn" style="display:inline-block;padding:14px 30px;font-family:Arial,Helvetica,sans-serif;font-size:15px;font-weight:700;color:${COLORS.emerald};text-decoration:none;border-radius:10px;">Watch the 90-second demo</a>
+                  <a href="${DEMO_URL}" class="cta-btn" style="display:inline-block;padding:14px 30px;font-family:Arial,Helvetica,sans-serif;font-size:15px;font-weight:700;color:${COLORS.emerald};text-decoration:none;border-radius:10px;">Watch the 2-minute demo</a>
                 </td>
               </tr>
             </table>
@@ -228,10 +228,10 @@ Create your school account: ${SIGNUP_URL}
 We're onboarding Nigerian private schools one by one — and your school is now in the queue.
 
 Get your school set up:
-We've put together a complete setup guide to get your school live quickly. Most schools are fully set up within an hour — start with steps 1-9 and come back to the rest later. If you'd rather watch first, the 90-second demo shows the whole setup end to end.
+We've put together a complete setup guide to get your school live quickly. Most schools are fully set up within an hour — start with steps 1-9 and come back to the rest later. If you'd rather watch first, the 2-minute demo shows the whole setup end to end.
 
 Open setup guide: ${SETUP_GUIDE_URL}
-Watch the 90-second demo: ${DEMO_URL}
+Watch the 2-minute demo: ${DEMO_URL}
 
 What happens next:
 ${NEXT_STEPS.map((item, i) => `${i + 1}. ${item}`).join("\n")}
