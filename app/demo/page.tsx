@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import DemoViewTracker from "@/components/DemoViewTracker";
 
 const SITE_URL = "https://schoolkit.ng";
 const APP_URL = "https://app.schoolkit.ng";
@@ -42,13 +43,15 @@ export const metadata: Metadata = {
 export default function DemoPage() {
   return (
     <div className="demo-page">
+      <DemoViewTracker targetId="demo-stage" videoId={VIDEO_ID} videoTitle="SchoolKit product demo" />
+
       <div className="demo-intro">
         <h1>See how SchoolKit works</h1>
         <p>A 2-minute walkthrough of setting up a school, end to end.</p>
       </div>
 
       {/* Full-bleed dark band: the video is the page, not a card on it. */}
-      <div className="demo-stage">
+      <div className="demo-stage" id="demo-stage">
         <div className="demo-stage-in">
           <iframe
             src={EMBED_SRC}

@@ -56,6 +56,25 @@ const viewIo = new IntersectionObserver(es => es.forEach(e => {
     });
 })();
 
+/* Pilot application started: the first time a visitor actually types into one
+   of the waitlist forms. Fires once per form, per page load. The email and
+   phone values themselves are never read here — only that typing happened. */
+[1, 2].forEach(n => {
+    const form = document.getElementById('cta' + n);
+    if (!form) return;
+    const source = n === 1 ? 'hero' : 'footer';
+    let started = false;
+    form.addEventListener('input', () => {
+        if (started) return;
+        started = true;
+        window.skTrack?.('pilot_application_started', {
+            form_id: source,
+            placement: source,
+            school_size_band: form.dataset.sizeBand
+        });
+    }, { passive: true });
+});
+
 /* Paste your Google Apps Script Web App URL between the quotes below.
    Setup steps are in the deployment guide. Until you do, signups are
    logged to the browser console so the form still works in preview. */
@@ -107,6 +126,13 @@ async function join(n) {
         document.getElementById('ok' + n).style.display = 'block';
         document.getElementById('ok' + n + '-wa').style.display = 'inline-flex';
         window.trackEvent?.('form_submit_success', { source });
+        // GA4 conversion — only now that the signup has actually gone through.
+        window.skTrack?.('pilot_application_submitted', {
+            form_id: source,
+            placement: source,
+            method: 'web',
+            school_size_band: document.getElementById('cta' + n)?.dataset.sizeBand
+        });
         // Meta Pixel Lead Event
         if (typeof fbq !== "undefined") {
             fbq("track", "Lead", {
