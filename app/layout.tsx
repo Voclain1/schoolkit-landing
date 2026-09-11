@@ -7,6 +7,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import WhatsAppFab from "@/components/WhatsAppFab";
 import MetaPixel from "@/components/MetaPixel";
+import Analytics from "@/components/Analytics";
 import "./globals.css";
 
 const SITE_URL = "https://schoolkit.ng";
@@ -124,6 +125,7 @@ export default function RootLayout({
       </head>
       <body>
   <MetaPixel />
+  <Analytics />
 
   <a href="#main-content" className="skip-link">
     Skip to main content
