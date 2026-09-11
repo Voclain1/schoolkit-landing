@@ -8,8 +8,8 @@
  *    that looks like an email address or a phone number. The waitlist form
  *    collects emails and WhatsApp numbers — none of that belongs in analytics.
  * 2. Conversion events fire *after* the action succeeds, never on intent.
- * 3. Page views come from the Google tag on first load and from trackPageView
- *    on client-side navigation — see components/Analytics.tsx.
+ * 3. Page views are not sent from here at all. GA4 Enhanced Measurement is
+ *    their single source — see components/Analytics.tsx and docs/analytics.md.
  *
  * This module deliberately imports nothing from React or Next so it can be
  * unit tested under plain Node (`npm test`).
@@ -269,39 +269,4 @@ export function trackEvent(event: AnalyticsEventName, params: AnalyticsParams = 
     ...params,
   });
   gtagPush("event", event, payload);
-}
-
-/**
- * Decides whether an App Router pathname change should emit a page_view.
- *
- * `previous === null` means this is the component's first render: the Google
- * tag's initial `config` has already recorded that page load, so sending one
- * here would double-count it. Every later change of pathname is sent exactly
- * once; a re-render on the same pathname is not.
- *
- * Kept as a pure function so the first-render guard can be unit tested without
- * a DOM or a React renderer.
- */
-export function shouldSendPageView(previous: string | null, next: string): boolean {
-  if (previous === null) return false;
-  return previous !== next;
-}
-
-/** Manual page_view, used for App Router client-side navigation. */
-export function trackPageView(params: AnalyticsParams = {}): void {
-  const payload = sanitizeParams({
-    ...pageContext(),
-    ...getSessionCampaign(),
-    ...params,
-  });
-  gtagPush("event", "page_view", payload);
-}
-
-/**
- * Stops the Google tag from emitting its own page_view on history changes, so
- * SPA navigations are counted once — by trackPageView — and not twice.
- * Must run *after* the tag's initial `config`, which sends the first page_view.
- */
-export function disableAutomaticPageViews(): void {
-  gtagPush("config", GA_MEASUREMENT_ID, { send_page_view: false });
 }

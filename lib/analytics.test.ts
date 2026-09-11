@@ -6,49 +6,7 @@ import {
   sanitizeParams,
   sanitizeUrl,
   schoolSizeBand,
-  shouldSendPageView,
 } from "./analytics.ts";
-
-/**
- * Replays what the effect in components/Analytics.tsx does across a sequence
- * of renders, and returns how many page_views it would send. `+ 1` for the
- * Google tag's own page_view on the initial load gives the total.
- */
-function countManualPageViews(renders: readonly string[]): number {
-  let previous: string | null = null;
-  let sent = 0;
-  for (const pathname of renders) {
-    if (shouldSendPageView(previous, pathname)) sent += 1;
-    previous = pathname;
-  }
-  return sent;
-}
-
-test("the first render never sends a page_view — the tag already did", () => {
-  assert.equal(shouldSendPageView(null, "/"), false);
-  assert.equal(countManualPageViews(["/"]), 0);
-});
-
-test("a re-render on the same pathname does not send a second page_view", () => {
-  assert.equal(shouldSendPageView("/demo", "/demo"), false);
-  assert.equal(countManualPageViews(["/demo", "/demo", "/demo"]), 0);
-});
-
-test("each pathname change sends exactly one page_view", () => {
-  assert.equal(shouldSendPageView("/", "/demo"), true);
-  // Initial load + three navigations = 4 page views in total, one per page.
-  assert.equal(countManualPageViews(["/", "/demo", "/blog", "/blog/a-post"]), 3);
-});
-
-test("navigating back to an earlier pathname counts as a new page_view", () => {
-  assert.equal(countManualPageViews(["/", "/demo", "/"]), 2);
-});
-
-test("Strict Mode's repeated first effect still yields one initial page_view", () => {
-  // The ref persists across the double-invoked effect, so the second pass sees
-  // the same pathname as the first and stays silent.
-  assert.equal(countManualPageViews(["/", "/"]), 0);
-});
 
 test("sanitizeParams keeps allowlisted parameters", () => {
   assert.deepEqual(

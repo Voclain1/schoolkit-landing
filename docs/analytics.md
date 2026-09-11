@@ -39,17 +39,28 @@ vercel env add NEXT_PUBLIC_GA_MEASUREMENT_ID production
 
 ## Page views
 
-Counted exactly once per navigation:
+**GA4 Enhanced Measurement is the single source of `page_view` events.** The
+site sends none of its own — a second source would double-count every
+navigation.
 
-- **First load** — the Google tag's own `config` call sends `page_view`.
-- **Afterwards** — an inline script re-configures the tag with
-  `send_page_view: false`, which stops it emitting its own page views on
-  history changes, and `Analytics` sends one `page_view` per pathname change.
+This is a required setting, not a default to assume. In GA4 → **Admin → Data
+streams → (the SchoolKit web stream) → Enhanced measurement**, *Page views*
+must be on, and inside its gear icon **both** boxes must be ticked:
 
-Page views are keyed on pathname, not on the query string, so a `?utm_source=…`
-change alone does not produce a second view. `page_location` is rebuilt from
-origin + path plus `utm_source`, `utm_medium` and `utm_campaign` only, so a
-stray query parameter can never carry personal data into GA4.
+| Option | Covers |
+| --- | --- |
+| **Page loads** | The first load of the site, and any full reload |
+| **Page changes based on browser history events** | App Router client-side navigation between routes |
+
+With only *Page loads* enabled, moving from Home to /demo records nothing —
+the App Router changes the URL through `history.pushState` without a document
+load. With both enabled, each navigation produces exactly one `page_view`.
+
+On the site's own funnel events, `page_location` is rebuilt from origin + path
+plus `utm_source`, `utm_medium` and `utm_campaign` only, so a stray query
+parameter can never carry personal data into GA4. Enhanced Measurement's
+`page_view` reports the real URL instead, which is fine here because no page on
+the site puts personal data in a query string — keep it that way.
 
 ## Events
 
@@ -123,9 +134,10 @@ Unit tests for both mechanisms: `npm test` (`lib/analytics.test.ts`).
    <https://schoolkit.ng> in a normal window.
 2. GA4 → **Reports → Realtime**. The visit appears within ~30s.
 3. Navigate Home → /demo → /blog. Under *Event count by Event name* the
-   `page_view` count should increase by exactly one per navigation. Two at a
-   time means the automatic history page views are not suppressed — check that
-   the `ga-spa-pageviews` inline script is present in the page source.
+   `page_view` count should increase by exactly one per navigation. No increase
+   on navigation means *Page changes based on browser history events* is off;
+   two at a time means a second source of page views has been added somewhere —
+   the site must not send any itself.
 4. Click a WhatsApp button and watch for `whatsapp_cta_clicked`; sit on /demo
    for a few seconds and watch for `demo_viewed`.
 
@@ -135,11 +147,15 @@ Unit tests for both mechanisms: `npm test` (`lib/analytics.test.ts`).
    extension and enable it on the site (or append `?_dbg=1` — the extension is
    the simpler route since the tag is configured without `debug_mode`).
 2. GA4 → **Admin → DebugView**, and pick your device in the top-left selector.
-3. Run through the funnel: type an email into the hero form
+3. Navigate Home → /demo → /blog and read the event stream: there must be
+   **exactly one `page_view` per navigation** — no gaps (Enhanced Measurement's
+   history-events option is off) and no pairs (something is sending a second
+   page view).
+4. Run through the funnel: type an email into the hero form
    (`pilot_application_started`), submit it (`pilot_application_submitted`),
    open /demo (`demo_viewed`), click a WhatsApp CTA
    (`whatsapp_cta_clicked`).
-4. Click any event in the stream and check its parameters: you should see
+5. Click any event in the stream and check its parameters: you should see
    `placement`, `form_id`, `page_location` and friends — and **no** email,
    phone number or name. If you ever see one, the allowlist in
    `lib/analytics.ts` is the place to fix it.
