@@ -1,13 +1,36 @@
 import assert from "node:assert/strict";
 import test from "node:test";
-import { createRateLimiter, pioneerClientKey } from "./pioneer-abuse.ts";
+import { checkPioneerRateLimit, DistributedRateLimitError, PIONEER_RATE_WINDOW_MS, pioneerClientKey } from "./pioneer-abuse.ts";
 
-test("rate limiter blocks requests over the limit and reports a retry window", () => {
-  const check = createRateLimiter(2, 1_000);
-  assert.deepEqual(check("client", 10_000), { allowed: true, retryAfter: 0 });
-  assert.deepEqual(check("client", 10_100), { allowed: true, retryAfter: 0 });
-  assert.deepEqual(check("client", 10_200), { allowed: false, retryAfter: 1 });
-  assert.deepEqual(check("client", 11_000), { allowed: true, retryAfter: 0 });
+const environment = { UPSTASH_REDIS_REST_URL: "https://redis.example", UPSTASH_REDIS_REST_TOKEN: "test-token" };
+
+test("distributed limiter sends an atomic, expiring Redis script with a hashed key", async () => {
+  let request: { url?: string; init?: RequestInit } = {};
+  const mockFetch = (async (url: string | URL | Request, init?: RequestInit) => {
+    request = { url: String(url), init };
+    return Response.json({ result: [1, PIONEER_RATE_WINDOW_MS] });
+  }) as typeof fetch;
+  assert.deepEqual(await checkPioneerRateLimit("abc123", mockFetch, environment), { allowed: true, retryAfter: 0 });
+  assert.equal(request.url, "https://redis.example");
+  const command = JSON.parse(String(request.init?.body)) as unknown[];
+  assert.equal(command[0], "EVAL");
+  assert.match(String(command[1]), /INCR/);
+  assert.match(String(command[1]), /PEXPIRE/);
+  assert.equal(command[2], 1);
+  assert.equal(command[3], "schoolkit:pioneer:rate:abc123");
+  assert.equal(command[4], PIONEER_RATE_WINDOW_MS);
+  assert.equal((request.init?.headers as Record<string, string>).authorization, "Bearer test-token");
+});
+
+test("distributed limiter strictly rejects the sixth valid attempt with Retry-After", async () => {
+  const mockFetch = (async () => Response.json({ result: [6, 359_001] })) as typeof fetch;
+  assert.deepEqual(await checkPioneerRateLimit("abc123", mockFetch, environment), { allowed: false, retryAfter: 360 });
+});
+
+test("distributed limiter fails closed when configuration or Redis is unavailable", async () => {
+  await assert.rejects(() => checkPioneerRateLimit("abc123", fetch, {}), DistributedRateLimitError);
+  const failingFetch = (async () => { throw new Error("offline"); }) as typeof fetch;
+  await assert.rejects(() => checkPioneerRateLimit("abc123", failingFetch, environment), DistributedRateLimitError);
 });
 
 test("client keys are hashed and use the first trusted forwarded address", () => {
