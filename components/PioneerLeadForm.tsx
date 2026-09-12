@@ -2,7 +2,7 @@
 
 import { FormEvent, useEffect, useRef, useState } from "react";
 import { campaignParamsFromUrl, sanitizeParams, trackEvent, type AnalyticsParams, type SchoolSizeBand } from "@/lib/analytics";
-import { CHALLENGES, CURRENT_METHODS, ROLES, SCHOOL_LEVELS, SCHOOL_SIZES } from "@/lib/pioneer-lead";
+import { CHALLENGES, CURRENT_METHODS, isConfirmedPioneerSubmission, ROLES, SCHOOL_LEVELS, SCHOOL_SIZES } from "@/lib/pioneer-lead";
 
 const FIELD_LABELS: Record<string, string> = { schoolName: "School name", city: "Town/city", state: "State", name: "Your name", role: "Your role", email: "Work email", whatsapp: "WhatsApp number", schoolSizeBand: "Student population", currentMethod: "Current method", biggestChallenge: "Biggest challenge", preferredStart: "Preferred time to begin" };
 
@@ -45,8 +45,9 @@ export default function PioneerLeadForm() {
     Object.assign(payload, campaign);
     try {
       const response = await fetch("/api/pioneer", { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify(payload) });
-      const result = await response.json() as { ok?: boolean; error?: string; errors?: Record<string, string> };
+      const result = await response.json() as { ok?: boolean; ignored?: boolean; error?: string; errors?: Record<string, string> };
       if (!response.ok || !result.ok) { setErrors(result.errors ?? { form: result.error ?? "Please try again." }); setStatus("idle"); return; }
+      if (!isConfirmedPioneerSubmission(result)) { form.reset(); setStatus("success"); return; }
       const size = payload.schoolSizeBand as SchoolSizeBand;
       const analytics: AnalyticsParams = { form_id: "pioneer", placement: "lead-form", school_size_band: size, ...campaignParamsFromUrl(window.location.href) };
       trackEvent("pilot_application_submitted", analytics, { includePageContext: false });

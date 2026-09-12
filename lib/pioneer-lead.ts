@@ -24,6 +24,16 @@ export interface PioneerLead {
   utmContent?: string;
 }
 
+export function isPioneerHoneypot(input: unknown): boolean {
+  return !!input && typeof input === "object" && typeof (input as Record<string, unknown>).website === "string" && (input as Record<string, string>).website.trim().length > 0;
+}
+
+export function isConfirmedPioneerSubmission(result: unknown): boolean {
+  if (!result || typeof result !== "object") return false;
+  const response = result as { ok?: unknown; ignored?: unknown };
+  return response.ok === true && response.ignored !== true;
+}
+
 const EMAIL = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const PHONE = /^\+?[\d\s().-]{8,24}$/;
 const UTM = /^[a-zA-Z0-9._~:/?#[\]@!$&'()*+,;=%-]{1,100}$/;
@@ -57,4 +67,3 @@ export function validatePioneerLead(input: unknown): { data?: PioneerLead; error
     utmSource: utm("utmSource"), utmMedium: utm("utmMedium"), utmCampaign: utm("utmCampaign"), utmContent: utm("utmContent"),
   } };
 }
-

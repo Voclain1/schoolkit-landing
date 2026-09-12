@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import test from "node:test";
-import { validatePioneerLead } from "./pioneer-lead.ts";
+import { isConfirmedPioneerSubmission, isPioneerHoneypot, validatePioneerLead } from "./pioneer-lead.ts";
 
 const valid = { schoolName: "Example School", city: "Lagos", state: "Lagos", name: "Ada Okafor", role: "Proprietor/Owner", email: "ada@example.sch.ng", whatsapp: "+234 800 000 0000", schoolSizeBand: "101-200", schoolLevels: ["Primary"], currentMethod: "A mixture", biggestChallenge: "Fees", preferredStart: "This term", consent: true, utmSource: "facebook", utmCampaign: "pioneer_offer_2026" };
 
@@ -21,3 +21,10 @@ test("drops malformed UTM values instead of persisting them", () => {
   assert.equal(result.data?.utmSource, undefined);
 });
 
+test("honeypot submissions are detectable and never count as confirmed persistence", () => {
+  assert.equal(isPioneerHoneypot({ website: "spam.example" }), true);
+  assert.equal(isPioneerHoneypot({ website: "" }), false);
+  assert.equal(isConfirmedPioneerSubmission({ ok: true, ignored: true }), false);
+  assert.equal(isConfirmedPioneerSubmission({ ok: true }), true);
+  assert.equal(isConfirmedPioneerSubmission({ ok: false }), false);
+});
