@@ -26,6 +26,7 @@ interface UpstashResponse {
 interface RateLimitEnvironment {
   UPSTASH_REDIS_REST_URL?: string;
   UPSTASH_REDIS_REST_TOKEN?: string;
+  VERCEL_ENV?: string;
 }
 
 export class DistributedRateLimitError extends Error {}
@@ -69,9 +70,22 @@ export async function checkPioneerRateLimit(
   };
 }
 
-export function pioneerClientKey(headers: Headers): string {
+export function isPreviewRateLimitProbe(
+  headers: Headers,
+  environment: Pick<RateLimitEnvironment, "VERCEL_ENV"> = { VERCEL_ENV: process.env.VERCEL_ENV },
+): boolean {
+  return environment.VERCEL_ENV === "preview" && !!headers.get("x-schoolkit-rate-limit-test-key")?.trim();
+}
+
+export function pioneerClientKey(
+  headers: Headers,
+  environment: Pick<RateLimitEnvironment, "VERCEL_ENV"> = { VERCEL_ENV: process.env.VERCEL_ENV },
+): string {
+  const probeKey = isPreviewRateLimitProbe(headers, environment)
+    ? `preview-test:${headers.get("x-schoolkit-rate-limit-test-key")!.trim().slice(0, 128)}`
+    : "";
   const forwarded = headers.get("x-vercel-forwarded-for") ?? headers.get("x-forwarded-for") ?? "";
   const ip = forwarded.split(",")[0]?.trim();
   const fallback = `${headers.get("user-agent") ?? "unknown"}|${headers.get("accept-language") ?? ""}`;
-  return createHash("sha256").update(ip || fallback).digest("hex");
+  return createHash("sha256").update(probeKey || ip || fallback).digest("hex");
 }

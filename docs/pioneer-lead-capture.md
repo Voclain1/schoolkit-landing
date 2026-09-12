@@ -29,3 +29,10 @@ UPSTASH_REDIS_REST_TOKEN=your_upstash_rest_token
 Use the read/write REST token, not the read-only token. Never prefix either
 variable with `NEXT_PUBLIC_`.
 
+### Preview verification
+
+In Vercel Preview only, a valid request carrying
+`x-schoolkit-rate-limit-test-key` uses a separately hashed test identifier and
+returns after the Redis decision, before lead persistence. This permits an
+end-to-end rate-limit check without creating a lead. Production ignores this
+header and always follows the normal persistence path.

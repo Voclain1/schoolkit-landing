@@ -2,7 +2,7 @@ import { createHash } from "node:crypto";
 import { NextRequest, NextResponse } from "next/server";
 import { getResendClient, RESEND_FROM } from "@/lib/resend";
 import { isPioneerHoneypot, validatePioneerLead } from "@/lib/pioneer-lead";
-import { checkPioneerRateLimit, DistributedRateLimitError, pioneerClientKey } from "@/lib/pioneer-abuse";
+import { checkPioneerRateLimit, DistributedRateLimitError, isPreviewRateLimitProbe, pioneerClientKey } from "@/lib/pioneer-abuse";
 
 export const runtime = "nodejs";
 
@@ -17,6 +17,7 @@ export async function POST(request: NextRequest) {
   const parsed = validatePioneerLead(body);
   if (!parsed.data) return NextResponse.json({ ok: false, error: "Please correct the highlighted fields.", errors: parsed.errors }, { status: 400 });
 
+  const isProbe = isPreviewRateLimitProbe(request.headers);
   try {
     const rate = await checkPioneerRateLimit(pioneerClientKey(request.headers));
     if (!rate.allowed) {
@@ -33,6 +34,8 @@ export async function POST(request: NextRequest) {
       { status: 503, headers: { "Retry-After": "60", "Cache-Control": "no-store" } },
     );
   }
+
+  if (isProbe) return NextResponse.json({ ok: true, test: true }, { headers: { "Cache-Control": "no-store" } });
 
   const lead = parsed.data;
   const rows = [
