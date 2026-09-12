@@ -16,6 +16,7 @@ export default function Footer() {
             <Link href="/#ai">AI Tutor</Link>
             <Link href="/#roles">Who it&apos;s for</Link>
             <Link href="/blog">Blog</Link>
+            <Link href="/pioneer">Pioneer Offer</Link>
             <Link href="/privacy-policy">Privacy</Link>
             <Link href="/terms-of-service">Terms</Link>
             <a href="mailto:hello@schoolkit.ng">Contact</a>

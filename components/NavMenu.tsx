@@ -28,6 +28,9 @@ export default function NavMenu() {
         <Link href="/blog" className="l" onClick={close}>
           Blog
         </Link>
+        <Link href="/pioneer" className="l" onClick={close}>
+          Pioneer Offer
+        </Link>
       </div>
       <Link href="/#join" className="pill" onClick={close}>
         Get early access

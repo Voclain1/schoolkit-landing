@@ -85,10 +85,16 @@ change here. `schoolSizeBand()` in `lib/analytics.ts` maps a student count onto
 the bands used by the pricing tiers: `1-100`, `101-200`, `201-600`,
 `601-1200`, `1200+`.
 
-Every event also carries `page_location`, `page_path`, `page_title` and, when
+Every event normally also carries `page_location`, `page_path`, `page_title` and, when
 the visit arrived with UTM tags, `campaign_source` / `campaign_medium` /
-`campaign_name`. Campaign attribution is first-touch: the values are read from
+`campaign_name` / `campaign_content`. Campaign attribution is first-touch: the values are read from
 the landing URL and kept in `sessionStorage` for the rest of the session.
+
+The `/pioneer` form deliberately suppresses page context for its start and
+submit events. Those events contain only `form_id`, `placement`,
+`school_size_band` and safe campaign attribution, matching the Pioneer Offer
+privacy contract. Meta `Lead` uses the same sanitized parameters and fires
+only after the API confirms persistence.
 
 ### The three app-side events
 
