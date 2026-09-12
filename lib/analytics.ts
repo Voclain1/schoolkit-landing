@@ -43,6 +43,7 @@ export interface AnalyticsParams {
   campaign_source?: string;
   campaign_medium?: string;
   campaign_name?: string;
+  campaign_content?: string;
   /** A band — never the exact student count of an identifiable school. */
   school_size_band?: SchoolSizeBand;
   /** Which waitlist form: "hero" or "footer". */
@@ -75,6 +76,7 @@ const ALLOWED_PARAM_KEYS: ReadonlySet<string> = new Set<keyof AnalyticsParams>([
   "campaign_source",
   "campaign_medium",
   "campaign_name",
+  "campaign_content",
   "school_size_band",
   "form_id",
   "video_id",
@@ -138,7 +140,7 @@ export function schoolSizeBand(students: number): SchoolSizeBand | undefined {
   return "1200+";
 }
 
-const CAMPAIGN_KEYS = ["utm_source", "utm_medium", "utm_campaign"] as const;
+const CAMPAIGN_KEYS = ["utm_source", "utm_medium", "utm_campaign", "utm_content"] as const;
 
 /**
  * Rebuilds a URL keeping only the utm_* query parameters, so a stray
@@ -163,6 +165,7 @@ export function sanitizeUrl(href: string): string {
 type CampaignParams = Pick<
   AnalyticsParams,
   "campaign_source" | "campaign_medium" | "campaign_name"
+  | "campaign_content"
 >;
 
 /** Extracts campaign params from a URL. Returns only what is present. */
@@ -183,9 +186,11 @@ export function campaignParamsFromUrl(href: string): CampaignParams {
   const source = read("utm_source");
   const medium = read("utm_medium");
   const name = read("utm_campaign");
+  const content = read("utm_content");
   if (source) params.campaign_source = source;
   if (medium) params.campaign_medium = medium;
   if (name) params.campaign_name = name;
+  if (content) params.campaign_content = content;
   return params;
 }
 
@@ -262,9 +267,13 @@ const gtagPush = function (this: void) {
  * Sends one of the conversion events. Call it only once the underlying action
  * has actually succeeded.
  */
-export function trackEvent(event: AnalyticsEventName, params: AnalyticsParams = {}): void {
+export function trackEvent(
+  event: AnalyticsEventName,
+  params: AnalyticsParams = {},
+  options: { includePageContext?: boolean } = {},
+): void {
   const payload = sanitizeParams({
-    ...pageContext(),
+    ...(options.includePageContext === false ? {} : pageContext()),
     ...getSessionCampaign(),
     ...params,
   });

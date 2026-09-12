@@ -86,6 +86,13 @@ test("campaignParamsFromUrl returns only the params present", () => {
   assert.deepEqual(campaignParamsFromUrl("https://schoolkit.ng/"), {});
 });
 
+test("campaignParamsFromUrl keeps safe campaign content", () => {
+  assert.deepEqual(
+    campaignParamsFromUrl("https://schoolkit.ng/pioneer?utm_source=facebook&utm_content=launch"),
+    { campaign_source: "facebook", campaign_content: "launch" },
+  );
+});
+
 test("schoolSizeBand maps student counts onto the pricing bands", () => {
   assert.equal(schoolSizeBand(1), "1-100");
   assert.equal(schoolSizeBand(100), "1-100");
