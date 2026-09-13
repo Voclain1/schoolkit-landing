@@ -284,5 +284,28 @@
       "3bcf7f71d473a8e7aa6af227a58eb2cccce925abb5abaf350439def7cd465d6f",
       "d4f688e6b481fcc215d6d97d81e43a136d1ee9e39eecb8c258e23225e71236d4"
     ]
+  },
+  "reengagement-v1": {
+    "audience_id": null,
+    "delivery": "individual /emails sends (no audience writes)",
+    "subject": "You're closer than you think — pick up where you left off",
+    "sent_at": "2026-09-11T14:55:43.731Z",
+    "recipient_count": 6,
+    "message_ids": [
+      "7351550a-7d10-47ad-ae13-567c56d7748a",
+      "a7d14d40-d604-4d15-8bfa-ca8781b6e7a1",
+      "5f9442a6-0a5b-4f54-81a9-5c466fe44539",
+      "034a5ae4-0107-4776-a134-9f63272bf384",
+      "e8ebe1eb-7558-4cb4-89db-b7fd926c4702",
+      "06edee7d-93a1-49e6-b483-cd5fa053bc5d"
+    ],
+    "recipient_hashes": [
+      "0d745bb63f58fea1db211c71b89bb403bf5cc68f854c70c053d303b8cc48010c",
+      "28bd13d828088bf3bfd38f2ba465269b6204c89caa2ede04d1b81aebf189e4d2",
+      "a23c77664abb042c0f6e5191822db6e4894929194a24475f6c477de65907688d",
+      "366d78404b4e05152bfb76cb198f1a42c532013c909e3c1263c829fdc780e9f9",
+      "ca3214cb61c86afbe69755ad3a3876160a6f8c60bb75f417018d82bbff0ca17a",
+      "3bf63f026bed680ca06b323e6297755bd3f2319b9415748f49a4b71b26cb15ce"
+    ]
   }
 }
