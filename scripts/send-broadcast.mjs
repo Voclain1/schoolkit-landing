@@ -104,6 +104,22 @@ function fillMergeTagsForTest(html) {
     .replace(/\{\{\{RESEND_UNSUBSCRIBE_URL\}\}\}/g, "https://www.schoolkit.ng");
 }
 
+/**
+ * Swaps hosted /email-assets/ images for inline attachments read from public/, so a test
+ * renders correctly before the assets are deployed.
+ */
+function inlineEmailAssetsForTest(html) {
+  const attachments = [];
+  const out = html.replace(/https:\/\/www\.schoolkit\.ng\/email-assets\/([\w.-]+)/g, (_, file) => {
+    if (!attachments.some((a) => a.filename === file)) {
+      const content = fs.readFileSync(path.join(ROOT, "public/email-assets", file)).toString("base64");
+      attachments.push({ filename: file, content, content_id: file });
+    }
+    return `cid:${file}`;
+  });
+  return { html: out, attachments };
+}
+
 function parseArgs(argv) {
   const [campaign, ...rest] = argv;
   const flags = new Set(rest.filter((a) => a.startsWith("--")));
@@ -140,12 +156,14 @@ async function main() {
   console.log("");
 
   if (mode === "test") {
+    const inlined = inlineEmailAssetsForTest(fillMergeTagsForTest(html));
     const res = await api("POST", "/emails", {
       from: FROM,
       to,
       reply_to: REPLY_TO,
       subject: `[TEST] ${subject}`,
-      html: fillMergeTagsForTest(html),
+      html: inlined.html,
+      attachments: inlined.attachments,
     });
     console.log(`TEST SENT -> ${to}`);
     console.log(`message id: ${res.id}`);
