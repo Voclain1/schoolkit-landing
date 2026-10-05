@@ -2,6 +2,8 @@ export const ROLES = ["Proprietor/Owner", "Director", "Principal", "Administrato
 export const SCHOOL_SIZES = ["1-100", "101-200", "201-600", "601-1200", "1200+"] as const;
 export const SCHOOL_LEVELS = ["Nursery", "Primary", "Junior Secondary", "Senior Secondary"] as const;
 export const CURRENT_METHODS = ["Paper records", "Excel/Google Sheets", "Existing school software", "A mixture"] as const;
+/** Self-reported discovery channel. Optional, because analytics cannot see AI or word-of-mouth referrals. */
+export const HEARD_ABOUT = ["Google search", "ChatGPT or another AI assistant", "Facebook or Instagram", "WhatsApp", "YouTube", "Another school or a colleague", "News article or blog", "Event or association", "Other"] as const;
 export const CHALLENGES = ["Fees", "Results/report cards", "Attendance", "Student records", "Parent communication", "Staff/class management", "Other"] as const;
 
 export interface PioneerLead {
@@ -17,6 +19,7 @@ export interface PioneerLead {
   currentMethod: (typeof CURRENT_METHODS)[number];
   biggestChallenge: (typeof CHALLENGES)[number];
   preferredStart: string;
+  heardAbout?: (typeof HEARD_ABOUT)[number];
   consent: true;
   utmSource?: string;
   utmMedium?: string;
@@ -64,6 +67,7 @@ export function validatePioneerLead(input: unknown): { data?: PioneerLead; error
     schoolSizeBand: body.schoolSizeBand as PioneerLead["schoolSizeBand"], schoolLevels: levels,
     currentMethod: body.currentMethod as PioneerLead["currentMethod"], biggestChallenge: body.biggestChallenge as PioneerLead["biggestChallenge"],
     preferredStart: clean(body.preferredStart), consent: true,
+    heardAbout: member(body.heardAbout, HEARD_ABOUT) ? body.heardAbout : undefined,
     utmSource: utm("utmSource"), utmMedium: utm("utmMedium"), utmCampaign: utm("utmCampaign"), utmContent: utm("utmContent"),
   } };
 }

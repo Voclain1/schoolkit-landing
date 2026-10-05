@@ -42,7 +42,7 @@ export async function POST(request: NextRequest) {
     ["School", lead.schoolName], ["Town/city", lead.city], ["State", lead.state], ["Contact", lead.name], ["Role", lead.role],
     ["Work email", lead.email], ["WhatsApp", lead.whatsapp], ["Student population", lead.schoolSizeBand],
     ["School levels", lead.schoolLevels.join(", ")], ["Current method", lead.currentMethod], ["Biggest challenge", lead.biggestChallenge],
-    ["Preferred time to begin", lead.preferredStart], ["UTM source", lead.utmSource ?? "—"], ["UTM medium", lead.utmMedium ?? "—"],
+    ["Preferred time to begin", lead.preferredStart], ["Heard about us via", lead.heardAbout ?? "—"], ["UTM source", lead.utmSource ?? "—"], ["UTM medium", lead.utmMedium ?? "—"],
     ["UTM campaign", lead.utmCampaign ?? "—"], ["UTM content", lead.utmContent ?? "—"],
   ];
   const html = `<h1>New SchoolKit Pioneer lead</h1><table>${rows.map(([label, value]) => `<tr><th align="left">${escapeHtml(label)}</th><td>${escapeHtml(value)}</td></tr>`).join("")}</table><p>Consent recorded: yes.</p>`;

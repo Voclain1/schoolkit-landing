@@ -28,3 +28,9 @@ test("honeypot submissions are detectable and never count as confirmed persisten
   assert.equal(isConfirmedPioneerSubmission({ ok: true }), true);
   assert.equal(isConfirmedPioneerSubmission({ ok: false }), false);
 });
+
+test("records the optional discovery channel only when it is a known option", () => {
+  assert.equal(validatePioneerLead({ ...valid, heardAbout: "ChatGPT or another AI assistant" }).data?.heardAbout, "ChatGPT or another AI assistant");
+  assert.equal(validatePioneerLead({ ...valid, heardAbout: "<script>" }).data?.heardAbout, undefined);
+  assert.equal(validatePioneerLead({ ...valid, heardAbout: "" }).errors, undefined);
+});

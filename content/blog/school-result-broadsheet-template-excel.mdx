@@ -1,0 +1,130 @@
+---
+title: "Free School Result Broadsheet Template (Excel) for Nigerian Schools"
+slug: "school-result-broadsheet-template-excel"
+description: "Download a free Excel broadsheet template that calculates CA and exam totals, grades, subject and class positions, averages and class statistics automatically — with instructions for Nigerian schools."
+date: "2026-10-05"
+updatedAt: "2026-10-05"
+tags: ["results", "templates", "teachers", "grading"]
+coverImage: "/blog/covers/school-result-broadsheet-template-excel.png"
+coverWidth: 1200
+coverHeight: 630
+imageAlt: "Excel result broadsheet template with totals, grades and positions for a Nigerian class"
+seoTitle: "Free School Result Broadsheet Template (Excel) — Nigeria"
+seoDescription: "Free Excel result broadsheet template for Nigerian schools: automatic CA + exam totals, grades, averages and class positions with ties. Download and use today."
+keywords: ["broadsheet template", "result broadsheet template excel", "school broadsheet format", "result computation excel template", "excel result sheet for school", "student result sheet template", "class broadsheet Nigeria", "school result template", "result processing excel"]
+pinnedRelated: ["nigerian-school-grading-system-how-to-calculate-results", "best-school-result-management-software-nigeria"]
+faqs: [{"question":"What is a result broadsheet?","answer":"A broadsheet is a single sheet that shows every student in a class against every subject: each subject score, the grand total, the average, the grade and the class position. Principals use it to review and approve a class's results before report cards are produced."},{"question":"Does the template handle tied positions?","answer":"Yes. It uses Excel's RANK function, so students with the same average share a position and the next one is skipped — 1st, 2nd, 2nd, 4th."},{"question":"What if a student does not offer every subject?","answer":"Leave that subject blank for the student. The template divides by the number of subjects each student actually offers, so a blank is not counted as zero."},{"question":"Does it work in Google Sheets?","answer":"Yes. Upload the file to Google Drive and open it with Google Sheets; the formulas work the same way. It also opens in LibreOffice Calc and Excel on Android."},{"question":"Can I change the grading scale?","answer":"Yes. Edit the Grading scale tab. The common A–F scale is pre-filled, and the tab includes the WAEC A1–F9 boundaries if your school uses them."}]
+---
+
+Every term ends the same way: a dozen teachers' score sheets, one broadsheet, and someone up late copying totals from one spreadsheet into another and re-checking positions with a calculator.
+
+This free template does the arithmetic for you. Teachers enter scores; the totals, grades, averages and positions calculate themselves — including ties, which is where most hand-made broadsheets go wrong.
+
+**[Download the free broadsheet template (Excel, .xlsx)](/templates/schoolkit-result-broadsheet-template.xlsx)**
+
+It opens in Microsoft Excel, Google Sheets, LibreOffice and Excel on Android.
+
+## What's in the Template
+
+The workbook has four tabs:
+
+| Tab | What it does |
+|---|---|
+| **How to use** | Short instructions |
+| **Subject scores** | One sheet per subject: 1st test, 2nd test, CA total, exam, total out of 100, grade, remark and subject position for up to 40 students, plus class average, highest and lowest |
+| **Broadsheet** | The whole class against 12 subjects: subjects offered, grand total, average, grade and class position, plus subject averages, highest and lowest |
+| **Grading scale** | Your grade boundaries and remarks, used by every formula |
+
+White cells are for typing. Green cells calculate themselves — don't type over them.
+
+## How to Use It
+
+### 1. Set your grading scale
+
+Open the **Grading scale** tab. The common scale is already filled in:
+
+| Minimum score | Grade | Remark |
+|---|---|---|
+| 70 | A | Excellent |
+| 60 | B | Very good |
+| 50 | C | Credit |
+| 45 | D | Pass |
+| 40 | E | Fair |
+| 0 | F | Fail |
+
+Change the numbers and letters to match your school. Keep the rows in ascending order of minimum score — the formulas depend on it.
+
+### 2. Make one subject sheet per subject
+
+On the **Subject scores** tab, set the maximum for each test and the exam (20, 20 and 60 by default). Then right-click the tab, choose **Duplicate** (or **Move or Copy → Create a copy** in Excel), and rename it for each subject.
+
+Each teacher enters names and scores. The sheet will:
+
+- add the tests into a **CA total**,
+- add CA and exam into a **total out of 100**,
+- look up the **grade** and **remark**,
+- rank the class to give a **subject position**,
+- show the **class average, highest and lowest** score.
+
+Scores above the maximum are refused, so a 25 typed into a 20-mark test is caught immediately.
+
+### 3. Fill the broadsheet
+
+On the **Broadsheet** tab, enter each student's subject totals — or link them from the subject sheets so they update automatically. To link, click a broadsheet cell, type `=`, click the student's total on the subject sheet and press Enter.
+
+The broadsheet then calculates each student's:
+
+- **Subjects offered** — blank subjects are not counted,
+- **Grand total**,
+- **Average** — divided by the subjects the student actually offers,
+- **Grade** — from the rounded average,
+- **Class position** — ties share a position.
+
+Subject names in the header row are examples; change them to your school's subjects.
+
+## How the Formulas Work
+
+You don't need to understand the formulas to use the template, but if a parent asks how a position was worked out, here is the logic:
+
+- **Total:** `=SUM(CA cells) + exam`
+- **Average:** `=SUM(subject totals) / COUNT(subject totals)` — `COUNT` ignores blanks, so a subject a student doesn't take isn't a zero.
+- **Grade:** `=LOOKUP(ROUND(average,0), minimum scores, grades)` — rounding first means 69.5 is graded as 70.
+- **Position:** `=RANK(average, all averages, 0)` — equal averages get the same rank, and the next rank is skipped.
+
+For the full method, with worked examples, see our guide to [the Nigerian school grading system and how to calculate results](/blog/nigerian-school-grading-system-how-to-calculate-results). If you only need one subject quickly, the free [online result calculator](/tools/result-calculator) does it in your browser.
+
+## Common Broadsheet Mistakes This Template Avoids
+
+1. **Adding raw scores from different maximums.** A test marked out of 50 must be scaled before it's added to a 20-mark CA. Set the maximums on each subject sheet and scale before entry.
+2. **Counting a missing subject as zero.** It drags the average down unfairly.
+3. **Numbering positions 1, 2, 3, 4 when two students tie.** Tied students share a position; the next student is 4th, not 3rd.
+4. **Broken ranges after adding a late student.** The template already covers 40 rows; type into an empty row rather than inserting a new one.
+5. **Pasting values over formulas.** If a green cell stops updating, someone typed over it — copy the formula down again from the row above.
+
+## When a Spreadsheet Stops Being Enough
+
+A template is a big step up from calculators and handwritten broadsheets. But a spreadsheet still means one file per class, copies passed around on WhatsApp, and nobody quite sure which version is final.
+
+[SchoolKit's result management](/features/result-management-software) moves the whole process online: each teacher enters scores for their own subjects, totals, grades and positions are calculated automatically for every class, the principal approves the results, and report cards are produced and released to parents — with no spreadsheet to merge. It's free for schools with up to 100 students.
+
+## Frequently Asked Questions
+
+### What is a result broadsheet?
+
+A broadsheet is a single sheet that shows every student in a class against every subject: each subject score, the grand total, the average, the grade and the class position. Principals use it to review and approve a class's results before report cards are produced.
+
+### Does the template handle tied positions?
+
+Yes. It uses Excel's RANK function, so students with the same average share a position and the next one is skipped — 1st, 2nd, 2nd, 4th.
+
+### What if a student does not offer every subject?
+
+Leave that subject blank for the student. The template divides by the number of subjects each student actually offers, so a blank is not counted as zero.
+
+### Does it work in Google Sheets?
+
+Yes. Upload the file to Google Drive and open it with Google Sheets; the formulas work the same way. It also opens in LibreOffice Calc and Excel on Android.
+
+### Can I change the grading scale?
+
+Yes. Edit the Grading scale tab. The common A–F scale is pre-filled, and the tab includes the WAEC A1–F9 boundaries if your school uses them.

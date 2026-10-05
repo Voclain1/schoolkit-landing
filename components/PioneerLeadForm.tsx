@@ -1,10 +1,10 @@
 "use client";
 
 import { FormEvent, useEffect, useRef, useState } from "react";
-import { campaignParamsFromUrl, sanitizeParams, trackEvent, type AnalyticsParams, type SchoolSizeBand } from "@/lib/analytics";
-import { CHALLENGES, CURRENT_METHODS, isConfirmedPioneerSubmission, ROLES, SCHOOL_LEVELS, SCHOOL_SIZES } from "@/lib/pioneer-lead";
+import { campaignParamsFromReferrer, campaignParamsFromUrl, sanitizeParams, trackEvent, type AnalyticsParams, type SchoolSizeBand } from "@/lib/analytics";
+import { CHALLENGES, CURRENT_METHODS, HEARD_ABOUT, isConfirmedPioneerSubmission, ROLES, SCHOOL_LEVELS, SCHOOL_SIZES } from "@/lib/pioneer-lead";
 
-const FIELD_LABELS: Record<string, string> = { schoolName: "School name", city: "Town/city", state: "State", name: "Your name", role: "Your role", email: "Work email", whatsapp: "WhatsApp number", schoolSizeBand: "Student population", currentMethod: "Current method", biggestChallenge: "Biggest challenge", preferredStart: "Preferred time to begin" };
+const FIELD_LABELS: Record<string, string> = { schoolName: "School name", city: "Town/city", state: "State", name: "Your name", role: "Your role", email: "Work email", whatsapp: "WhatsApp number", schoolSizeBand: "Student population", currentMethod: "Current method", biggestChallenge: "Biggest challenge", preferredStart: "Preferred time to begin", heardAbout: "How did you hear about SchoolKit? (optional)" };
 
 export default function PioneerLeadForm() {
   const [status, setStatus] = useState<"idle" | "submitting" | "success">("idle");
@@ -18,6 +18,10 @@ export default function PioneerLeadForm() {
     for (const [query, field] of [["utm_source", "utmSource"], ["utm_medium", "utmMedium"], ["utm_campaign", "utmCampaign"], ["utm_content", "utmContent"]]) {
       const value = params.get(query);
       if (value) next[field] = value.slice(0, 100);
+    }
+    if (!next.utmSource) {
+      const fromAi = campaignParamsFromReferrer(document.referrer);
+      if (fromAi.campaign_source) { next.utmSource = fromAi.campaign_source; next.utmMedium = fromAi.campaign_medium ?? "ai_assistant"; }
     }
     if (Object.keys(next).length) {
       sessionStorage.setItem("sk_pioneer_campaign", JSON.stringify(next));
@@ -63,8 +67,8 @@ export default function PioneerLeadForm() {
     {errors.form && <p className="form-error form-error-banner" role="alert">{errors.form}</p>}
     <div className="pioneer-fields">
       {Object.entries(FIELD_LABELS).map(([name, label]) => {
-        const options = name === "role" ? ROLES : name === "schoolSizeBand" ? SCHOOL_SIZES : name === "currentMethod" ? CURRENT_METHODS : name === "biggestChallenge" ? CHALLENGES : null;
-        return <div className="field" key={name}><label htmlFor={name}>{label}</label>{options ? <select id={name} name={name} defaultValue="" aria-describedby={errors[name] ? `${name}-error` : undefined} aria-invalid={!!errors[name]}><option value="" disabled>Choose one</option>{options.map(option => <option key={option}>{option}</option>)}</select> : <input id={name} name={name} type={name === "email" ? "email" : name === "whatsapp" ? "tel" : "text"} autoComplete={name === "email" ? "email" : name === "name" ? "name" : name === "whatsapp" ? "tel" : name === "schoolName" ? "organization" : name === "city" ? "address-level2" : name === "state" ? "address-level1" : "off"} aria-describedby={errors[name] ? `${name}-error` : undefined} aria-invalid={!!errors[name]} />}{errors[name] && <span className="form-error" id={`${name}-error`}>{errors[name]}</span>}</div>;
+        const options = name === "role" ? ROLES : name === "schoolSizeBand" ? SCHOOL_SIZES : name === "currentMethod" ? CURRENT_METHODS : name === "biggestChallenge" ? CHALLENGES : name === "heardAbout" ? HEARD_ABOUT : null;
+        return <div className="field" key={name}><label htmlFor={name}>{label}</label>{options ? <select id={name} name={name} defaultValue="" aria-describedby={errors[name] ? `${name}-error` : undefined} aria-invalid={!!errors[name]}><option value="" disabled={name !== "heardAbout"}>Choose one</option>{options.map(option => <option key={option}>{option}</option>)}</select> : <input id={name} name={name} type={name === "email" ? "email" : name === "whatsapp" ? "tel" : "text"} autoComplete={name === "email" ? "email" : name === "name" ? "name" : name === "whatsapp" ? "tel" : name === "schoolName" ? "organization" : name === "city" ? "address-level2" : name === "state" ? "address-level1" : "off"} aria-describedby={errors[name] ? `${name}-error` : undefined} aria-invalid={!!errors[name]} />}{errors[name] && <span className="form-error" id={`${name}-error`}>{errors[name]}</span>}</div>;
       })}
       <fieldset className="field field-wide"><legend>School levels</legend><div className="check-grid">{SCHOOL_LEVELS.map(level => <label key={level}><input type="checkbox" name="schoolLevels" value={level} /> {level}</label>)}</div>{errors.schoolLevels && <span className="form-error">{errors.schoolLevels}</span>}</fieldset>
       <div className="website-field" aria-hidden="true"><label htmlFor="website">Website</label><input id="website" name="website" tabIndex={-1} autoComplete="off" /></div>

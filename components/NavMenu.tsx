@@ -22,7 +22,7 @@ export default function NavMenu() {
         <Link href="/#roles" className="l" onClick={close}>
           Who it&apos;s for
         </Link>
-        <Link href="/#pricing" className="l" onClick={close}>
+        <Link href="/pricing" className="l" onClick={close}>
           Pricing
         </Link>
         <Link href="/blog" className="l" onClick={close}>

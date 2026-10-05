@@ -3,6 +3,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { notFound } from "next/navigation";
 import { MDXRemote } from "next-mdx-remote/rsc";
+import remarkGfm from "remark-gfm";
 import { getAllPosts, getPostBySlug, getRelatedPosts, getReadingTime } from "@/lib/posts";
 import BlogTableOfContents, { type TableOfContentsItem } from "@/components/BlogTableOfContents";
 import { serializeJsonLd } from "@/lib/json-ld";
@@ -164,6 +165,8 @@ export default async function BlogPostPage({ params }: PageProps) {
         <div className="blog-post-body">
           <MDXRemote
             source={post.content}
+            // GitHub-flavoured Markdown: without it, pipe tables render as raw text.
+            options={{ mdxOptions: { remarkPlugins: [remarkGfm] } }}
             components={{
               h2: ({ children }) => <h2 id={headingId(children)}>{children}</h2>,
               h3: ({ children }) => <h3 id={headingId(children)}>{children}</h3>,
