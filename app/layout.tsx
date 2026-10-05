@@ -110,6 +110,41 @@ const jsonLd = {
   // Google's structured-data guidelines treat fabricated ratings as spam.
 };
 
+// Organization and WebSite entities: give Google a single, consistent identity for
+// the brand (knowledge panel, sitelinks) across every page on the site.
+const organizationJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "@id": `${SITE_URL}/#organization`,
+  name: "SchoolKit",
+  url: SITE_URL,
+  logo: `${SITE_URL}/favicon.png`,
+  email: "hello@schoolkit.ng",
+  address: {
+    "@type": "PostalAddress",
+    addressLocality: "Lagos",
+    addressCountry: "NG",
+  },
+  contactPoint: {
+    "@type": "ContactPoint",
+    contactType: "sales",
+    telephone: "+2347049677393",
+    email: "hello@schoolkit.ng",
+    areaServed: "NG",
+    availableLanguage: "English",
+  },
+};
+
+const websiteJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "@id": `${SITE_URL}/#website`,
+  name: "SchoolKit",
+  url: SITE_URL,
+  inLanguage: "en-NG",
+  publisher: { "@id": `${SITE_URL}/#organization` },
+};
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -121,6 +156,14 @@ export default function RootLayout({
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: serializeJsonLd(jsonLd) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: serializeJsonLd(organizationJsonLd) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: serializeJsonLd(websiteJsonLd) }}
         />
       </head>
       <body>

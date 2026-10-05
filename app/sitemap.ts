@@ -1,5 +1,6 @@
 import type { MetadataRoute } from "next";
 import { getAllPosts } from "@/lib/posts";
+import { FEATURES } from "@/lib/features";
 
 const SITE_URL = "https://schoolkit.ng";
 
@@ -19,6 +20,18 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "daily",
       priority: 0.8,
     },
+    {
+      url: `${SITE_URL}/features`,
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.9,
+    },
+    ...FEATURES.map((feature) => ({
+      url: `${SITE_URL}/features/${feature.slug}`,
+      lastModified: new Date(),
+      changeFrequency: "monthly" as const,
+      priority: 0.8,
+    })),
     {
       url: `${SITE_URL}/demo`,
       lastModified: new Date(),
