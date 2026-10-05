@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { getLogoDataUri } from "@/lib/landing";
+import { FEATURES } from "@/lib/features";
 
 export default function Footer() {
   const logo = getLogoDataUri();
@@ -11,7 +12,7 @@ export default function Footer() {
           {/* eslint-disable-next-line @next/next/no-img-element -- data-URI logo, preserved from the original static markup */}
           <img className="fl" src={logo} alt="SchoolKit" />
           <nav className="fnav">
-            <Link href="/#platform">Platform</Link>
+            <Link href="/features">Features</Link>
             <Link href="/demo">Demo</Link>
             <Link href="/#ai">AI Tutor</Link>
             <Link href="/#roles">Who it&apos;s for</Link>
@@ -34,6 +35,13 @@ export default function Footer() {
             </svg>
           </a>
         </div>
+        <nav className="fnav foot-features" aria-label="Features">
+          {FEATURES.map((feature) => (
+            <Link key={feature.slug} href={`/features/${feature.slug}`}>
+              {feature.name}
+            </Link>
+          ))}
+        </nav>
         <div className="foot-meta">
           <span>
             © <span id="yr">{new Date().getFullYear()}</span> SchoolKit · schoolkit.ng · Built in Lagos, Nigeria

@@ -13,8 +13,8 @@ export default function NavMenu() {
         <Link href="/demo" className="l" onClick={close}>
           Demo
         </Link>
-        <Link href="/#platform" className="l" onClick={close}>
-          Platform
+        <Link href="/features" className="l" onClick={close}>
+          Features
         </Link>
         <Link href="/#ai" className="l" onClick={close}>
           AI Tutor

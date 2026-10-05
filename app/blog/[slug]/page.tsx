@@ -6,8 +6,13 @@ import { MDXRemote } from "next-mdx-remote/rsc";
 import { getAllPosts, getPostBySlug, getRelatedPosts, getReadingTime } from "@/lib/posts";
 import BlogTableOfContents, { type TableOfContentsItem } from "@/components/BlogTableOfContents";
 import { serializeJsonLd } from "@/lib/json-ld";
+import { breadcrumbJsonLd } from "@/lib/structured-data";
+import { getFeatureForTags } from "@/lib/features";
 
 const SITE_URL = "https://schoolkit.ng";
+
+// Long posts get a table of contents; short ones read fine without.
+const MIN_TOC_HEADINGS = 5;
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -65,6 +70,11 @@ export default async function BlogPostPage({ params }: PageProps) {
 
   const readingTime = getReadingTime(post.content);
   const tableOfContents = getTableOfContents(post.content);
+  const feature = getFeatureForTags(post.tags);
+  const breadcrumbs = breadcrumbJsonLd([
+    { name: "Blog", path: "/blog" },
+    { name: post.title, path: `/blog/${post.slug}` },
+  ]);
 
   const jsonLd = {
     "@context": "https://schema.org",
@@ -119,6 +129,11 @@ export default async function BlogPostPage({ params }: PageProps) {
         dangerouslySetInnerHTML={{ __html: serializeJsonLd(jsonLd) }}
       />
 
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: serializeJsonLd(breadcrumbs) }}
+      />
+
       {faqJsonLd && (
         <script
           type="application/ld+json"
@@ -144,9 +159,7 @@ export default async function BlogPostPage({ params }: PageProps) {
           priority
         />
 
-        {["school-management-software-pricing-nigeria", "best-school-fees-management-software-nigeria", "best-school-result-management-software-nigeria", "how-to-automate-school-fee-collection-nigeria"].includes(post.slug) && (
-          <BlogTableOfContents items={tableOfContents} />
-        )}
+        {tableOfContents.length >= MIN_TOC_HEADINGS && <BlogTableOfContents items={tableOfContents} />}
 
         <div className="blog-post-body">
           <MDXRemote
@@ -157,6 +170,13 @@ export default async function BlogPostPage({ params }: PageProps) {
             }}
           />
         </div>
+
+        {feature && (
+          <p className="blog-feature-link">
+            See how SchoolKit handles this:{" "}
+            <Link href={`/features/${feature.slug}`}>{feature.name.toLowerCase()} for Nigerian schools</Link>
+          </p>
+        )}
 
         <div className="blog-cta">
           <h3>Be one of our pioneer schools</h3>

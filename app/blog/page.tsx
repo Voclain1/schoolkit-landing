@@ -4,14 +4,14 @@ import Image from "next/image";
 import { getAllPosts } from "@/lib/posts";
 
 export const metadata: Metadata = {
-  title: "Blog | SchoolKit",
+  title: "School Management Guides for Nigerian Schools | SchoolKit Blog",
   description:
-    "Practical guidance on school fees, AI tutoring, results and running a modern Nigerian school — from the SchoolKit team.",
+    "Practical guides for Nigerian school owners: collecting school fees online, result processing and report cards, choosing school management software, and running a modern private school.",
   alternates: {
     canonical: "/blog",
   },
   openGraph: {
-    title: "Blog | SchoolKit",
+    title: "School Management Guides for Nigerian Schools | SchoolKit Blog",
     description:
       "Practical guidance on school fees, AI tutoring, results and running a modern Nigerian school — from the SchoolKit team.",
     url: "/blog",
