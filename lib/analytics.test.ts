@@ -103,3 +103,18 @@ test("schoolSizeBand maps student counts onto the pricing bands", () => {
   assert.equal(schoolSizeBand(0), undefined);
   assert.equal(schoolSizeBand(Number.NaN), undefined);
 });
+
+test("visits referred by AI assistants are attributed to the assistant", async () => {
+  const { campaignParamsFromReferrer } = await import("./analytics.ts");
+  assert.deepEqual(campaignParamsFromReferrer("https://chatgpt.com/"), {
+    campaign_source: "chatgpt",
+    campaign_medium: "ai_assistant",
+  });
+  assert.deepEqual(campaignParamsFromReferrer("https://www.perplexity.ai/search?q=x"), {
+    campaign_source: "perplexity",
+    campaign_medium: "ai_assistant",
+  });
+  assert.deepEqual(campaignParamsFromReferrer("https://www.google.com/"), {});
+  assert.deepEqual(campaignParamsFromReferrer("https://notchatgpt.com/"), {});
+  assert.deepEqual(campaignParamsFromReferrer(""), {});
+});

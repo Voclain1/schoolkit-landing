@@ -73,6 +73,7 @@ Fired by [lib/analytics.ts](../lib/analytics.ts) via `trackEvent`, always
 | `pilot_application_submitted` | Waitlist signup has been accepted by the sheet endpoint | `form_id`, `placement`, `method`, `school_size_band`* | `content/landing/homepage-script.js` |
 | `whatsapp_cta_clicked` | Any `wa.me` / `whatsapp.com` link is clicked | `placement` (from `data-location`), `method` | `content/landing/site-script.js` |
 | `demo_viewed` | Demo player has been ≥50% on screen for 2s | `video_id`, `video_title`, `placement` | `components/DemoViewTracker.tsx` |
+| `tool_used` | First interaction with a free tool (once per page load) | `tool_id` (`result-calculator`, `school-fees-calculator`) | `components/tools/*.tsx` |
 | `demo_booking_completed` | A booked demo is confirmed | `method`, `school_size_band` | **Not fired on this site** — see below |
 | `school_account_created` | A school account finishes signup | `school_size_band`, `plan` | **Not fired on this site** |
 | `onboarding_completed` | The setup wizard completes | `step`, `school_size_band`, `plan` | **Not fired on this site** |
@@ -89,6 +90,12 @@ Every event normally also carries `page_location`, `page_path`, `page_title` and
 the visit arrived with UTM tags, `campaign_source` / `campaign_medium` /
 `campaign_name` / `campaign_content`. Campaign attribution is first-touch: the values are read from
 the landing URL and kept in `sessionStorage` for the rest of the session.
+When the landing URL has no `utm_source` but the visit was referred by an AI
+assistant (ChatGPT, Perplexity, Gemini, Claude, Copilot and others, listed in
+`AI_REFERRERS`), the source is set to the assistant and the medium to
+`ai_assistant`. Build a GA4 custom channel group on that medium to report AI
+traffic as its own channel. The `/pioneer` form records the same values, plus
+a self-reported "How did you hear about SchoolKit?" answer, in the lead email.
 
 The `/pioneer` form deliberately suppresses page context for its start and
 submit events. Those events contain only `form_id`, `placement`,

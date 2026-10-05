@@ -25,7 +25,8 @@ export type AnalyticsEventName =
   | "demo_viewed"
   | "demo_booking_completed"
   | "school_account_created"
-  | "onboarding_completed";
+  | "onboarding_completed"
+  | "tool_used";
 
 /** Student-count bands, mirroring the pricing tiers on the homepage. */
 export type SchoolSizeBand = "1-100" | "101-200" | "201-600" | "601-1200" | "1200+";
@@ -56,6 +57,8 @@ export interface AnalyticsParams {
   plan?: string;
   /** How the action completed, e.g. "whatsapp", "web". */
   method?: string;
+  /** Which free tool was used, e.g. "result-calculator". */
+  tool_id?: string;
   /** Onboarding step count for onboarding_completed. */
   step?: number;
   value?: number;
@@ -78,6 +81,7 @@ const ALLOWED_PARAM_KEYS: ReadonlySet<string> = new Set<keyof AnalyticsParams>([
   "campaign_name",
   "campaign_content",
   "school_size_band",
+  "tool_id",
   "form_id",
   "video_id",
   "video_title",
@@ -194,6 +198,41 @@ export function campaignParamsFromUrl(href: string): CampaignParams {
   return params;
 }
 
+/**
+ * AI assistants that send visitors with a referrer but usually without utm_* tags.
+ * Matched on the referrer's hostname (or a parent domain of it).
+ */
+const AI_REFERRERS: Record<string, string> = {
+  "chatgpt.com": "chatgpt",
+  "chat.openai.com": "chatgpt",
+  "perplexity.ai": "perplexity",
+  "gemini.google.com": "gemini",
+  "claude.ai": "claude",
+  "copilot.microsoft.com": "copilot",
+  "deepseek.com": "deepseek",
+  "meta.ai": "meta-ai",
+  "grok.com": "grok",
+};
+
+/**
+ * Campaign params for a visit referred by an AI assistant, so AI traffic shows up
+ * as its own source instead of disappearing into "referral" or "direct".
+ */
+export function campaignParamsFromReferrer(referrer: string): CampaignParams {
+  let host: string;
+  try {
+    host = new URL(referrer).hostname.toLowerCase();
+  } catch {
+    return {};
+  }
+  for (const [domain, source] of Object.entries(AI_REFERRERS)) {
+    if (host === domain || host.endsWith(`.${domain}`)) {
+      return { campaign_source: source, campaign_medium: "ai_assistant" };
+    }
+  }
+  return {};
+}
+
 const CAMPAIGN_STORAGE_KEY = "sk_campaign";
 
 /**
@@ -203,7 +242,8 @@ const CAMPAIGN_STORAGE_KEY = "sk_campaign";
 export function getSessionCampaign(): CampaignParams {
   if (typeof window === "undefined") return {};
 
-  const fromUrl = campaignParamsFromUrl(window.location.href);
+  const fromUtm = campaignParamsFromUrl(window.location.href);
+  const fromUrl = fromUtm.campaign_source ? fromUtm : campaignParamsFromReferrer(document.referrer);
   if (fromUrl.campaign_source) {
     try {
       sessionStorage.setItem(CAMPAIGN_STORAGE_KEY, JSON.stringify(fromUrl));

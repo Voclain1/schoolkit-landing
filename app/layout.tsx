@@ -8,9 +8,9 @@ import Footer from "@/components/Footer";
 import WhatsAppFab from "@/components/WhatsAppFab";
 import MetaPixel from "@/components/MetaPixel";
 import Analytics from "@/components/Analytics";
+import { BRAND, PLANS, SITE_URL } from "@/lib/brand";
 import "./globals.css";
 
-const SITE_URL = "https://schoolkit.ng";
 
 const hankenGrotesk = Hanken_Grotesk({
   subsets: ["latin"],
@@ -61,51 +61,19 @@ export const metadata: Metadata = {
 const jsonLd = {
   "@context": "https://schema.org",
   "@type": "SoftwareApplication",
-  name: "SchoolKit",
+  name: BRAND.name,
   applicationCategory: "EducationalApplication",
   operatingSystem: "Web, iOS, Android",
   description: DESCRIPTION,
   url: SITE_URL,
-  offers: [
-    {
-      "@type": "Offer",
-      name: "Free",
-      price: "0",
-      priceCurrency: "NGN",
-      description: "Up to 100 students, basic dashboard, attendance and fee tracking.",
-    },
-    {
-      "@type": "Offer",
-      name: "Starter",
-      price: "45000",
-      priceCurrency: "NGN",
-      description: "Up to 200 students — Paystack fee collection, receipts, report cards, parent communication.",
-    },
-    {
-      "@type": "Offer",
-      name: "Growth",
-      price: "90000",
-      priceCurrency: "NGN",
-      description: "Up to 600 students — everything in Starter, plus priority support, advanced finance dashboard, bulk operations and multi-class management.",
-    },
-    {
-      "@type": "Offer",
-      name: "Professional",
-      price: "180000",
-      priceCurrency: "NGN",
-      description: "Up to 1,200 students — everything in Growth, plus a dedicated account manager, custom report card templates, advanced analytics and API access.",
-    },
-  ],
-  provider: {
-    "@type": "Organization",
-    name: "SchoolKit",
-    url: SITE_URL,
-    address: {
-      "@type": "PostalAddress",
-      addressLocality: "Lagos",
-      addressCountry: "NG",
-    },
-  },
+  offers: PLANS.filter((plan) => plan.pricePerTerm !== null).map((plan) => ({
+    "@type": "Offer",
+    name: plan.name,
+    price: String(plan.pricePerTerm),
+    priceCurrency: "NGN",
+    description: `Up to ${plan.maxStudents?.toLocaleString("en-NG")} students. ${plan.summary}`,
+  })),
+  provider: { "@id": `${SITE_URL}/#organization` },
   // aggregateRating intentionally omitted until there are real reviews to report —
   // Google's structured-data guidelines treat fabricated ratings as spam.
 };
@@ -116,20 +84,22 @@ const organizationJsonLd = {
   "@context": "https://schema.org",
   "@type": "Organization",
   "@id": `${SITE_URL}/#organization`,
-  name: "SchoolKit",
+  name: BRAND.name,
   url: SITE_URL,
+  description: BRAND.oneLiner,
   logo: `${SITE_URL}/favicon.png`,
-  email: "hello@schoolkit.ng",
+  email: BRAND.email,
   address: {
     "@type": "PostalAddress",
-    addressLocality: "Lagos",
+    addressLocality: BRAND.city,
     addressCountry: "NG",
   },
+  ...(BRAND.sameAs.length > 0 && { sameAs: BRAND.sameAs }),
   contactPoint: {
     "@type": "ContactPoint",
     contactType: "sales",
-    telephone: "+2347049677393",
-    email: "hello@schoolkit.ng",
+    telephone: BRAND.whatsapp,
+    email: BRAND.email,
     areaServed: "NG",
     availableLanguage: "English",
   },
