@@ -44,14 +44,15 @@ export const PLANS: Plan[] = [
     name: "Free",
     pricePerTerm: 0,
     maxStudents: 100,
-    summary: "Student records, attendance tracking and basic fee tracking.",
+    summary:
+      "Student records, attendance tracking, basic fee tracking and fee collection via Paystack. Pioneer schools also get parent communication free.",
   },
   {
     name: "Starter",
     pricePerTerm: 45000,
     maxStudents: 200,
     summary:
-      "Everything in Free, plus fee collection via Paystack, instant digital receipts, report cards, parent communication, staff management, a finance dashboard and offline mode.",
+      "Everything in Free, plus instant digital receipts, report cards, parent communication, staff management, a finance dashboard and offline mode.",
   },
   {
     name: "Growth",

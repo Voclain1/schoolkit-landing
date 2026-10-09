@@ -25,7 +25,7 @@ const FAQS = [
   {
     question: "Is the Free plan really free?",
     answer:
-      "Yes. The Free plan has no time limit. It covers up to 100 students with student records, attendance tracking and basic fee tracking.",
+      "Yes. The Free plan has no time limit. It covers up to 100 students with student records, attendance tracking, basic fee tracking and fee collection via Paystack.",
   },
   {
     question: "How much is that per student?",
@@ -129,7 +129,7 @@ export default function PricingPage() {
           <h2>Pioneer offer</h2>
           <div className="feature-card feature-card-tint pricing-offer">
             <p>
-              The first 50 schools to onboard keep the Free plan forever and get 2 terms free on any paid plan. Early-access
+              The first 50 schools to onboard keep the Free plan forever and get 2 terms free on any paid plan. Pioneer schools also get parent communication free on any plan. Early-access
               schools lock in today&apos;s prices for life. <Link href="/pioneer">See the Pioneer Offer</Link>.
             </p>
           </div>
