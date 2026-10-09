@@ -18,7 +18,7 @@ export const metadata: Metadata = {
   },
 };
 
-const EFFECTIVE_DATE = "16 August 2026";
+const EFFECTIVE_DATE = "9 October 2026";
 
 const sections: LegalSection[] = [
   {
@@ -240,8 +240,10 @@ const sections: LegalSection[] = [
           SchoolKit is priced per academic term, with a discount for annual payment.
           Current published plans are Free (up to 100 students), Starter, Growth,
           Professional and Enterprise, each with its own student cap and feature set as
-          shown on our pricing page. The Free plan does not include Paystack fee
-          collection, digital receipts, report cards or parent communication.
+          shown on our pricing page. Fee collection via Paystack, with digital receipts,
+          is available on every plan, including Free. The Free plan does not include report
+          cards or parent communication, except that pioneer schools get parent
+          communication free on any plan.
         </p>
         <ul>
           <li>
