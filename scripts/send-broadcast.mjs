@@ -31,6 +31,10 @@ const CAMPAIGNS = {
     file: "emails/broadcasts/pioneer-offer.html",
     subject: "Your first term on SchoolKit is free",
   },
+  "platform-update-2026-10": {
+    file: "emails/broadcasts/platform-update-2026-10.html",
+    subject: "What's new in SchoolKit: result PINs, exam papers, report cards and homework",
+  },
 };
 
 const AUDIENCE_ID = "93428f81-01f9-42c2-b031-0aed20b410a7";
