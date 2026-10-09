@@ -25,7 +25,7 @@ const FAQS = [
   {
     question: "Is the Free plan really free?",
     answer:
-      "Yes. The Free plan has no time limit. It covers up to 100 students with student records, attendance tracking, basic fee tracking and fee collection via Paystack.",
+      "Yes. The Free plan has no time limit. It covers up to 100 students with student records, attendance tracking, basic fee tracking, and fee collection via Paystack with digital receipts.",
   },
   {
     question: "How much is that per student?",
