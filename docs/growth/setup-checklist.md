@@ -11,8 +11,8 @@
 
 ## Week 1: site messages
 
-- [ ] Choose one status message and use it everywhere: either "Live: start free" or "Early access: join the waitlist". The announcement bar and the homepage FAQ currently disagree.
-- [ ] Update the pricing cards: each paid plan still says "Free during early access · billing starts September 2026".
+- [x] Choose one status message and use it everywhere. Decided 2026-10-10: SchoolKit is live, and early access is still on for this term. The homepage FAQ now says so, matching the announcement bar.
+- [x] Update the pricing cards: the stale "billing starts September 2026" line is gone; each card now reads "Free during early access · early-access price locked for life", matching the Pioneer box.
 
 ## Weeks 2–4: profiles to claim
 
