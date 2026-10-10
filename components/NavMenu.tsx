@@ -33,7 +33,7 @@ export default function NavMenu() {
         </Link>
       </div>
       <Link href="/#join" className="pill" onClick={close}>
-        Get early access
+        Join pioneer schools
       </Link>
       <button
         type="button"

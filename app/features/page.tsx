@@ -44,7 +44,7 @@ export default function FeaturesPage() {
           </p>
           <div className="feature-actions">
             <Link href="/#join" className="pill">
-              Get early access
+              Join pioneer schools
             </Link>
             <Link href="/#pricing" className="text-link">
               See pricing

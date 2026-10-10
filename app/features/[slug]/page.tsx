@@ -78,7 +78,7 @@ export default async function FeaturePage({ params }: PageProps) {
           <p className="feature-lede">{feature.lede}</p>
           <div className="feature-actions">
             <Link href="/#join" className="pill">
-              Get early access
+              Join pioneer schools
             </Link>
             <Link href="/demo" className="text-link">
               Watch the 2-minute demo
