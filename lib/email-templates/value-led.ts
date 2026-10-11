@@ -140,7 +140,7 @@ export function getValueLedEmailHtml(): string {
               <tr>
                 <td style="padding:24px 26px;border-radius:14px;border-left:4px solid ${COLORS.gold};background:${COLORS.goldSoft};">
                   <p style="font-family:Arial,Helvetica,sans-serif;font-size:12px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:${COLORS.gold};margin:0 0 8px;">Founding schools offer</p>
-                  <p style="font-family:Georgia,'Times New Roman',serif;font-size:18px;font-weight:700;line-height:1.45;color:${COLORS.ink};margin:0;">The first 100 schools to join get <span style="color:${COLORS.gold};">2 free terms</span> &mdash; plus a locked-in price for life.</p>
+                  <p style="font-family:Georgia,'Times New Roman',serif;font-size:18px;font-weight:700;line-height:1.45;color:${COLORS.ink};margin:0;">The first 100 schools to join get <span style="color:${COLORS.gold};">one free term</span> &mdash; plus a locked-in price for life.</p>
                 </td>
               </tr>
             </table>
@@ -201,7 +201,7 @@ Thanks for your interest in SchoolKit! I wanted to share a quick look at what yo
 
 Schools are already using SchoolKit to save hours every week.
 
-And right now, the first 100 schools to join get 2 free terms + a locked-in price for life.
+And right now, the first 100 schools to join get one free term + a locked-in price for life.
 
 See it for yourself: ${APP_URL}
 

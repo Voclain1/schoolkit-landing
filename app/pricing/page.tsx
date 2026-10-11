@@ -129,7 +129,7 @@ export default function PricingPage() {
           <h2>Pioneer offer</h2>
           <div className="feature-card feature-card-tint pricing-offer">
             <p>
-              The first 50 schools to onboard keep the Free plan forever and get 2 terms free on any paid plan. Pioneer schools also get parent communication free on any plan. Early-access
+              The first 50 schools to onboard keep the Free plan forever and get one term free on any paid plan. Pioneer schools also get parent communication free on any plan. Early-access
               schools lock in today&apos;s prices for life. <Link href="/pioneer">See the Pioneer Offer</Link>.
             </p>
           </div>
