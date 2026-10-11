@@ -234,7 +234,7 @@ export const FEATURES: Feature[] = [
       {
         question: "Can we put our school logo on the report card?",
         answer:
-          "Yes. Report cards carry the school's name and logo. Custom report card templates are available on the Professional plan.",
+          "Yes, on any paid plan: report cards carry your school's logo and colours. On the Free plan they use the SchoolKit template with your school's name. Custom report card templates are available on the Professional plan.",
       },
     ],
     relatedPosts: [
