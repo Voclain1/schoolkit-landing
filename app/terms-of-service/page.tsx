@@ -18,7 +18,7 @@ export const metadata: Metadata = {
   },
 };
 
-const EFFECTIVE_DATE = "9 October 2026";
+const EFFECTIVE_DATE = "11 October 2026";
 
 const sections: LegalSection[] = [
   {
@@ -241,8 +241,10 @@ const sections: LegalSection[] = [
           Current published plans are Free (up to 100 students), Starter, Growth,
           Professional and Enterprise, each with its own student cap and feature set as
           shown on our pricing page. Fee collection via Paystack, with digital receipts,
-          is available on every plan, including Free. The Free plan does not include report
-          cards or parent communication, except that pioneer schools get parent
+          and termly report cards on the SchoolKit template are available on every plan,
+          including Free. Paid plans add report cards with the School&apos;s own logo and
+          colours, class positions, year results and AI comment drafts. The Free plan does
+          not include parent communication, except that pioneer schools get parent
           communication free on any plan.
         </p>
         <ul>
