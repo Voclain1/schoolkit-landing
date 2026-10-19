@@ -35,6 +35,10 @@ const CAMPAIGNS = {
     file: "emails/broadcasts/platform-update-2026-10.html",
     subject: "What's new in SchoolKit: result PINs, exam papers, report cards and homework",
   },
+  "platform-update-2026-10b": {
+    file: "emails/broadcasts/platform-update-2026-10b.html",
+    subject: "New in SchoolKit: ID cards, a school store, online admissions and more",
+  },
 };
 
 const AUDIENCE_ID = "93428f81-01f9-42c2-b031-0aed20b410a7";
