@@ -16,8 +16,8 @@ export default function NavMenu() {
         <Link href="/features" className="l" onClick={close}>
           Features
         </Link>
-        <Link href="/#ai" className="l" onClick={close}>
-          AI Tutor
+        <Link href="/#how" className="l" onClick={close}>
+          Getting started
         </Link>
         <Link href="/#roles" className="l" onClick={close}>
           Who it&apos;s for
@@ -28,12 +28,9 @@ export default function NavMenu() {
         <Link href="/blog" className="l" onClick={close}>
           Blog
         </Link>
-        <Link href="/pioneer" className="l" onClick={close}>
-          Pioneer Offer
-        </Link>
       </div>
       <Link href="/#join" className="pill" onClick={close}>
-        Join pioneer schools
+        Get started free
       </Link>
       <button
         type="button"
@@ -49,3 +46,4 @@ export default function NavMenu() {
     </nav>
   );
 }
+

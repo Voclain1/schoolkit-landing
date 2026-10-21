@@ -1,399 +1,54 @@
-    <header class="hero">
-        <img class="kbg"
-            src="data:image/png;base64,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"
-            alt="">
-        <div class="wrap">
-            <div class="hero-grid">
-                <div>
-                    <span class="kick"><i></i>Pioneer schools · Now onboarding</span>
-                    <h1>School Management Software Built for <span class="it">Nigerian Private Schools</span></h1>
-                    <p class="lede">Collect fees via Paystack, track attendance, generate report cards and keep parents
-                        updated — one platform built for how Nigerian schools actually run. Not adapted from
-                        somewhere else.</p>
-                    <div id="cta1">
-                        <div class="hero-cta">
-                            <p><b>🏫 342 Nigerian pioneer schools</b></p>
-                            <input type="email" id="e1" placeholder="your email address" aria-label="School email address">
-                            <input type="tel" id="p1" placeholder="WhatsApp number (optional)" aria-label="WhatsApp number for updates" autocomplete="tel">
-                            <button class="pill" onclick="join(1)">Get started free — no card required</button>
-                        </div>
-                        <p class="hero-note">✓ Free to join · ✓ No credit card · ✓ Pioneer pricing locked in forever
-                        </p>
-                        <p class="form-legal">By joining, you agree to our <a href="/terms-of-service">Terms of
-                                Service</a> and <a href="/privacy-policy">Privacy Policy</a>.</p>
-                        <a href="https://wa.me/2347049677393?text=Hi%20SchoolKit%2C%20I%27d%20like%20early%20access"
-                            target="_blank" class="wa-link" data-location="hero">
-                            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"
-                                style="vertical-align:middle;margin-right:6px">
-                                <path
-                                    d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
-                            </svg>
-                            Or chat us on WhatsApp →
-                        </a>
-                        <a href="https://whatsapp.com/channel/0029VbD94cGGk1FoxskJ7A30"
-                            target="_blank" rel="noopener noreferrer" class="wa-link" data-location="hero-channel">
-                            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"
-                                style="vertical-align:middle;margin-right:6px">
-                                <path
-                                    d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
-                            </svg>
-                            Follow us on WhatsApp for updates →
-                        </a>
-                        <p class="hero-ok" id="ok1">Thank you — your school is on the list. We'll reach out from
-                            hello@schoolkit.ng.</p>
-                        <a href="https://whatsapp.com/channel/0029VbD94cGGk1FoxskJ7A30"
-                            target="_blank" rel="noopener noreferrer" class="wa-link wa-success-link" id="ok1-wa" data-location="hero-success-channel">
-                            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"
-                                style="vertical-align:middle;margin-right:6px">
-                                <path
-                                    d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
-                            </svg>
-                            Follow us on WhatsApp for updates →
-                        </a>
-                    </div>
-                </div>
-                <aside class="hero-aside">
-                    <div class="stat">
-                        <div class="n"><b>1</b> platform</div>
-                        <div class="c">Replacing spreadsheets, paper registers and scattered WhatsApp groups</div>
-                    </div>
-                    <div class="stat">
-                        <div class="n">6 <b>roles</b></div>
-                        <div class="c">Owner, admin, bursar, teacher, guardian and student — each with their own view</div>
-                    </div>
-                    <div class="stat">
-                        <div class="n">100% <b>offline-ready</b></div>
-                        <div class="c">Keeps working when the network doesn't, then syncs</div>
-                    </div>
-                </aside>
-            </div>
-
-            <div class="hero-panel rv">
-                <div class="hp-top"><span></span><span></span><span></span>
-                    <div class="t">SchoolKit — Owner dashboard · Greenfield Academy</div>
-                </div>
-                <div class="hp-body">
-                    <div class="hp-side">
-                        <div class="si on"><span class="dt"></span>Overview</div>
-                        <div class="si"><span class="dt"></span>Fees &amp; payments</div>
-                        <div class="si"><span class="dt"></span>Results</div>
-                        <div class="si"><span class="dt"></span>Attendance</div>
-                        <div class="si"><span class="dt"></span>Parents</div>
-                        <div class="si"><span class="dt"></span>AI tutor</div>
-                    </div>
-                    <div class="hp-main">
-                        <div class="hp-h">
-                            <h4>This term at a glance</h4><span class="term">Second Term · 2025/26</span>
-                        </div>
-                        <div class="hp-stats">
-                            <div class="hp-stat">
-                                <div class="l">Fees collected</div>
-                                <div class="v g">₦18.4M</div>
-                            </div>
-                            <div class="hp-stat">
-                                <div class="l">Outstanding</div>
-                                <div class="v">₦2.1M</div>
-                            </div>
-                            <div class="hp-stat">
-                                <div class="l">Attendance</div>
-                                <div class="v">96.3%</div>
-                            </div>
-                        </div>
-                        <div class="hp-chart">
-                            <div class="cl">Fee collection by week</div>
-                            <div class="bars">
-                                <div style="height:34%;animation-delay:.05s"></div>
-                                <div style="height:52%;animation-delay:.12s"></div>
-                                <div style="height:46%;animation-delay:.19s"></div>
-                                <div style="height:68%;animation-delay:.26s"></div>
-                                <div style="height:60%;animation-delay:.33s"></div>
-                                <div style="height:82%;animation-delay:.4s"></div>
-                                <div style="height:74%;animation-delay:.47s"></div>
-                                <div class="hl" style="height:100%;animation-delay:.54s"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </header>
-
-    <section class="stats-strip">
-        <div class="wrap">
-            <div class="stats-grid">
-                <div class="stat-item">
-                    <div class="sv">100%</div>
-                    <div class="sl">Offline-ready</div>
-                </div>
-                <div class="stat-item">
-                    <div class="sv">Paystack</div>
-                    <div class="sl">Native payments</div>
-                </div>
-                <div class="stat-item">
-                    <div class="sv">342</div>
-                    <div class="sl">Pioneer schools</div>
-                </div>
-                <div class="stat-item">
-                    <div class="sv">Lagos 🇳🇬</div>
-                    <div class="sl">Built here, for here</div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="blk" id="pain">
-        <div class="wrap">
-            <div class="lead rv">
-                <div>
-                    <div class="eye">The reality</div>
-                    <h2>Sound familiar?</h2>
-                </div>
-                <p>The everyday friction of running a Nigerian private school — the stuff that quietly eats a term.</p>
-            </div>
-            <div class="pain-grid rv">
-                <div class="pain-card">
-                    <div class="pi">📒</div>
-                    <h3>Still reconciling fees by hand?</h3>
-                    <p>Every term Nigerian schools lose ₦400,000–₦800,000 in unreconciled payments. Not stolen. Just
-                        lost in the chaos of manual admin.</p>
-                </div>
-                <div class="pain-card">
-                    <div class="pi">💬</div>
-                    <h3>"I already paid that."</h3>
-                    <p>The four most stressful words in school admin. With no digital receipts, every payment
-                        becomes a potential dispute.</p>
-                </div>
-                <div class="pain-card">
-                    <div class="pi">⚡</div>
-                    <h3>NEPA took light. Again.</h3>
-                    <p>Most school software stops working without internet. SchoolKit works 100% offline — built
-                        for Nigerian infrastructure.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="marq">
-        <div class="wrap">
-            <div class="lbl">Built for how Nigerian schools actually run</div>
-        </div>
-        <div class="track" id="track">
-            <div class="it"><b>Paystack</b> fee collection</div>
-            <div class="it"><b>SMS &amp; WhatsApp</b> to parents</div>
-            <div class="it"><b>WAEC / NECO</b> aligned</div>
-            <div class="it"><b>OTP</b> parent login</div>
-            <div class="it"><b>Offline-first</b> by design</div>
-            <div class="it"><b>Bank-grade</b> security</div>
-        </div>
-    </section>
-
-    <section class="blk" id="platform">
-        <div class="wrap">
-            <div class="lead rv">
-                <div>
-                    <div class="eye">The platform</div>
-                    <h2>Everything the school runs on, <span class="it">in one place.</span></h2>
-                </div>
-                <p>No more reconciling fee records by hand or chasing results across notebooks. SchoolKit connects the
-                    whole operation, so the people running a school can spend less time on admin and more on children.
-                </p>
-            </div>
-
-            <div class="feat-row rv">
-                <div class="num">01</div>
-                <h3>Fees &amp; payments</h3>
-                <div class="fx">Collect school fees online through Paystack, see every student's balance at a glance,
-                    and send reminders automatically. Money is tracked to the kobo — never an estimate.<br><span
-                        class="tag">Paystack</span></div>
-            </div>
-            <div class="feat-row rv">
-                <div class="num">02</div>
-                <h3>Results &amp; report cards</h3>
-                <div class="fx">Record scores once. Grades compute themselves, positions rank automatically, and
-                    polished termly report cards reach parents the moment they're approved.<br><span class="tag">WAEC /
-                        NECO grading</span></div>
-            </div>
-            <div class="feat-row rv">
-                <div class="num">03</div>
-                <h3>Attendance &amp; class management</h3>
-                <div class="fx">Mark a register in seconds, spot a pattern before it becomes a problem, and organise
-                    terms, classes and staff without the timetable headache.<br><span class="tag">Works offline</span>
-                </div>
-            </div>
-            <div class="feat-row rv">
-                <div class="num">04</div>
-                <h3>Parents, closer than ever</h3>
-                <div class="fx">Parents log in with a one-time code — nothing to remember, nothing to reset. Fees,
-                    results and announcements arrive on the phone already in their pocket, over SMS and
-                    WhatsApp.<br><span class="tag">OTP login</span></div>
-            </div>
-        </div>
-    </section>
-
-    <section class="blk" id="features" style="padding-top:0">
-        <div class="wrap">
-            <div class="lead rv">
-                <div>
-                    <div class="eye">Full feature set</div>
-                    <h2>Everything your school needs. <span class="it">One platform.</span></h2>
-                </div>
-                <p>Built for how Nigerian private schools actually run — not adapted from London or imported from
-                    India.</p>
-            </div>
-            <div class="feat-grid rv">
-                <div class="feat-card">
-                    <span class="badge live">✓ Live now</span>
-                    <h3>Fee Collection via Paystack</h3>
-                    <p>Collect school fees online via Paystack, bank transfer or card. Track payments in real-time.
-                        Send instant digital receipts automatically. No more cash disputes or lost receipts.</p>
-                </div>
-                <div class="feat-card">
-                    <span class="badge live">✓ Live now</span>
-                    <h3>Student &amp; Enrollment Management</h3>
-                    <p>Complete student records, enrollment tracking, class management and student history in one
-                        place. Search any student in seconds.</p>
-                </div>
-                <div class="feat-card">
-                    <span class="badge live">✓ Live now</span>
-                    <h3>Attendance Tracking</h3>
-                    <p>Mark and track attendance digitally across all classes. Parents get notified automatically
-                        when their child is absent.</p>
-                </div>
-                <div class="feat-card">
-                    <span class="badge live">✓ Live now</span>
-                    <h3>Grading &amp; Report Cards</h3>
-                    <p>Compute results automatically and generate professional report cards in minutes — not the 3
-                        days it currently takes on Excel.</p>
-                </div>
-                <div class="feat-card">
-                    <span class="badge live">✓ Live now</span>
-                    <h3>Staff Management</h3>
-                    <p>Manage teaching and non-teaching staff, assign roles, set permissions and track staff
-                        records.</p>
-                </div>
-                <div class="feat-card">
-                    <span class="badge live">✓ Live now</span>
-                    <h3>Finance Dashboard</h3>
-                    <p>Real-time view of collection rate, total invoiced, outstanding balances and net position —
-                        every term, at a glance.</p>
-                </div>
-                <div class="feat-card">
-                    <span class="badge live">✓ Live now</span>
-                    <h3>Parent Communication</h3>
-                    <p>Keep parents updated via WhatsApp and email automatically. Receipts, results, announcements —
-                        all delivered instantly.</p>
-                </div>
-                <div class="feat-card">
-                    <span class="badge live">✓ Live now</span>
-                    <h3>100% Offline-Ready</h3>
-                    <p>Full functionality even without internet. SchoolKit works when NEPA takes light. Syncs
-                        automatically when connection returns.</p>
-                </div>
-                <div class="feat-card soon">
-                    <span class="badge soon">🕐 Coming soon</span>
-                    <h3>Mobile App</h3>
-                    <p>Native Android and iOS apps for admins, teachers and parents — attendance, fees and results
-                        from your phone. In development now; pioneer schools get first access.</p>
-                </div>
-            </div>
-            <div class="feat-soon rv">
-                <div class="eye">Coming soon</div>
-                <div class="soon-tags">
-                    <span class="soon-tag">🕐 AI Tutor</span>
-                    <span class="soon-tag">🕐 Reports &amp; Analytics</span>
-                    <span class="soon-tag">🕐 Lesson Notes</span>
-                    <span class="soon-tag">🕐 Timetable Management</span>
-                    <span class="soon-tag">🕐 Event Calendar</span>
-                    <span class="soon-tag">🕐 Assessments &amp; Exams</span>
-                    <span class="soon-tag">🕐 Result Checker</span>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="blk" id="ai" style="padding-top:0">
-        <div class="wrap">
-            <div class="ai rv">
-                <img class="kbg"
-                    src="data:image/png;base64,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"
-                    alt="">
-                <div class="ai-grid">
-                    <div>
-                        <div class="eye">Coming with AI</div>
-                        <h2>A tutor that actually knows the <span class="it">Nigerian syllabus.</span></h2>
-                        <p>SchoolKit's tutor is grounded in the WAEC and NECO curriculum, so students get help that
-                            matches what they're examined on — not generic answers from somewhere else. And teachers
-                            stay in command: every AI-generated lesson or quiz waits for their approval before a student
-                            ever sees it.</p>
-                    </div>
-                    <div class="chat">
-                        <div class="ct"><span class="live"></span>SchoolKit Tutor · SS1 Biology</div>
-                        <div class="b q">Explain photosynthesis the way it comes up in WAEC</div>
-                        <div class="b a"><b>Tutor:</b> Photosynthesis is how green plants make food using sunlight.
-                            Let's take it the way your syllabus frames it — the reactants, the process in the
-                            chloroplast, then the products…</div>
-                        <div class="b q">Now give me 3 practice questions</div>
-                        <div class="b gate">⚑ 3 questions drafted — waiting for your teacher to review and assign</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="blk" id="how" style="padding-top:0">
-        <div class="wrap">
-            <h2 class="testi-h2">Set up in minutes. <span class="it">Running by end of day.</span></h2>
-            <div class="how-grid rv">
-                <div class="how-step">
-                    <div class="hn">Step 01</div>
-                    <div class="hi">🏫</div>
-                    <h3>Create your school</h3>
-                    <p>Sign up free, add your school details and set up your fee structure in under 10 minutes.</p>
-                </div>
-                <div class="how-step">
-                    <div class="hn">Step 02</div>
-                    <div class="hi">👩‍🎓</div>
-                    <h3>Add students and staff</h3>
-                    <p>Import your student list or add them manually. Assign classes, set fees and configure
-                        everything once.</p>
-                </div>
-                <div class="how-step">
-                    <div class="hn">Step 03</div>
-                    <div class="hi">🚀</div>
-                    <h3>Run your school</h3>
-                    <p>Collect fees via Paystack, track attendance, generate report cards and keep parents updated
-                        — automatically, every term.</p>
-                </div>
-            </div>
-
-            <a class="how-demo" href="/demo" data-location="how-demo">
-                <span class="how-demo-thumb">
-                    <img src="https://i.ytimg.com/vi/14Ie5eFYbzY/maxresdefault.jpg" alt="" width="1280"
-                        height="720" loading="lazy" decoding="async">
-                    <span class="how-demo-play" aria-hidden="true">&#9654;</span>
-                </span>
-                <span class="how-demo-copy">
-                    <span class="how-demo-t">Watch the 2-minute walkthrough</span>
-                    <span class="how-demo-d">See a school set up from scratch — creating the school, setting up the
-                        academic year, adding students and inviting staff.</span>
-                </span>
-            </a>
-        </div>
-    </section>
-
-    <section class="blk pricing-sec" id="pricing">
-        <div class="wrap">
-            <h2 class="testi-h2">Simple, honest <span class="it">pricing.</span></h2>
-            <p class="pricing-lede">Per term. No hidden fees. Cancel anytime.</p>
-
-            <div class="price-toggle rv" role="group" aria-label="Billing period">
-                <button type="button" class="pt-btn active" data-period="term" onclick="setPeriod('term')">Per
-                    Term</button>
-                <button type="button" class="pt-btn" data-period="year" onclick="setPeriod('year')">Per Year
-                    <span class="pt-off">Save 10%</span></button>
-            </div>
-
-            <div class="price-grid rv">
+<div class="sk-home">
+<header class="sk-hero"><div class="wrap sk-hero-grid">
+  <div class="sk-hero-copy">
+    <p class="sk-eyebrow"><span></span> SCHOOL MANAGEMENT, MADE FOR NIGERIA</p>
+    <h1>A busy school.<br>A clearer day.<br><mark>That’s SchoolKit.</mark></h1>
+    <p class="sk-intro">Fees, results, admissions and everyday school life — together in one place. Give your staff less to chase and your parents more clarity.</p>
+    <div class="sk-actions"><a href="https://app.schoolkit.ng" class="sk-button pill">Get started free <span aria-hidden="true">↗</span></a><a href="/demo" class="sk-text-link">See it in action <span aria-hidden="true">→</span></a></div>
+    <p class="sk-fine">Free for up to 100 students. No credit card required.</p>
+    <div class="sk-hero-checks"><span>✓ Built for Nigerian private schools</span><span>✓ Your team, working together</span></div>
+  </div>
+  <figure class="sk-product-scene" aria-label="Illustrative SchoolKit dashboard with example school data">
+    <div class="sk-scene-note">A little more clarity.<br>A lot less chasing.<svg viewBox="0 0 100 45" aria-hidden="true"><path d="M3 3 Q25 57 84 23 M70 17 L87 22 L78 36"/></svg></div>
+    <div class="sk-product-window">
+      <div class="sk-window-top"><span class="sk-window-dots" aria-hidden="true">● ● ●</span><span>SchoolKit / Your school</span><span class="sk-demo-badge">Example view</span></div>
+      <div class="sk-app-grid"><div class="sk-app-nav" aria-hidden="true"><strong>sk<span>•</span></strong><span class="sk-nav-active">◫ Overview</span><span>▤ Students</span><span>↗ Bursary</span><span>▧ Academics</span><span>◌ Parents</span><span>⊞ Operations</span><small>FIRST TERM<br>2026 / 2027</small></div>
+      <div class="sk-app-main"><div class="sk-app-heading"><div><p>YOUR SCHOOL, AT A GLANCE</p><h2>Good morning, Ada.</h2></div><span class="sk-avatar" aria-hidden="true">AO</span></div>
+      <div class="sk-metrics"><div><span>Fees collected</span><strong>₦8.4m</strong><small>This term</small></div><div><span>Students</span><strong>248</strong><small>Across 12 classes</small></div><div><span>Attendance</span><strong>96%</strong><small>Today</small></div></div>
+      <div class="sk-chart"><div><strong>Fee collection</strong><span>This term</span></div><div class="sk-chart-bars" aria-hidden="true"><i style="--bar:28%"></i><i style="--bar:45%"></i><i style="--bar:38%"></i><i style="--bar:62%"></i><i style="--bar:54%"></i><i style="--bar:78%"></i><i style="--bar:70%"></i><i style="--bar:94%"></i></div><div class="sk-chart-axis"><span>Week 1</span><span>Week 8</span></div></div>
+      <div class="sk-app-activity"><span class="sk-check-icon" aria-hidden="true">✓</span><div><strong>Payment recorded</strong><span>Basic 4 · Receipt issued</span></div><b>₦45,000</b></div></div></div>
+    </div>
+    <div class="sk-floating-note"><span aria-hidden="true">✓</span><div><strong>One student. One record.</strong><small>From admission to the next term.</small></div></div>
+    <figcaption>Illustrative dashboard. Figures shown are sample data.</figcaption>
+  </figure>
+</div>
+<div class="wrap sk-proof-row"><div><strong>Fees &amp; receipts</strong><span>Payments through Paystack</span></div><div><strong>Results &amp; report cards</strong><span>Scores to parent-ready reports</span></div><div><strong>Admissions to operations</strong><span>The rest of school life, connected</span></div></div>
+</header>
+<section class="sk-section sk-workflow" id="platform"><div class="wrap">
+  <div class="sk-section-heading"><div><p class="sk-eyebrow">LESS BACK AND FORTH</p><h2>Goodbye, scattered records.<br>Hello, <em>joined-up school days.</em></h2></div><p>A bank alert here. A score sheet there. Another message asking for a balance. Bring the work back to one place.</p></div>
+  <div class="sk-workflow-grid">
+    <article class="sk-work-card sk-fees-card"><div class="sk-card-top"><span class="sk-number">01 / THE BURSARY</span><span aria-hidden="true">↗</span></div><h3>Know what’s paid.<br>And what’s still due.</h3><p>Create bills, collect payments through Paystack and keep part payments, balances and receipts attached to the right student.</p><div class="sk-invoice"><div><span>STUDENT ACCOUNT · EXAMPLE</span><strong>Basic 4 · First term</strong></div><dl><div><dt>Total billed</dt><dd>₦125,000</dd></div><div><dt>Paid</dt><dd>₦80,000</dd></div><div><dt>Balance</dt><dd>₦45,000</dd></div></dl><span class="sk-status">Part payment recorded</span></div><a href="/features/school-fees-management-software" class="sk-text-link">Explore fee management <span aria-hidden="true">→</span></a></article>
+    <article class="sk-work-card sk-results-card"><div class="sk-card-top"><span class="sk-number">02 / THE CLASSROOM</span><span aria-hidden="true">↗</span></div><h3>From entered scores<br>to a finished report.</h3><p>Record CA and exam marks, calculate grades and prepare termly report cards. Release approved results to parents, with optional result PINs.</p><div class="sk-report"><div><span class="sk-report-icon" aria-hidden="true">▧</span><strong>Term report</strong><span class="sk-status">Ready for review</span></div><table><caption class="sk-sr-only">Example report card scores</caption><thead><tr><th scope="col">Subject</th><th scope="col">CA</th><th scope="col">Exam</th><th scope="col">Total</th></tr></thead><tbody><tr><td>English</td><td>32</td><td>50</td><td>82</td></tr><tr><td>Mathematics</td><td>35</td><td>53</td><td>88</td></tr><tr><td>Basic Science</td><td>30</td><td>48</td><td>78</td></tr></tbody></table><small>Illustrative scores · Your school’s grading setup</small></div><a href="/features/result-management-software" class="sk-text-link">Explore results &amp; reports <span aria-hidden="true">→</span></a></article>
+  </div>
+</div></section>
+<section class="sk-section sk-operations" id="features"><div class="wrap">
+  <div class="sk-section-heading"><div><p class="sk-eyebrow">THE WHOLE SCHOOL PICTURE</p><h2>There’s more to a school<br>than fees and results.</h2></div><p>Handle the everyday details that keep your school moving, with records your team can actually find.</p></div>
+  <div class="sk-operations-grid">
+    <article><span class="sk-line-icon" aria-hidden="true">↗</span><h3>Admissions, without retyping</h3><p>Families apply on your school’s admissions page. Review documents, record assessments and admit accepted applicants from the same record.</p></article>
+    <article><span class="sk-line-icon" aria-hidden="true">▤</span><h3>A school store that adds up</h3><p>Track uniforms by size, textbooks and stationery. Store sales go onto the student’s bill, with stock takes and low-stock alerts.</p></article>
+    <article><span class="sk-line-icon" aria-hidden="true">◌</span><h3>Parents, in the conversation</h3><p>Answer private parent messages from a shared inbox. Send announcements by email and collect attendance replies for school events.</p></article>
+    <article><span class="sk-line-icon" aria-hidden="true">▧</span><h3>Classwork, carried through</h3><p>Students submit homework as typed answers or photos. Build question banks and export exam papers, with teacher review of AI drafts.</p></article>
+    <article><span class="sk-line-icon" aria-hidden="true">⊞</span><h3>The rest of the school day</h3><p>Manage hostel beds, exeat requests, bus pick-up lists, library lending and sickbay visits. Keep related charges with the student’s bill.</p></article>
+    <article><span class="sk-line-icon" aria-hidden="true">✓</span><h3>People and records, organised</h3><p>Print QR-verifiable student and staff ID cards, assign staff roles and download reports in Excel, PDF or CSV.</p></article>
+  </div><a href="/features" class="sk-text-link">Take a closer look at SchoolKit <span aria-hidden="true">→</span></a>
+</div></section>
+<section class="sk-section" id="how"><div class="wrap sk-start-grid">
+  <div class="sk-start-intro"><p class="sk-eyebrow">A PRACTICAL PLACE TO START</p><h2>You don’t have to<br>change everything<br><em>in one morning.</em></h2><p>Start with your school’s records. Get the right people set up. Then bring the next part of your school day into SchoolKit.</p><a href="/demo" class="sk-button sk-button-light">Watch the walkthrough <span aria-hidden="true">↗</span></a></div>
+  <ol class="sk-steps"><li><span>01</span><div><h3>Make it your school</h3><p>Add your school details, academic year, classes and fee structure.</p></div></li><li><span>02</span><div><h3>Bring your people together</h3><p>Add student records and invite staff with the access their work needs.</p></div></li><li><span>03</span><div><h3>Start with one everyday task</h3><p>Take attendance, prepare a bill or enter results. Use the Getting started guide inside SchoolKit as you go.</p></div></li></ol>
+</div></section>
+<section class="sk-section sk-team" id="roles"><div class="wrap"><p class="sk-eyebrow">EVERYONE HAS THEIR PART</p><h2>A shared record.<br><em>The right view for each person.</em></h2><div class="sk-team-grid"><article><span>FOR SCHOOL LEADERS</span><h3>See the bigger picture.</h3><p>Review collections, outstanding fees and school reports without waiting for another spreadsheet.</p></article><article><span>FOR YOUR STAFF</span><h3>Pick up where work left off.</h3><p>Give teachers, bursars and operations staff access that matches their responsibilities.</p></article><article><span>FOR FAMILIES</span><h3>Keep the school close.</h3><p>Give parents a place for school information and private conversations. Students can hand in their homework online.</p></article></div></div></section>
+<section class="sk-section sk-pricing" id="pricing"><div class="wrap"><div class="sk-section-heading"><div><p class="sk-eyebrow">ROOM TO START. ROOM TO GROW.</p><h2>A plan for your school,<br><em>at its current size.</em></h2></div><p>Start free for up to 100 students. Compare the included features before choosing a paid plan.</p></div><div class="price-toggle" role="group" aria-label="Billing period"><button type="button" class="pt-btn active" data-period="term" aria-pressed="true">Per term</button><button type="button" class="pt-btn" data-period="year" aria-pressed="false">Per year <span class="pt-off">Save 10%</span></button></div>
+<div class="price-grid sk-plans">
                 <div class="price-card">
                     <div class="pc-badge">Get started free</div>
                     <h3>Free</h3>
@@ -408,13 +63,13 @@
                         <li class="yes">Student records (up to 100)</li>
                         <li class="yes">Attendance tracking</li>
                         <li class="yes">Basic fee tracking</li>
-                        <li class="no">Paystack payments</li>
-                        <li class="no">Digital receipts</li>
+                        <li class="yes">Paystack payments</li>
+                        <li class="yes">Digital receipts</li>
                         <li class="yes">Termly report cards (SchoolKit template)</li>
                         <li class="no">Parent communication</li>
                     </ul>
                     <div class="pc-action">
-                        <a href="#waitlist" class="pc-cta ghost-emerald">Get started free</a>
+                        <a href="https://app.schoolkit.ng" class="pc-cta ghost-emerald">Get started free</a>
                     </div>
                 </div>
 
@@ -423,7 +78,7 @@
                     <h3>Starter</h3>
                     <div class="pc-price">
                         <span class="price-term">₦45,000<small>/term</small></span>
-                        <span class="price-year">₦40,500<small>/year</small></span>
+                        <span class="price-year">₦121,500<small>/year</small></span>
                     </div>
                     <div class="pc-students">Up to 200 students</div>
                     <div class="pc-divider"></div>
@@ -435,11 +90,11 @@
                         <li class="yes">Parent communication</li>
                         <li class="yes">Staff management</li>
                         <li class="yes">Finance dashboard</li>
-                        <li class="yes">100% offline mode</li>
+                        <li class="yes">Offline mode</li>
                     </ul>
                     <div class="pc-action">
-                        <a href="#waitlist" class="pc-cta primary">Join pioneer schools</a>
-                        <p class="pc-note">Free during early access · early-access price locked for life</p>
+                        <a href="https://app.schoolkit.ng" class="pc-cta primary">Get started</a>
+                        <p class="pc-note">Choose the plan that fits your school.</p>
                     </div>
                 </div>
 
@@ -447,7 +102,7 @@
                     <h3>Growth</h3>
                     <div class="pc-price">
                         <span class="price-term">₦90,000<small>/term</small></span>
-                        <span class="price-year">₦81,000<small>/year</small></span>
+                        <span class="price-year">₦243,000<small>/year</small></span>
                     </div>
                     <div class="pc-students">Up to 600 students</div>
                     <div class="pc-divider"></div>
@@ -459,8 +114,8 @@
                         <li class="yes">Multi-class management</li>
                     </ul>
                     <div class="pc-action">
-                        <a href="#waitlist" class="pc-cta">Join pioneer schools</a>
-                        <p class="pc-note">Free during early access · early-access price locked for life</p>
+                        <a href="https://app.schoolkit.ng" class="pc-cta">Get started</a>
+                        <p class="pc-note">Choose the plan that fits your school.</p>
                     </div>
                 </div>
 
@@ -468,7 +123,7 @@
                     <h3>Professional</h3>
                     <div class="pc-price">
                         <span class="price-term">₦180,000<small>/term</small></span>
-                        <span class="price-year">₦162,000<small>/year</small></span>
+                        <span class="price-year">₦486,000<small>/year</small></span>
                     </div>
                     <div class="pc-students">Up to 1,200 students</div>
                     <div class="pc-divider"></div>
@@ -480,8 +135,8 @@
                         <li class="yes">API access</li>
                     </ul>
                     <div class="pc-action">
-                        <a href="#waitlist" class="pc-cta">Join pioneer schools</a>
-                        <p class="pc-note">Free during early access · early-access price locked for life</p>
+                        <a href="https://app.schoolkit.ng" class="pc-cta">Get started</a>
+                        <p class="pc-note">Choose the plan that fits your school.</p>
                     </div>
                 </div>
 
@@ -501,217 +156,12 @@
                         <li class="yes">Onboarding support</li>
                     </ul>
                     <div class="pc-action">
-                        <a href="#waitlist" class="pc-cta">Contact us</a>
-                        <p class="pc-note">Free during early access · price quoted per school</p>
+                        <a href="https://wa.me/2347049677393" class="pc-cta" data-location="enterprise">Contact us</a>
+                        <p class="pc-note">Talk to us about your school.</p>
                     </div>
                 </div>
             </div>
-
-            <div class="pioneer-box rv">
-                <div class="pb-icon">🎁</div>
-                <p><b>Pioneer offer:</b> Free plan covers up to 100 students — perfect for small and growing schools.
-                    First 50 schools to onboard get the Free plan forever + one term free on any paid plan. Early
-                    access users lock in current pricing for life — it never increases.</p>
-            </div>
-        </div>
-    </section>
-
-    <section class="blk" id="roles" style="padding-top:0">
-        <div class="wrap">
-            <div class="lead rv">
-                <div>
-                    <div class="eye">Who it's for</div>
-                    <h2>One platform. <span class="it">Six happier people.</span></h2>
-                </div>
-                <p>A school isn't one user — it's an owner watching the numbers, an admin keeping the day running, a
-                    bursar reconciling fees, a teacher buried in marking, a guardian who just wants to know their child
-                    is okay, and a student revising at night. SchoolKit was designed for all six.</p>
-            </div>
-            <div class="roles rv">
-                <div class="role">
-                    <div class="rk">For owners</div>
-                    <h4>Clarity, not guesswork</h4>
-                    <p>Fees, enrolment and performance in one view. Run the school on real numbers and make decisions
-                        with confidence.</p>
-                </div>
-                <div class="role">
-                    <div class="rk">For admins</div>
-                    <h4>The whole day, under control</h4>
-                    <p>Enrolment, classes, staff and records in one place. Keep the school running without a paper trail
-                        or a dozen WhatsApp groups.</p>
-                </div>
-                <div class="role">
-                    <div class="rk">For bursars</div>
-                    <h4>Every naira accounted for</h4>
-                    <p>Log payments, issue digital receipts and see who still owes what — balances that reconcile
-                        themselves, not three notebooks that never match.</p>
-                </div>
-                <div class="role">
-                    <div class="rk">For teachers</div>
-                    <h4>Less admin, more teaching</h4>
-                    <p>Record results and attendance in minutes. Let the AI draft the busywork — you stay in control of
-                        what reaches the class.</p>
-                </div>
-                <div class="role">
-                    <div class="rk">For guardians</div>
-                    <h4>Always in the loop</h4>
-                    <p>Pay fees from your phone, get instant updates, and stay close to your child's progress without
-                        chasing anyone.</p>
-                </div>
-                <div class="role">
-                    <div class="rk">For students</div>
-                    <h4>Help, any hour</h4>
-                    <p>A patient tutor for revision that speaks the syllabus, plus easy access to results and
-                        assignments.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="blk" style="padding-top:0">
-        <div class="wrap">
-            <h2 class="testi-h2">Trusted by Nigerian school owners and builders.</h2>
-            <div class="testi-grid">
-                <div class="testi-card rv">
-                    <p class="tq">"We started with a notebook and a WhatsApp group. SchoolKit gives us the <span
-                            class="hl">backbone of a real institution</span> — without the price of one."</p>
-                    <p class="tby"><b>Virgo Fidelis Montessori School</b>The kind of school we're building this
-                        with</p>
-                </div>
-                <div class="testi-card rv">
-                    <p class="tq">"Every term I was spending the first two weeks just trying to figure out who had
-                        paid and who hadn't. My bursar had three different notebooks and they never matched. I
-                        joined the SchoolKit waitlist the same day I saw their post. This is exactly what we've
-                        been waiting for."</p>
-                    <p class="tby"><b>Mrs. Chioma Okafor</b>Proprietress, Sunrise Academy, Enugu · WhatsApp
-                        waitlist</p>
-                </div>
-                <div class="testi-card rv">
-                    <p class="tq">"What got me was the offline mode. Every other software I've tried assumes you
-                        have stable internet. We're in Surulere — NEPA doesn't care about our school management
-                        software. A platform that works without internet and syncs when it's back? That's not a
-                        <span class="hl">feature</span>. That's a necessity."</p>
-                    <p class="tby"><b>Mr. Emeka A</b>School Administrator, Greenfield International School, Lagos
-                        · Instagram comment</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="blk" id="faq" style="padding-top:0">
-        <div class="wrap">
-            <h2 class="testi-h2">Frequently asked questions</h2>
-            <div class="faq-list rv">
-                <details class="faq-item">
-                    <summary>How do I collect school fees online in Nigeria?</summary>
-                    <p>SchoolKit integrates directly with Paystack — Nigeria's most trusted payment platform.
-                        Parents can pay via card, bank transfer or USSD. Payments are tracked in real-time and
-                        digital receipts are sent instantly.</p>
-                </details>
-                <details class="faq-item">
-                    <summary>Does SchoolKit work without internet?</summary>
-                    <p>Yes — SchoolKit is 100% offline-ready. You can mark attendance, record payments and manage
-                        student data without internet. Everything syncs automatically when your connection
-                        returns.</p>
-                </details>
-                <details class="faq-item">
-                    <summary>How much does school management software cost in Nigeria?</summary>
-                    <p>SchoolKit starts completely free for schools with up to 100 students. Paid plans start at
-                        ₦45,000 per term (₦135,000/year) for up to 200 students — that's less than ₦1,000 per
-                        student per year.</p>
-                </details>
-                <details class="faq-item">
-                    <summary>Is SchoolKit suitable for small private schools?</summary>
-                    <p>Yes — SchoolKit was built specifically for Nigerian private schools of all sizes. The Free
-                        plan supports up to 100 students. The Starter plan at ₦45,000/term covers up to 200
-                        students with full features.</p>
-                </details>
-                <details class="faq-item">
-                    <summary>Can parents pay school fees on WhatsApp?</summary>
-                    <p>Parents receive payment links via WhatsApp that they can pay directly via Paystack.
-                        Receipts are also sent to parents on WhatsApp automatically.</p>
-                </details>
-                <details class="faq-item">
-                    <summary>How is SchoolKit different from other school management software in Nigeria?</summary>
-                    <p>SchoolKit is built from scratch for Nigerian schools — not adapted from a UK or Indian
-                        product. It handles the specific realities of Nigerian schools: Paystack payments,
-                        WhatsApp receipts, offline mode for when NEPA takes light, and WAEC-aligned grading.</p>
-                </details>
-                <details class="faq-item">
-                    <summary>Is SchoolKit live?</summary>
-                    <p>Yes. SchoolKit is live on the web today, and early access is still open this term: paid
-                        plans are free while it lasts, and pioneer schools get priority onboarding and their
-                        early-access price locked in for life.</p>
-                </details>
-            </div>
-        </div>
-    </section>
-
-    <span id="waitlist" class="anchor" aria-hidden="true"></span>
-    <section class="final" id="join">
-        <div class="wrap">
-            <div class="final-card rv">
-                <img class="kbg"
-                    src="data:image/png;base64,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"
-                    alt="">
-                <div class="inner">
-                    <div class="eye">Limited pioneer places</div>
-                    <h2>Be one of our <span class="it">pioneer schools.</span></h2>
-                    <p>We're onboarding a small group of schools by hand this year — full setup support, a direct line
-                        to the team, and founding pricing locked in for as long as you stay. Add your school below.</p>
-                    <div id="cta2">
-                        <div class="final-cta">
-                            <input type="email" id="e2" placeholder="your email address" aria-label="School email">
-                            <input type="tel" id="p2" placeholder="WhatsApp number (optional)" aria-label="WhatsApp number for updates" autocomplete="tel">
-                            <button class="pill" onclick="join(2)">Join pioneer schools</button>
-                        </div>
-                        <p class="final-note">We'll reach out personally from hello@schoolkit.ng. No card, no
-                            commitment.</p>
-                        <p class="form-legal final-legal">By joining, you agree to our <a
-                                href="/terms-of-service">Terms of Service</a> and <a href="/privacy-policy">Privacy
-                                Policy</a>.</p>
-                        <a href="https://wa.me/2347049677393?text=Hi%20SchoolKit%2C%20I%27d%20like%20early%20access"
-                            target="_blank" class="wa-link wa-link-final" data-location="final-cta">
-                            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"
-                                style="vertical-align:middle;margin-right:6px">
-                                <path
-                                    d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
-                            </svg>
-                            Or chat us on WhatsApp →
-                        </a>
-                        <a href="https://whatsapp.com/channel/0029VbD94cGGk1FoxskJ7A30"
-                            target="_blank" rel="noopener noreferrer" class="wa-link wa-link-final" data-location="final-cta-channel">
-                            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"
-                                style="vertical-align:middle;margin-right:6px">
-                                <path
-                                    d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
-                            </svg>
-                            Follow us on WhatsApp for updates →
-                        </a>
-                        <p class="final-ok" id="ok2">You're on the list. Talk soon — the SchoolKit team.</p>
-                        <a href="https://whatsapp.com/channel/0029VbD94cGGk1FoxskJ7A30"
-                            target="_blank" rel="noopener noreferrer" class="wa-link wa-link-final wa-success-link" id="ok2-wa" data-location="final-success-channel">
-                            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"
-                                style="vertical-align:middle;margin-right:6px">
-                                <path
-                                    d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
-                            </svg>
-                            Follow us on WhatsApp for updates →
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <div class="sticky-cta" id="stickyCta" role="region" aria-label="Join pioneer schools" hidden>
-        <span class="sticky-cta-text">New term starts Sep 14 — Join free now</span>
-        <a class="sticky-cta-btn" href="#waitlist" data-location="sticky-bar">Get started →</a>
-        <button class="sticky-cta-x" type="button" aria-label="Dismiss">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
-                stroke-linecap="round" aria-hidden="true">
-                <path d="M6 6l12 12M18 6L6 18" />
-            </svg>
-        </button>
-    </div>
-
+<p class="sk-pricing-note">Yearly prices cover three terms with a 10% discount. Confirm payment-processing, messaging and any setup charges before subscribing. <a href="/pricing">View the full plan details →</a></p></div></section>
+<section class="sk-section" id="faq"><div class="wrap sk-faq-layout"><div><p class="sk-eyebrow">A FEW THINGS YOU MAY BE WONDERING</p><h2>Good questions.<br><em>Clear answers.</em></h2><a href="https://wa.me/2347049677393" class="sk-text-link" data-location="faq">Ask us on WhatsApp ↗</a></div><div class="faq-list"><details class="faq-item"><summary>How do I collect school fees online in Nigeria?</summary><p>SchoolKit connects fee collection to Paystack. Parents can use supported payment methods such as card, bank transfer or USSD. Payments, balances and digital receipts stay connected to student records.</p></details><details class="faq-item"><summary>How much does SchoolKit cost?</summary><p>The Free plan covers up to 100 students. Starter is ₦45,000 per term for up to 200 students, Growth is ₦90,000 for up to 600, and Professional is ₦180,000 for up to 1,200. Enterprise pricing is quoted per school. Yearly billing covers three terms with a 10% discount. Payment-processing and communication charges should be checked separately.</p></details><details class="faq-item"><summary>Is SchoolKit live, or do I need to join a waitlist?</summary><p>SchoolKit is live. Open the web app to get started, or message the team on WhatsApp if you want a walkthrough for your school.</p></details><details class="faq-item"><summary>Can SchoolKit handle online admissions?</summary><p>Yes. Families can apply through your school’s admissions page and upload documents. Staff can review applications, record entrance assessments, send offers and admit accepted applicants without retyping their details.</p></details><details class="faq-item"><summary>Does everything work without internet?</summary><p>SchoolKit includes an offline mode for supported tasks. Online payments, sending messages and syncing records need a connection. Ask for a demonstration of the specific tasks your team needs during an outage.</p></details><details class="faq-item"><summary>Can I check which features are included in my plan?</summary><p>Yes. Review the plan comparison and ask the SchoolKit team to confirm the plan needed for your school’s admissions, store, homework or other operations before subscribing.</p></details></div></div></section>
+<span id="waitlist" aria-hidden="true"></span><section class="sk-section sk-final" id="join"><div class="wrap"><div class="sk-final-card"><p class="sk-eyebrow">YOUR NEXT SCHOOL DAY CAN FEEL DIFFERENT</p><h2>Less chasing.<br><mark>More school.</mark></h2><p>Start with the Free plan, or let us walk through the work your school needs to get done.</p><div class="sk-actions"><a href="https://app.schoolkit.ng" class="sk-button pill">Get started free <span aria-hidden="true">↗</span></a><a href="https://wa.me/2347049677393?text=Hello%20SchoolKit%2C%20I%27d%20like%20a%20walkthrough%20for%20my%20school." class="sk-text-link" data-location="homepage-final">Talk to the team →</a></div><p class="sk-fine">Already using SchoolKit? <a href="https://app.schoolkit.ng">Sign in here.</a></p></div></div></section>
+</div>

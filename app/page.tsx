@@ -1,4 +1,6 @@
-import { getHomepageBodyHtml, getHomepageFaqs, getHomepageScript } from "@/lib/landing";
+import "./homepage.css";
+import HomepageInteractions from "@/components/HomepageInteractions";
+import { getHomepageBodyHtml, getHomepageFaqs } from "@/lib/landing";
 import { faqJsonLd } from "@/lib/structured-data";
 import { serializeJsonLd } from "@/lib/json-ld";
 
@@ -14,7 +16,8 @@ export default function Home() {
         />
       )}
       <div dangerouslySetInnerHTML={{ __html: getHomepageBodyHtml() }} />
-      <script dangerouslySetInnerHTML={{ __html: getHomepageScript() }} />
+      <HomepageInteractions />
     </>
   );
 }
+
