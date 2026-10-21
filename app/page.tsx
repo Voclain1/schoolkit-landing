@@ -1,3 +1,4 @@
+import HomepageEarlyAccess from "@/components/HomepageEarlyAccess";
 import "./homepage.css";
 import HomepageInteractions from "@/components/HomepageInteractions";
 import { getHomepageBodyHtml, getHomepageFaqs } from "@/lib/landing";
@@ -16,6 +17,7 @@ export default function Home() {
         />
       )}
       <div dangerouslySetInnerHTML={{ __html: getHomepageBodyHtml() }} />
+      <HomepageEarlyAccess />
       <HomepageInteractions />
     </>
   );

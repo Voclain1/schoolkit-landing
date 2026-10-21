@@ -30,7 +30,7 @@ export default function NavMenu() {
         </Link>
       </div>
       <Link href="/#join" className="pill" onClick={close}>
-        Get started free
+        Join early access
       </Link>
       <button
         type="button"

@@ -56,3 +56,7 @@ Raw tool responses are saved in `keyword-research-2026-10-21.json`. No paid arti
 - Chromium preview was attempted but failed on a sandbox socket permission error before a page opened. Responsive CSS is implemented; rendered layouts and interactions still require a browser review.
 
 This branch is for review, not a production deployment. Existing binary assets remain in GitHub; the workspace was reconstructed from UTF-8 source through the connector because Git cloning failed. Only explicitly changed/new files are included in the proposed GitHub tree.
+
+## Follow-up: early-access form restored
+
+At the owner’s request, the homepage again includes an email/optional WhatsApp early-access form, with hero and navigation links pointing to it. The live app remains accessible. The form uses the existing `/api/waitlist` endpoint for confirmed email capture and preserves the original Google Apps Script spreadsheet sync for email/WhatsApp details. Spreadsheet responses are opaque; the success message confirms email signup only. Loading, retry/error and success states are included; no real lead was submitted during validation.
