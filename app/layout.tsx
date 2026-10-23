@@ -29,10 +29,10 @@ const fraunces = Fraunces({
 
 const TITLE = "School Management Software for Nigerian Schools | SchoolKit";
 const DESCRIPTION =
-  "SchoolKit is school management software for Nigerian private schools — fees, attendance, results, parent communication and a WAEC-aligned AI tutor, all in one platform.";
+  "School management software for Nigerian private schools. Manage fees, results, admissions, parent communication and daily operations in one place.";
 const OG_TITLE = "SchoolKit — Run Your School. Not Your Spreadsheets.";
 const OG_DESCRIPTION =
-  "The school management platform built for Nigerian private schools. Fee collection, attendance, results and AI tutor. Free early access.";
+  "Fees, results, admissions and everyday school life, together. School management software for Nigerian private schools. Free for up to 100 students.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -63,7 +63,7 @@ const jsonLd = {
   "@type": "SoftwareApplication",
   name: BRAND.name,
   applicationCategory: "EducationalApplication",
-  operatingSystem: "Web, iOS, Android",
+  operatingSystem: "Web",
   description: DESCRIPTION,
   url: SITE_URL,
   offers: PLANS.filter((plan) => plan.pricePerTerm !== null).map((plan) => ({
@@ -153,3 +153,4 @@ export default function RootLayout({
     </html>
   );
 }
+

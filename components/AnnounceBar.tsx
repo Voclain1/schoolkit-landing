@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 
-const STORAGE_KEY = "sk-announce-app-dismissed";
+const STORAGE_KEY = "sk-announce-operations-dismissed";
 
 export default function AnnounceBar() {
   const [dismissed, setDismissed] = useState(false);
@@ -36,7 +36,7 @@ export default function AnnounceBar() {
   return (
     <div className="announce" role="region" aria-label="Announcement">
       <p className="announce-txt">
-        <strong>SchoolKit is live!</strong> Manage your school on web today. Mobile app coming soon.
+        <strong>More of your school, connected.</strong> Admissions, the school store, homework and everyday operations.
       </p>
       <button type="button" className="announce-x" onClick={dismiss} aria-label="Dismiss announcement">
         <svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true">
@@ -46,3 +46,4 @@ export default function AnnounceBar() {
     </div>
   );
 }
+

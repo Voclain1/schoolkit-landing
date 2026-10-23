@@ -14,12 +14,11 @@ export default function Footer() {
           <nav className="fnav">
             <Link href="/features">Features</Link>
             <Link href="/demo">Demo</Link>
-            <Link href="/#ai">AI Tutor</Link>
+            <Link href="/#how">Getting started</Link>
             <Link href="/#roles">Who it&apos;s for</Link>
             <Link href="/pricing">Pricing</Link>
             <Link href="/tools">Free tools</Link>
             <Link href="/blog">Blog</Link>
-            <Link href="/pioneer">Pioneer Offer</Link>
             <Link href="/about">About</Link>
             <Link href="/press">Press</Link>
             <Link href="/privacy-policy">Privacy</Link>
@@ -27,7 +26,7 @@ export default function Footer() {
             <a href="mailto:hello@schoolkit.ng">Contact</a>
           </nav>
           <a
-            href="https://wa.me/2347049677393?text=Hi%20SchoolKit%2C%20I%27d%20like%20early%20access"
+            href="https://wa.me/2347049677393?text=Hi%20SchoolKit%2C%20I%27d%20like%20a%20school%20walkthrough"
             target="_blank"
             rel="noopener noreferrer"
             className="footer-wa"
@@ -59,3 +58,4 @@ export default function Footer() {
     </footer>
   );
 }
+
