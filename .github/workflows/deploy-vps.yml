@@ -1,0 +1,96 @@
+# Deploys schoolkit.ng to the School Kit VPS, beside the apps (naija-class:
+# docs/runbooks/vps-migration.md, infra/vps/deploy-landing.sh). Runs on every
+# push to master once VPS_DEPLOY_ENABLED is "true", or by hand. Vercel keeps
+# deploying until the domain moves; nothing here touches it.
+#
+# Needs the School Kit server set up and deployed once first (it carries
+# deploy-landing.sh). Settings (Settings → Secrets and variables → Actions):
+#   secrets   VPS_HOST, VPS_SSH_KEY   the same as naija-class's
+#             LANDING_ENV_FILE        this site's Vercel variables, NAME=value lines
+#   variables VPS_LANDING_HOST        vps.schoolkit.ng to rehearse, schoolkit.ng after
+#             VPS_DEPLOY_ENABLED      "true" to deploy on every push
+name: deploy-vps
+
+on:
+  push:
+    branches: [master]
+  workflow_dispatch:
+
+concurrency:
+  group: deploy-vps
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+  packages: write
+
+env:
+  IMAGE: ghcr.io/voclain1/schoolkit-landing
+
+jobs:
+  deploy:
+    if: github.event_name == 'workflow_dispatch' || vars.VPS_DEPLOY_ENABLED == 'true'
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Check settings
+        env:
+          LANDING_ENV_FILE: ${{ secrets.LANDING_ENV_FILE }}
+          HOST: ${{ vars.VPS_LANDING_HOST }}
+        run: |
+          [ -n "$LANDING_ENV_FILE" ] || { echo "::error::LANDING_ENV_FILE is not set"; exit 1; }
+          [ -n "$HOST" ] || { echo "::error::VPS_LANDING_HOST is not set"; exit 1; }
+
+      # NEXT_PUBLIC_* is inlined into the page at build time.
+      - name: Public build settings
+        id: public
+        env:
+          LANDING_ENV_FILE: ${{ secrets.LANDING_ENV_FILE }}
+        run: |
+          {
+            echo "args<<ARGS"
+            printf '%s\n' "$LANDING_ENV_FILE" | grep -E '^NEXT_PUBLIC_[A-Z_]+=' || true
+            echo "ARGS"
+          } >> "$GITHUB_OUTPUT"
+
+      - uses: docker/setup-buildx-action@v3
+      - uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+      - uses: docker/build-push-action@v6
+        with:
+          context: .
+          push: true
+          tags: ${{ env.IMAGE }}:${{ github.sha }}
+          build-args: ${{ steps.public.outputs.args }}
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+
+      - uses: ./.github/actions/vps-ssh
+        with:
+          host: ${{ secrets.VPS_HOST }}
+          key: ${{ secrets.VPS_SSH_KEY }}
+
+      - name: Ship settings and switch
+        env:
+          LANDING_ENV_FILE: ${{ secrets.LANDING_ENV_FILE }}
+          HOST: ${{ vars.VPS_LANDING_HOST }}
+          GHCR_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          ssh vps 'test -x /opt/school-kit/deploy-landing.sh' || {
+            echo "::error::The School Kit server has no deploy-landing.sh yet: run naija-class's deploy-vps first."; exit 1; }
+          printf '%s\n' "$LANDING_ENV_FILE" | ssh vps 'umask 077; cat > /opt/school-kit/landing.env'
+          printf '%s' "$GHCR_TOKEN" | ssh vps "docker login ghcr.io -u ${{ github.actor }} --password-stdin"
+          ssh vps "/opt/school-kit/deploy-landing.sh ${GITHUB_SHA} ${HOST}"
+          ssh vps 'docker logout ghcr.io'
+
+      - name: Check the public address
+        env:
+          HOST: ${{ vars.VPS_LANDING_HOST }}
+        run: |
+          sleep 10
+          curl -fsS -o /dev/null -w "https://${HOST}/ %{http_code}\n" "https://${HOST}/"
