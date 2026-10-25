@@ -41,7 +41,7 @@ const CAMPAIGNS = {
   },
   "platform-update-2026-10c": {
     file: "emails/broadcasts/platform-update-2026-10c.html",
-    subject: "SchoolKit update: a clearer dashboard, your school's own web address, and Monday's maintenance",
+    subject: "Your school now has its own web address",
   },
 };
 
