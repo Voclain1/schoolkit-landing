@@ -39,6 +39,10 @@ const CAMPAIGNS = {
     file: "emails/broadcasts/platform-update-2026-10b.html",
     subject: "New in SchoolKit: ID cards, a school store, online admissions and more",
   },
+  "platform-update-2026-10c": {
+    file: "emails/broadcasts/platform-update-2026-10c.html",
+    subject: "SchoolKit update: a clearer dashboard, your school's own web address, and Monday's maintenance",
+  },
 };
 
 const AUDIENCE_ID = "93428f81-01f9-42c2-b031-0aed20b410a7";
