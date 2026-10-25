@@ -177,3 +177,14 @@ To mark the conversions: GA4 → **Admin → Events**, toggle *Mark as key event
 on `pilot_application_submitted`, `school_account_created` and
 `onboarding_completed`. Events must have been received at least once before
 they can be marked.
+
+## Cookie consent (2026-10-25)
+
+GA4 and the Meta Pixel load only after a visitor presses **Accept** on the
+cookie banner (`components/CookieConsent.tsx`, choice stored in
+`localStorage["sk-cookie-consent"]`, `lib/consent.ts`). Before that,
+`trackEvent` drops events rather than queueing them on the dataLayer, and
+`window.fbq` does not exist, so the `fbq?.()` calls are no-ops. Expect GA4 and
+Meta numbers to fall by the share of visitors who decline or never answer;
+that is the cost of asking first. **Cookie settings** in the footer reopens the
+banner. The policy itself is `/cookies`.

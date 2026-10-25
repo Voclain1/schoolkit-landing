@@ -22,10 +22,10 @@ import {
  * Custom funnel events still go through lib/analytics.ts, which scrubs them
  * before they reach GA4.
  *
- * The Meta Pixel is unaffected; it lives in components/MetaPixel.tsx and keeps
- * its own PageView tracking.
+ * The Meta Pixel lives in components/MetaPixel.tsx and keeps its own PageView
+ * tracking. Both are rendered by components/CookieConsent, only after consent.
  */
-export default function Analytics() {
+export default function Analytics({ enabled }: { enabled: boolean }) {
   // Bridge for the inline landing scripts in content/landing/, which are plain
   // JS injected into the page and cannot import this module.
   useEffect(() => {
@@ -37,7 +37,8 @@ export default function Analytics() {
     };
   }, []);
 
-  if (!GA_MEASUREMENT_ID) return null;
+  // GA4 loads only after the visitor accepts cookies (components/CookieConsent).
+  if (!GA_MEASUREMENT_ID || !enabled) return null;
 
   return <GoogleAnalytics gaId={GA_MEASUREMENT_ID} />;
 }

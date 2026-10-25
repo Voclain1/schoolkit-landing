@@ -15,6 +15,8 @@
  * unit tested under plain Node (`npm test`).
  */
 
+import { hasAnalyticsConsent } from "./consent.ts";
+
 export const GA_MEASUREMENT_ID = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID ?? "";
 
 /** The conversion events this site reports. Nothing else should be sent. */
@@ -296,6 +298,8 @@ declare global {
  */
 const gtagPush = function (this: void) {
   if (typeof window === "undefined" || !GA_MEASUREMENT_ID) return;
+  // Nothing is queued before the visitor accepts cookies (app/cookies).
+  if (!hasAnalyticsConsent()) return;
   window.dataLayer = window.dataLayer ?? [];
   // gtag.js reads the `arguments` object off the dataLayer; a rest array is
   // not equivalent and would be ignored by the tag.

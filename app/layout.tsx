@@ -6,8 +6,7 @@ import AnnounceBar from "@/components/AnnounceBar";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import WhatsAppFab from "@/components/WhatsAppFab";
-import MetaPixel from "@/components/MetaPixel";
-import Analytics from "@/components/Analytics";
+import CookieConsent from "@/components/CookieConsent";
 import { BRAND, PLANS, SITE_URL } from "@/lib/brand";
 import "./globals.css";
 
@@ -137,8 +136,6 @@ export default function RootLayout({
         />
       </head>
       <body>
-  <MetaPixel />
-  <Analytics />
 
   <a href="#main-content" className="skip-link">
     Skip to main content
@@ -148,6 +145,7 @@ export default function RootLayout({
         <main id="main-content">{children}</main>
         <Footer />
         <WhatsAppFab />
+        <CookieConsent />
         <script dangerouslySetInnerHTML={{ __html: getSiteScript() }} />
       </body>
     </html>

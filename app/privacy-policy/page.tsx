@@ -18,7 +18,7 @@ export const metadata: Metadata = {
   },
 };
 
-const EFFECTIVE_DATE = "16 August 2026";
+const EFFECTIVE_DATE = "25 October 2026";
 
 const sections: LegalSection[] = [
   {
@@ -46,8 +46,13 @@ const sections: LegalSection[] = [
             your school uses to run day-to-day operations;
           </li>
           <li>
-            <strong>our communications</strong> — the emails and WhatsApp messages we
-            send to schools, staff and parents on a school&apos;s behalf.
+            <strong>school web pages</strong> — each school&apos;s public page at
+            &lt;code&gt;.schoolkit.ng, its admission form and its result checker;
+          </li>
+          <li>
+            <strong>our communications</strong> — the emails, text messages (SMS) and
+            app notifications we send to schools, staff and parents on a school&apos;s
+            behalf.
           </li>
         </ul>
         <p>
@@ -123,8 +128,9 @@ const sections: LegalSection[] = [
         </p>
         <p>
           Schools using SchoolKit to process personal data are bound by our{" "}
-          <Link href="/terms-of-service">Terms of Service</Link>, which incorporate
-          data-processing commitments consistent with the Nigeria Data Protection Act
+          <Link href="/terms-of-service">Terms of Service</Link> and our{" "}
+          <Link href="/data-processing-agreement">Data Processing Agreement</Link>,
+          which set out each side&apos;s duties under the Nigeria Data Protection Act
           2023.
         </p>
       </>
@@ -155,17 +161,51 @@ const sections: LegalSection[] = [
           <li>Scores, grades, comments and generated report cards</li>
           <li>Fee invoices, payment history and outstanding balances</li>
           <li>
+            Homework, assignment answers and files, online exam answers and scores
+          </li>
+          <li>
+            Behaviour and discipline records, library loans, transport routes, hostel
+            places, exeats and ID cards, where the school uses those parts of SchoolKit
+          </li>
+          <li>
             Any additional notes or fields the school chooses to record in free-text
             areas
           </li>
         </ul>
 
+        <h3>Health information (sensitive)</h3>
+        <p>
+          Where a school uses the health and sickbay features, it may record a
+          student&apos;s blood group, allergies, medical conditions, medicines,
+          vaccination records and copies of vaccination cards, sickbay visits and
+          medicines given at school. Health data is sensitive personal data under the
+          NDPA 2023. Only the staff roles the school chooses can see it, every view of a
+          health record is limited by role, and a parent sees only their own
+          child&apos;s. See <a href="#children">section 6</a> for consent.
+        </p>
+
         <h3>Parent and guardian information</h3>
         <ul>
-          <li>Name, relationship to the student, phone number, WhatsApp number, email</li>
+          <li>Name, relationship to the student, phone number, email and address</li>
           <li>Payment records and receipts associated with their ward&apos;s fees</li>
+          <li>
+            Messages they send to the school through the parents&apos; site or app,
+            with any photos attached, and their replies to events and exeat requests
+          </li>
           <li>Delivery status of messages we send on the school&apos;s behalf</li>
+          <li>
+            The time a parent accepted the portal invitation and agreed to this
+            policy, with the version of the wording they saw
+          </li>
         </ul>
+
+        <h3>Admission applications</h3>
+        <p>
+          When a family applies through a school&apos;s admission form, we hold the
+          details and documents they send on the school&apos;s behalf, with the time
+          they gave consent and the version of the consent wording. Applications that
+          do not lead to admission are deleted, as the form tells families.
+        </p>
 
         <h3>Staff information</h3>
         <ul>
@@ -174,6 +214,11 @@ const sections: LegalSection[] = [
             status
           </li>
           <li>Permissions and access level within the school&apos;s account</li>
+          <li>Photograph, salary and bank details, where the school records them</li>
+          <li>
+            BVN, where the school uses payroll — stored encrypted, and every time it is
+            revealed is recorded
+          </li>
           <li>Activity logs showing actions taken in the system</li>
         </ul>
 
@@ -186,12 +231,18 @@ const sections: LegalSection[] = [
           PINs or bank login credentials.</strong>
         </p>
 
-        <h3>AI Tutor interactions (feature in development)</h3>
+        <h3>Photos on school web pages</h3>
         <p>
-          Where a school enables the AI Tutor, we process the questions a student asks,
-          the responses generated, the subject and class context, and the teacher&apos;s
-          approval or rejection of generated material. See{" "}
-          <a href="#ai-tutor">section 9</a> for how this data is handled.
+          A school can publish news and photos on its public page. Photos of pupils are
+          not allowed there: staff must confirm, photo by photo, that a photo shows no
+          pupils, and anyone can report a photo to us for removal.
+        </p>
+
+        <h3>AI-assisted features</h3>
+        <p>
+          Where a school uses them, we process what a teacher asks for and what is
+          drafted in reply, together with the class and subject. See{" "}
+          <a href="#ai-tutor">section 9</a> for what is sent and what is not.
         </p>
 
         <h3>Technical and usage information</h3>
@@ -247,7 +298,14 @@ const sections: LegalSection[] = [
           <li>
             <strong>Instructions of the data controller</strong> — where we process
             student, parent and staff data on your school&apos;s behalf, the school
-            establishes the lawful basis and we act on its instructions.
+            establishes the lawful basis and we act on its instructions, under our{" "}
+            <Link href="/data-processing-agreement">Data Processing Agreement</Link>.
+          </li>
+          <li>
+            <strong>Sensitive data</strong> — health information is processed only on
+            the school&apos;s instructions, for the child&apos;s care at school, and only
+            where the school has the parent&apos;s explicit consent or another lawful
+            ground under section 30 of the NDPA 2023.
           </li>
         </ul>
         <p>
@@ -270,15 +328,27 @@ const sections: LegalSection[] = [
         <p>
           <strong>SchoolKit is not directed at children.</strong> Accounts are created
           and controlled by schools. Students access only the parts of the platform a
-          school assigns to them — for example, results or, where enabled, the AI Tutor.
+          school assigns to them — for example, their timetable, homework and results.
         </p>
         <p>
-          <strong>Consent is obtained by the school.</strong> Under the NDPA 2023,
-          processing a child&apos;s personal data generally requires the consent of a
-          parent or legal guardian. Your school is responsible for obtaining that
-          consent, usually through its enrolment forms or parent handbook, and for
-          notifying parents that it uses SchoolKit. By uploading student data to
-          SchoolKit, a school confirms it has the authority to do so.
+          <strong>Consent is obtained by the school.</strong> Under section 31 of the
+          NDPA 2023, processing a child&apos;s personal data requires the consent of a
+          parent or legal guardian. The school is responsible for obtaining that
+          consent, usually through its enrolment forms or parent handbook, for
+          obtaining explicit consent before recording health information, and for
+          telling parents that it uses SchoolKit. When a school owner creates an
+          account, and again when setup is finished, they confirm that the school has
+          that consent and the authority to put children&apos;s records into SchoolKit;
+          we record when they did.
+        </p>
+        <p>
+          <strong>How SchoolKit helps.</strong> We give schools a ready-made letter to
+          tell parents the school uses SchoolKit, what it holds and how to ask
+          questions. Families applying online give consent on the admission form, and
+          we record the time and wording. Parents agree to this policy when they first
+          sign in to the parents&apos; site or app, and we record that too. A
+          student&apos;s own app account is set up only through an invitation from
+          their parent.
         </p>
         <p>
           <strong>What we will not do.</strong> We do not sell children&apos;s data, do
@@ -336,8 +406,9 @@ const sections: LegalSection[] = [
       <>
         <p>
           On your school&apos;s instruction, SchoolKit sends transactional messages by
-          email and WhatsApp: payment receipts, absence notifications, results
-          availability, invoices and school announcements.
+          email, text message (SMS) and app notification: payment receipts, absence
+          notifications, results availability, invoices, sickbay and exeat notices, and
+          school announcements.
         </p>
         <p>
           These are sent because the school has a relationship with the recipient and
@@ -346,10 +417,11 @@ const sections: LegalSection[] = [
           settings and the contact list.
         </p>
         <p>
-          WhatsApp messages are delivered through Meta&apos;s WhatsApp Business
-          infrastructure and are subject to WhatsApp&apos;s own terms and privacy
-          policy. Email is delivered through Resend. Both providers process delivery
-          metadata such as whether a message was delivered, opened or bounced.
+          Email is delivered through Resend, text messages through Termii, and app
+          notifications through Expo and Apple&apos;s or Google&apos;s notification
+          services. These providers process delivery metadata such as whether a message
+          was delivered or bounced. A parent can stop announcement emails with the
+          unsubscribe link in each one, or in the parents&apos; site settings.
         </p>
         <p>
           Marketing emails from SchoolKit itself — product updates and early-access news
@@ -361,39 +433,51 @@ const sections: LegalSection[] = [
   },
   {
     id: "ai-tutor",
-    heading: "The AI Tutor",
+    heading: "AI-assisted features",
     body: (
       <>
         <p>
-          The AI Tutor is in development and is grounded in the WAEC and NECO curriculum.
-          Where a school enables it, the following applies.
+          SchoolKit can draft some of a teacher&apos;s work: report card comments, lesson
+          plans, exam questions, class insights, weekly summaries for parents and
+          marking feedback. A school can switch these off, and SchoolKit can switch
+          them off for a school. The following applies to all of them.
         </p>
         <ul>
           <li>
-            <strong>Teachers stay in control.</strong> AI-generated lessons and quizzes
-            are held for teacher review and must be approved before a student sees them.
+            <strong>No child&apos;s name or contact details are sent.</strong> Drafts
+            are made from opaque references and class-level context (for example
+            &quot;a JSS2 student&quot;), never a student&apos;s name, address, date of
+            birth or contact details.
           </li>
           <li>
-            <strong>Questions and responses are processed to deliver the
-            feature</strong> and to let teachers review what was generated for their
-            class.
+            <strong>Two narrow exceptions, both off unless the school turns them
+            on.</strong> <em>Marking feedback</em> sends the student&apos;s typed answer,
+            after SchoolKit removes their name, admission number and classmates&apos;
+            names. <em>Smart Student Import</em> (in beta) sends a photo of a class
+            register the school already holds, so it can be typed up; it includes
+            children&apos;s names, which is the point of the feature. In both cases the
+            content is used for that one request and is not kept by the AI service, and
+            nothing is saved to a student&apos;s record until a member of staff has
+            checked it and confirmed.
           </li>
           <li>
-            <strong>We do not sell AI Tutor content, and we do not permit our AI
-            providers to use your school&apos;s student data to train their general
-            models.</strong> Where we use a third-party model provider, we do so under
-            terms that exclude customer data from model training.
+            <strong>Teachers stay in control.</strong> Nothing drafted becomes a grade,
+            a report comment or a behaviour record until a teacher approves it.
+          </li>
+          <li>
+            <strong>No training on your data.</strong> We use AI model providers in
+            the United States under terms that do not allow them to use your
+            school&apos;s data to train their models. We do not sell anything a teacher
+            or student writes.
           </li>
           <li>
             <strong>AI output can be wrong.</strong> It supports teaching, it does not
-            replace a teacher&apos;s judgement. Schools should treat generated material
-            as a draft to be checked.
+            replace a teacher&apos;s judgement. Treat every draft as a draft.
           </li>
         </ul>
         <p>
-          If the way we process AI Tutor data changes materially when the feature
-          launches in full, we will update this policy and tell schools before the change
-          takes effect.
+          An AI Tutor for students is in development and is not available yet. We will
+          update this policy and tell schools before it launches.
         </p>
       </>
     ),
@@ -409,7 +493,9 @@ const sections: LegalSection[] = [
         <h3>Service providers who help us run SchoolKit</h3>
         <p>
           Each is bound by contract to process data only on our instructions and to
-          protect it appropriately:
+          protect it appropriately. Schools can ask us for the current list, with the
+          name of each provider, at any time; we tell schools before adding a provider
+          that will handle student data.
         </p>
         <ul>
           <li>
@@ -420,19 +506,39 @@ const sections: LegalSection[] = [
             delivery
           </li>
           <li>
-            <strong>Meta Platforms / WhatsApp</strong> (United States, Ireland) —
-            WhatsApp message delivery, and website analytics via the Meta Pixel
+            <strong>Termii</strong> (Nigeria) — text message (SMS) delivery
           </li>
           <li>
-            <strong>Vercel</strong> (United States) — website and application hosting
+            <strong>Expo</strong> (United States), with Apple and Google — app
+            notifications
           </li>
           <li>
-            <strong>Google</strong> (United States) — the spreadsheet backend behind our
-            early-access waitlist form
+            <strong>Hosting and database providers</strong> — Fly.io (servers in South
+            Africa), Neon (database in Germany), Vercel (United States) and Contabo
+            (servers in the European Union, where we are moving our hosting), which run
+            the application and store and back up school data
           </li>
           <li>
-            <strong>Cloud infrastructure and database providers</strong> used to store
-            and back up school data
+            <strong>Cloudflare</strong> (United States) — storage of files such as
+            photos, documents and receipts
+          </li>
+          <li>
+            <strong>AI model providers</strong> (United States) — the drafting
+            features in <a href="#ai-tutor">section 9</a>, under no-training terms
+          </li>
+          <li>
+            <strong>Sentry</strong> (United States) — error reports, with personal data
+            removed where we can
+          </li>
+          <li>
+            <strong>PostHog</strong> (United States) — product usage measurement, sent
+            with opaque references only, never names or message content
+          </li>
+          <li>
+            <strong>Meta Platforms</strong> (United States, Ireland) and{" "}
+            <strong>Google</strong> (United States) — analytics on this marketing
+            website, only if you accept cookies, and the spreadsheet behind our
+            early-access form
           </li>
         </ul>
         <h3>Other disclosures</h3>
@@ -466,9 +572,11 @@ const sections: LegalSection[] = [
     body: (
       <>
         <p>
-          Some of the providers listed above are located outside Nigeria, principally in
-          the United States and the European Union. This means personal data may be
-          transferred across borders.
+          Some of the providers listed above are located outside Nigeria: today the
+          application runs on servers in South Africa, its database is in Germany, and
+          several providers are in the United States. We are moving our hosting to
+          servers in the European Union. This means personal data is transferred across
+          borders.
         </p>
         <p>
           Under section 41 of the NDPA 2023, we transfer personal data outside Nigeria
@@ -502,6 +610,21 @@ const sections: LegalSection[] = [
             <strong>After a school leaves</strong> — school data remains available for
             export for 90 days, after which it is deleted or irreversibly anonymised,
             unless the school asks us in writing to delete it sooner.
+          </li>
+          <li>
+            <strong>Admission applications</strong> — rejected and withdrawn
+            applications, with their documents, are deleted 90 days after the decision;
+            an application left open for 12 months is closed and then follows the same
+            rule.
+          </li>
+          <li>
+            <strong>Messages between parents and the school</strong> — a conversation
+            closes after 30 days without a new message, and is deleted 2 years after it
+            closed.
+          </li>
+          <li>
+            <strong>Smart Student Import photos</strong> — not stored; the photo is
+            used for the one request and discarded.
           </li>
           <li>
             <strong>Financial and transaction records</strong> — retained for at least 6
@@ -607,7 +730,8 @@ const sections: LegalSection[] = [
         <p>
           <strong>How to exercise them.</strong> If your data sits inside a
           school&apos;s SchoolKit account, contact the school — it is the data
-          controller. For data we control ourselves, email{" "}
+          controller. To ask for your SchoolKit account to be deleted, see{" "}
+          <Link href="/delete-account">Delete your account</Link>. For data we control ourselves, email{" "}
           <a href="mailto:hello@schoolkit.ng">hello@schoolkit.ng</a>. We respond within
           30 days and may need to verify your identity first. There is no charge unless a
           request is manifestly excessive or repetitive.
@@ -667,30 +791,16 @@ const sections: LegalSection[] = [
     heading: "Cookies and website analytics",
     body: (
       <>
-        <p>On schoolkit.ng we use:</p>
-        <ul>
-          <li>
-            <strong>Essential cookies and local storage</strong> — required for the site
-            and application to function, including keeping you signed in and remembering
-            that you dismissed a banner. These cannot be switched off.
-          </li>
-          <li>
-            <strong>Analytics and advertising — the Meta Pixel.</strong> We use the Meta
-            Pixel to understand which pages lead schools to join the waitlist and to
-            measure our advertising on Facebook and Instagram. It sets cookies and shares
-            event data (page views, form submissions) with Meta Platforms.
-          </li>
-        </ul>
         <p>
-          You can block or delete cookies through your browser settings, and you can
-          limit Meta&apos;s use of your data through your Facebook or Instagram ad
-          settings. Blocking non-essential cookies does not affect your ability to use
-          SchoolKit.
+          On schoolkit.ng we use essential cookies and storage, and — only if you accept
+          them — analytics and advertising cookies from Google Analytics and the Meta
+          Pixel. Nothing optional loads until you choose. The details, and how to change
+          your choice, are in our <Link href="/cookies">Cookie Policy</Link>.
         </p>
         <p>
           <strong>We do not run the Meta Pixel or any advertising tracker inside the
-          SchoolKit application where student data lives.</strong> It is on the public
-          marketing website only.
+          SchoolKit application, the parents&apos; site or school web pages, where
+          student data lives.</strong> They are on this marketing website only.
         </p>
       </>
     ),
@@ -702,7 +812,7 @@ const sections: LegalSection[] = [
       <>
         <p>
           We update this policy as the product develops — the AI Tutor and other features
-          listed as coming soon will bring changes. The effective date at the top always
+          still to come will bring changes. Earlier versions are available on request. The effective date at the top always
           reflects the current version.
         </p>
         <p>
