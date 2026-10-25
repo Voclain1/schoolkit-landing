@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { getLogoDataUri } from "@/lib/landing";
 import { FEATURES } from "@/lib/features";
+import CookieSettingsButton from "@/components/CookieSettingsButton";
 
 export default function Footer() {
   const logo = getLogoDataUri();
@@ -51,7 +52,10 @@ export default function Footer() {
           </span>
           <span>
             <Link href="/privacy-policy">Privacy Policy</Link> ·{" "}
-            <Link href="/terms-of-service">Terms of Service</Link>
+            <Link href="/terms-of-service">Terms of Service</Link> ·{" "}
+            <Link href="/data-processing-agreement">Data Processing Agreement</Link> ·{" "}
+            <Link href="/cookies">Cookies</Link> · <Link href="/refund-policy">Refunds</Link> ·{" "}
+            <Link href="/delete-account">Delete your account</Link> · <CookieSettingsButton />
           </span>
         </div>
       </div>

@@ -18,7 +18,7 @@ export const metadata: Metadata = {
   },
 };
 
-const EFFECTIVE_DATE = "11 October 2026";
+const EFFECTIVE_DATE = "25 October 2026";
 
 const sections: LegalSection[] = [
   {
@@ -185,7 +185,11 @@ const sections: LegalSection[] = [
         <p>
           You are the data controller for School Data. We act as your data processor and
           handle it on your documented instructions, as set out in our{" "}
-          <Link href="/privacy-policy">Privacy Policy</Link>.
+          <Link href="/data-processing-agreement">Data Processing Agreement</Link>, which
+          forms part of these Terms, and our{" "}
+          <Link href="/privacy-policy">Privacy Policy</Link>. In particular, you are
+          responsible for obtaining a parent&apos;s or guardian&apos;s consent for each
+          child whose data you put into SchoolKit.
         </p>
       </>
     ),
@@ -541,6 +545,8 @@ const sections: LegalSection[] = [
           end of your current billing period, and you keep access until then. Fees
           already paid are not refunded for a partial term or year except where the law
           requires it, or where we have failed to provide the Service in a material way.
+          How to ask for a refund is set out in our{" "}
+          <Link href="/refund-policy">Refund Policy</Link>.
         </p>
         <p>
           <strong>We may suspend or terminate</strong> if you materially breach these

@@ -17,7 +17,8 @@ type LegalPageProps = {
 };
 
 /**
- * Shared shell for /privacy-policy and /terms-of-service. Sections drive both the
+ * Shared shell for the legal pages (privacy, terms, DPA, cookies, refunds,
+ * account deletion). Sections drive both the
  * contents list and the headings, so the two can't drift apart.
  */
 export default function LegalPage({
@@ -77,7 +78,11 @@ export default function LegalPage({
         </p>
         <p className="legal-cross">
           See also: <Link href="/privacy-policy">Privacy Policy</Link> ·{" "}
-          <Link href="/terms-of-service">Terms of Service</Link>
+          <Link href="/terms-of-service">Terms of Service</Link> ·{" "}
+          <Link href="/data-processing-agreement">Data Processing Agreement</Link> ·{" "}
+          <Link href="/cookies">Cookie Policy</Link> ·{" "}
+          <Link href="/refund-policy">Refund Policy</Link> ·{" "}
+          <Link href="/delete-account">Delete your account</Link>
         </p>
       </div>
     </div>

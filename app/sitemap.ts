@@ -18,8 +18,12 @@ const PAGES: Array<{ path: string; updated: string; priority: number; changeFreq
   { path: "/demo", updated: "2026-09-11", priority: 0.7, changeFrequency: "monthly" },
   { path: "/about", updated: "2026-10-05", priority: 0.6, changeFrequency: "monthly" },
   { path: "/press", updated: "2026-10-05", priority: 0.5, changeFrequency: "monthly" },
-  { path: "/privacy-policy", updated: "2026-08-16", priority: 0.3, changeFrequency: "yearly" },
-  { path: "/terms-of-service", updated: "2026-08-16", priority: 0.3, changeFrequency: "yearly" },
+  { path: "/privacy-policy", updated: "2026-10-25", priority: 0.3, changeFrequency: "yearly" },
+  { path: "/terms-of-service", updated: "2026-10-25", priority: 0.3, changeFrequency: "yearly" },
+  { path: "/data-processing-agreement", updated: "2026-10-25", priority: 0.3, changeFrequency: "yearly" },
+  { path: "/cookies", updated: "2026-10-25", priority: 0.2, changeFrequency: "yearly" },
+  { path: "/refund-policy", updated: "2026-10-25", priority: 0.2, changeFrequency: "yearly" },
+  { path: "/delete-account", updated: "2026-10-25", priority: 0.3, changeFrequency: "yearly" },
 ];
 
 const FEATURES_UPDATED = "2026-10-05";
