@@ -70,10 +70,10 @@ export default function FeaturesPage() {
       <section className="feature-final">
         <div className="wrap">
           <h2>Free for schools with up to 100 students</h2>
-          <p>Join the early-access waitlist and get priority onboarding.</p>
-          <Link href="/#join" className="pill">
-            Join the waitlist
-          </Link>
+          <p>SchoolKit is live. Create your school account, or <Link href="/demo">watch the walkthrough</Link> to see how it works.</p>
+          <a href="https://app.schoolkit.ng" className="pill">
+            Get started free
+          </a>
         </div>
       </section>
     </div>
