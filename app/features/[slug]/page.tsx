@@ -178,11 +178,11 @@ export default async function FeaturePage({ params }: PageProps) {
 
       <section className="feature-final">
         <div className="wrap">
-          <h2>Be one of our pioneer schools</h2>
-          <p>Free for up to 100 students. Full setup support and a direct line to the team.</p>
-          <Link href="/#join" className="pill">
-            Join the waitlist
-          </Link>
+          <h2>Start using SchoolKit at your school</h2>
+          <p>Start free for up to 100 students, or <Link href="/demo">watch the walkthrough</Link> before getting started.</p>
+          <a href="https://app.schoolkit.ng" className="pill">
+            Get started free
+          </a>
         </div>
       </section>
     </div>

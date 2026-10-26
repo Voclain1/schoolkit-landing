@@ -182,11 +182,11 @@ export default async function BlogPostPage({ params }: PageProps) {
         )}
 
         <div className="blog-cta">
-          <h3>Be one of our pioneer schools</h3>
-          <p>Join the SchoolKit early-access waitlist — full setup support, a direct line to the team.</p>
-          <Link href="/#join" className="pill">
-            Join the waitlist
-          </Link>
+          <h3>Start using SchoolKit at your school</h3>
+          <p>SchoolKit is live. Start free for up to 100 students, or <Link href="/demo">watch the walkthrough</Link> to see how it works.</p>
+          <a href="https://app.schoolkit.ng" className="pill">
+            Get started free
+          </a>
         </div>
 
         {related.length > 0 && (
