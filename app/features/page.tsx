@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { BRAND } from "@/lib/brand";
 import { FEATURES } from "@/lib/features";
 import { breadcrumbJsonLd } from "@/lib/structured-data";
 import { serializeJsonLd } from "@/lib/json-ld";
@@ -43,9 +44,9 @@ export default function FeaturesPage() {
             to work together, and to keep working when the network doesn&apos;t.
           </p>
           <div className="feature-actions">
-            <Link href="/#join" className="pill">
-              Join pioneer schools
-            </Link>
+            <a href={BRAND.signupUrl} className="pill">
+              Start now
+            </a>
             <Link href="/#pricing" className="text-link">
               See pricing
             </Link>
@@ -70,9 +71,12 @@ export default function FeaturesPage() {
       <section className="feature-final">
         <div className="wrap">
           <h2>Free for schools with up to 100 students</h2>
-          <p>Join the early-access waitlist and get priority onboarding.</p>
-          <Link href="/#join" className="pill">
-            Join the waitlist
+          <p>Sign up and we&apos;ll help you set up, or tell us what you need first.</p>
+          <a href={BRAND.signupUrl} className="pill">
+            Sign up your school
+          </a>{" "}
+          <Link href="/#join" className="text-link">
+            Learn more
           </Link>
         </div>
       </section>

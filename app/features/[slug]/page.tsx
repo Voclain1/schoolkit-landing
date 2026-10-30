@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { BRAND } from "@/lib/brand";
 import { notFound } from "next/navigation";
 import { FEATURES, getFeatureBySlug } from "@/lib/features";
 import { getPostBySlug } from "@/lib/posts";
@@ -77,9 +78,9 @@ export default async function FeaturePage({ params }: PageProps) {
           <h1>{feature.h1}</h1>
           <p className="feature-lede">{feature.lede}</p>
           <div className="feature-actions">
-            <Link href="/#join" className="pill">
-              Join pioneer schools
-            </Link>
+            <a href={BRAND.signupUrl} className="pill">
+              Start now
+            </a>
             <Link href="/demo" className="text-link">
               Watch the 2-minute demo
             </Link>
@@ -178,11 +179,11 @@ export default async function FeaturePage({ params }: PageProps) {
 
       <section className="feature-final">
         <div className="wrap">
-          <h2>Be one of our pioneer schools</h2>
+          <h2>Ready to run your school on SchoolKit?</h2>
           <p>Free for up to 100 students. Full setup support and a direct line to the team.</p>
-          <Link href="/#join" className="pill">
-            Join the waitlist
-          </Link>
+          <a href={BRAND.signupUrl} className="pill">
+            Sign up your school
+          </a>
         </div>
       </section>
     </div>

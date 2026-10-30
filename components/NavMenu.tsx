@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import { BRAND } from "@/lib/brand";
 
 export default function NavMenu() {
   const [open, setOpen] = useState(false);
@@ -29,9 +30,9 @@ export default function NavMenu() {
           Blog
         </Link>
       </div>
-      <Link href="/#join" className="pill" onClick={close}>
-        Join early access
-      </Link>
+      <a href={BRAND.signupUrl} className="pill" onClick={close}>
+        Sign up your school
+      </a>
       <button
         type="button"
         className="menu-btn"

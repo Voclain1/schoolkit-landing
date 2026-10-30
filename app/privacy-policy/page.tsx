@@ -18,7 +18,7 @@ export const metadata: Metadata = {
   },
 };
 
-const EFFECTIVE_DATE = "25 October 2026";
+const EFFECTIVE_DATE = "30 October 2026";
 
 const sections: LegalSection[] = [
   {
@@ -39,7 +39,7 @@ const sections: LegalSection[] = [
         <ul>
           <li>
             <strong>schoolkit.ng</strong> — this website, including our blog and the
-            early-access waitlist form;
+            form for getting started or sending us an enquiry;
           </li>
           <li>
             <strong>the SchoolKit application</strong> — the web and mobile software
@@ -120,7 +120,7 @@ const sections: LegalSection[] = [
         </p>
         <p>
           <strong>Where SchoolKit is the data controller.</strong> For our own
-          business activity — the marketing website, the early-access waitlist, sales
+          business activity — the marketing website, the website contact form, sales
           enquiries, support conversations, billing records and our own staff
           recruitment — we decide the purposes ourselves and act as the{" "}
           <strong>data controller</strong>. Contact us directly about any of this at{" "}
@@ -256,11 +256,12 @@ const sections: LegalSection[] = [
           </li>
         </ul>
 
-        <h3>Waitlist and marketing information</h3>
+        <h3>Website form and marketing information</h3>
         <p>
-          If you join our early-access waitlist, we collect the email address you
-          provide, your WhatsApp number if you choose to give one, the time of signup
-          and which part of the page you signed up from.
+          If you send us a request through the form on our website, we collect the email
+          address you provide, your WhatsApp number if you choose to give one, what you
+          asked for help with (for example setting up your school, a setup call or a
+          question), the time you sent it and which part of the page you sent it from.
         </p>
       </>
     ),
@@ -287,7 +288,7 @@ const sections: LegalSection[] = [
             We balance these against your rights and interests.
           </li>
           <li>
-            <strong>Consent</strong> — marketing emails, the early-access waitlist,
+            <strong>Consent</strong> — marketing emails, the website contact form,
             non-essential analytics cookies, and any optional feature a school switches
             on. Consent can be withdrawn at any time.
           </li>
@@ -424,7 +425,7 @@ const sections: LegalSection[] = [
           unsubscribe link in each one, or in the parents&apos; site settings.
         </p>
         <p>
-          Marketing emails from SchoolKit itself — product updates and early-access news
+          Marketing emails from SchoolKit itself — product updates and news
           — are separate, are sent only with consent, and carry an unsubscribe link in
           every message.
         </p>
@@ -502,7 +503,7 @@ const sections: LegalSection[] = [
             <strong>Paystack</strong> (Nigeria) — fee collection and payment processing
           </li>
           <li>
-            <strong>Resend</strong> (United States) — transactional and waitlist email
+            <strong>Resend</strong> (United States) — transactional and marketing email
             delivery
           </li>
           <li>
@@ -538,7 +539,7 @@ const sections: LegalSection[] = [
             <strong>Meta Platforms</strong> (United States, Ireland) and{" "}
             <strong>Google</strong> (United States) — analytics on this marketing
             website, only if you accept cookies, and the spreadsheet behind our
-            early-access form
+            website contact form
           </li>
         </ul>
         <h3>Other disclosures</h3>
@@ -632,7 +633,7 @@ const sections: LegalSection[] = [
             closes.
           </li>
           <li>
-            <strong>Waitlist and marketing contacts</strong> — until you unsubscribe or
+            <strong>Website form and marketing contacts</strong> — until you unsubscribe or
             ask us to delete your details.
           </li>
           <li>
