@@ -108,9 +108,9 @@ export default function PricingPage() {
             ))}
           </div>
           <div className="feature-actions">
-            <Link href="/#join" className="pill">
-              Get started free
-            </Link>
+            <a href={BRAND.signupUrl} className="pill">
+              Start now
+            </a>
             <a
               href={`https://wa.me/${BRAND.whatsapp.replace("+", "")}?text=${encodeURIComponent("Hi SchoolKit, I'd like to ask about pricing")}`}
               className="text-link text-link-dark"
@@ -129,8 +129,8 @@ export default function PricingPage() {
           <h2>Pioneer offer</h2>
           <div className="feature-card feature-card-tint pricing-offer">
             <p>
-              The first 50 schools to onboard keep the Free plan forever and get one term free on any paid plan. Pioneer schools also get parent communication free on any plan. Early-access
-              schools lock in today&apos;s prices for life. <Link href="/pioneer">See the Pioneer Offer</Link>.
+              Pioneer schools get one term free on any paid plan and parent communication free on any plan, and keep
+              today&apos;s prices for as long as they stay. <Link href="/pioneer">See the Pioneer Offer</Link>.
             </p>
           </div>
         </div>
@@ -161,9 +161,9 @@ export default function PricingPage() {
         <div className="wrap">
           <h2>Start free today</h2>
           <p>Free for up to 100 students. Upgrade only when your school is ready.</p>
-          <Link href="/#join" className="pill">
-            Get started free
-          </Link>
+          <a href={BRAND.signupUrl} className="pill">
+            Sign up your school
+          </a>
         </div>
       </section>
     </div>

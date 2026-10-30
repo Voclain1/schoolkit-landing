@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { BRAND } from "@/lib/brand";
 import Image from "next/image";
 import { notFound } from "next/navigation";
 import { MDXRemote } from "next-mdx-remote/rsc";
@@ -182,10 +183,13 @@ export default async function BlogPostPage({ params }: PageProps) {
         )}
 
         <div className="blog-cta">
-          <h3>Be one of our pioneer schools</h3>
-          <p>Join the SchoolKit early-access waitlist — full setup support, a direct line to the team.</p>
-          <Link href="/#join" className="pill">
-            Join the waitlist
+          <h3>Ready to run your school on SchoolKit?</h3>
+          <p>Free for up to 100 students, with full setup support and a direct line to the team.</p>
+          <a href={BRAND.signupUrl} className="pill">
+            Sign up your school
+          </a>{" "}
+          <Link href="/#join" className="text-link">
+            Talk to us
           </Link>
         </div>
 

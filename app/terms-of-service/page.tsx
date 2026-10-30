@@ -18,7 +18,7 @@ export const metadata: Metadata = {
   },
 };
 
-const EFFECTIVE_DATE = "25 October 2026";
+const EFFECTIVE_DATE = "30 October 2026";
 
 const sections: LegalSection[] = [
   {
@@ -33,7 +33,7 @@ const sections: LegalSection[] = [
           <a href="mailto:hello@schoolkit.ng">hello@schoolkit.ng</a>.
         </p>
         <p>
-          By creating an account, joining the early-access waitlist, or using any part of
+          By creating an account, sending us a request through our website, or using any part of
           the service, you agree to these Terms. If you do not agree, do not use
           SchoolKit.
         </p>
@@ -83,7 +83,7 @@ const sections: LegalSection[] = [
   },
   {
     id: "the-service",
-    heading: "The Service and its early-access status",
+    heading: "The Service and how it develops",
     body: (
       <>
         <p>SchoolKit currently provides:</p>
@@ -106,11 +106,11 @@ const sections: LegalSection[] = [
           subscribe in reliance on functionality that has not shipped.
         </p>
         <p>
-          <strong>Early access.</strong> SchoolKit is in early access. Some features are
-          new, and the Service may change, break or be interrupted more often than a
-          fully mature product. We onboard pioneer schools by hand and support them
-          closely, but early-access schools should keep their own independent records
-          during the first term of use.
+          <strong>A developing service.</strong> SchoolKit is improving all the time.
+          Some features are new, and the Service may change or be interrupted while we
+          improve it. We help every school set up and support new schools closely, but
+          a school should keep its own independent records during its first term of
+          use.
         </p>
       </>
     ),
@@ -362,7 +362,7 @@ const sections: LegalSection[] = [
       <>
         <p>
           We work to keep SchoolKit available continuously, but we do not offer a
-          guaranteed uptime commitment during early access. The Service may be
+          guaranteed uptime commitment. The Service may be
           unavailable during maintenance, or because of failures at a hosting, payment or
           messaging provider.
         </p>
@@ -376,8 +376,8 @@ const sections: LegalSection[] = [
         <p>
           <strong>Support</strong> is provided by email at{" "}
           <a href="mailto:hello@schoolkit.ng">hello@schoolkit.ng</a> and by WhatsApp
-          during Nigerian business hours. Early-access schools receive hands-on
-          onboarding support as described when they join.
+          during Nigerian business hours. New schools receive hands-on onboarding
+          support as described when they sign up.
         </p>
       </>
     ),

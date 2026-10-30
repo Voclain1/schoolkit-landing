@@ -51,7 +51,7 @@ const sections: LegalSection[] = [
           <li>
             <strong>Meta Pixel</strong> (<code>_fbp</code>, up to 3 months, and Meta&apos;s
             own cookies) — measures our advertising on Facebook and Instagram and which
-            pages lead to an early-access sign-up.
+            pages lead to a sign-up or an enquiry.
           </li>
         </ul>
         <p>

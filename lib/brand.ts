@@ -15,6 +15,8 @@ export const BRAND = {
   name: "SchoolKit",
   url: SITE_URL,
   appUrl: "https://app.schoolkit.ng",
+  /** Where a school signs up: the staff app's sign-up page. */
+  signupUrl: "https://app.schoolkit.ng/staff/signup",
   /** The one-line description to reuse verbatim everywhere. */
   oneLiner:
     "SchoolKit is school management software for Nigerian private schools: fee collection via Paystack, results and report cards, attendance and a parent portal, built to work offline.",

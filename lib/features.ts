@@ -483,7 +483,7 @@ export const FEATURES: Feature[] = [
       {
         question: "Can we import our existing student list?",
         answer:
-          "Yes. Schools can bring in their existing student records during setup rather than typing every student in one at a time, and the SchoolKit team helps pioneer schools with onboarding.",
+          "Yes. Schools can bring in their existing student records during setup rather than typing every student in one at a time, and the SchoolKit team helps every school with onboarding.",
       },
       {
         question: "Can teachers see fee information?",
