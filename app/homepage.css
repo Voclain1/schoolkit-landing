@@ -168,7 +168,7 @@ body:has(.sk-home) .bar .nav-links { gap:24px; }
 @media(max-width:1000px) and (min-width:781px) { body:has(.sk-home) .bar .nav-links { gap:14px; } body:has(.sk-home) .bar .nav a.l { font-size:13px; } }
 @media(max-width:780px) { body:has(.sk-home) .bar .nav-links { background:#faf9f5fa; gap:0; } body:has(.sk-home) .bar .nav-links a.l { border-bottom-color:#dce1d5; } }
 @media(max-width:760px) { .sk-hero { padding-top:118px; } }
-/* Early-access capture, restored alongside the live-app links. */
+/* The "Get started" form beside the sign-up links. */
 .sk-access-form { max-width:620px; margin:30px auto 0; text-align:left; }
 .sk-access-fields { display:grid; grid-template-columns:1fr 1fr; gap:16px; }
 .sk-access-fields label { display:block; margin-bottom:8px; font-size:14px; font-weight:600; }
