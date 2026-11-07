@@ -31,7 +31,7 @@ function Arrow({ diagonal = false }: { diagonal?: boolean }) {
 
 function DashboardPreview() {
   return (
-    <figure className="pn-scene">
+    <figure className="pn-scene" aria-label="SchoolKit dashboard illustration with sample school data">
       <div className="pn-handnote" aria-hidden="true">Your school. A little clearer.<svg viewBox="0 0 100 45"><path d="M4 4Q20 50 83 23M69 17l17 5-9 14" /></svg></div>
       <div className="pn-dashboard">
         <div className="pn-browser"><span className="pn-browser-dots" aria-hidden="true"><i /><i /><i /></span><span>schoolkit.ng / your school</span><span className="pn-preview-label">Product illustration</span></div>
