@@ -25,7 +25,12 @@ const FAQS = [
   {
     question: "Is the Free plan really free?",
     answer:
-      "Yes. The Free plan has no time limit. It covers up to 100 students with student records, attendance tracking, basic fee tracking, and fee collection via Paystack with digital receipts.",
+      "Yes. The Free plan has no time limit. It covers up to 100 students with student records, attendance tracking, basic fee tracking, and fee collection via Paystack with digital receipts. It also includes your own school website, with a cover photo, a welcome line and an About us section, and a parent portal where parents see fees, results and announcements.",
+  },
+  {
+    question: "Do we get a school website on the Free plan?",
+    answer:
+      "Yes. Every school gets its own website at yourschool.schoolkit.ng, with your logo, a cover photo, a welcome line, an About us section, your upcoming events and announcements, and sign-in for parents, staff and students. Paid plans add news posts, quick facts, a photo gallery, leadership profiles and an admissions box.",
   },
   {
     question: "How much is that per student?",
