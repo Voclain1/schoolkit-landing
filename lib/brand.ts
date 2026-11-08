@@ -47,28 +47,28 @@ export const PLANS: Plan[] = [
     pricePerTerm: 0,
     maxStudents: 100,
     summary:
-      "Student records, attendance tracking, basic fee tracking, and fee collection via Paystack with instant digital receipts, and termly report cards on the SchoolKit template. Pioneer schools also get parent communication free.",
+      "Student records, attendance tracking, basic fee tracking, fee collection via Paystack with instant digital receipts, termly report cards on the SchoolKit template, your own school website with a cover photo, welcome and About us, and a parent portal for fees, results and announcements. Pioneer schools also get parent communication free.",
   },
   {
     name: "Starter",
     pricePerTerm: 45000,
     maxStudents: 200,
     summary:
-      "Everything in Free, plus report cards with your logo and colours, class positions, year results and AI comment drafts, parent communication, staff management, a finance dashboard and offline mode.",
+      "Everything in Free, plus report cards with your logo and colours, class positions, year results and AI comment drafts, parent communication, staff management, a finance dashboard, offline mode, and news and quick facts on your school website.",
   },
   {
     name: "Growth",
     pricePerTerm: 90000,
     maxStudents: 600,
     summary:
-      "Everything in Starter, plus priority support, an advanced finance dashboard, bulk operations and multi-class management.",
+      "Everything in Starter, plus priority support, an advanced finance dashboard, bulk operations, multi-class management, and a photo gallery, leadership and admissions box on your school website.",
   },
   {
     name: "Professional",
     pricePerTerm: 180000,
     maxStudents: 1200,
     summary:
-      "Everything in Growth, plus a dedicated account manager, custom report card templates, advanced analytics and API access.",
+      "Everything in Growth, plus a dedicated account manager, custom report card templates, advanced analytics, API access and your own accent colour on your school website.",
   },
   {
     name: "Enterprise",

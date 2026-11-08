@@ -405,6 +405,11 @@ export const FEATURES: Feature[] = [
           "No. Each parent sees only the children linked to their own account, and results are only visible after the school has approved and released them.",
       },
       {
+        question: "Is the parent portal free?",
+        answer:
+          "Yes. The parent portal is included on every plan, including the Free plan for schools with up to 100 students. It sits on your school's own free website at yourschool.schoolkit.ng.",
+      },
+      {
         question: "Can parents pay fees from the portal?",
         answer: "Yes. Parents can see outstanding invoices and pay them online through Paystack.",
       },
